@@ -1,0 +1,31 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="com.itwill.member.Member"%>
+<%@page import="com.itwill.member.MemberService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="member_login_check.jspf" %>    
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("shop_main.jsp");
+		return;
+	}
+	//파라미터값 받기
+	String password = request.getParameter("password");
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
+	String email = request.getParameter("email");
+	
+	MemberService memberService=new MemberService();
+	
+	try{
+		memberService.update(new Member(password, name, phone, email ));
+		RequestDispatcher rd=
+			request.getRequestDispatcher("member_view.jsp");
+		rd.forward(request, response);
+		
+	}catch(Exception e){
+		e.printStackTrace();
+		response.sendRedirect("member_main.jsp");
+		return;
+	}
+%>

@@ -1,0 +1,37 @@
+<%@page import="com.itwill.member.Member"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.member.MemberService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	MemberService memberService = MemberService.getInstance();
+	Member member = memberService.findMember("cxxcx");
+	
+	%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ol>
+		
+		<li><%=member%></li>
+		
+	</ol>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

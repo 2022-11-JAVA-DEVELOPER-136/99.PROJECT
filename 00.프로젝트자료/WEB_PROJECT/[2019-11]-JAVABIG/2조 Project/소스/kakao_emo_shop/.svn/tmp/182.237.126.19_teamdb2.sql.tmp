@@ -1,0 +1,37 @@
+select * from cart;
+select * from jumun;
+select * from md_emolist;
+select * from member;
+select * from p_emo;
+select * from p_emostyle;
+
+select md.m_no ÀÌ¹ø³ðÀÌ°¡ÁøÀÌ¸ðÆ¼ÄÜ ,p.p_name from md_emolist md
+join p_emo p on p.p_no = md.p_no where md.m_no= 2;
+
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (1, 1 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (2, 2 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (3, 3 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (4, 4 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (5, 5 , 2);
+commit;
+
+--ÃÑ ÁÖ¹®°Ç¼ö
+select p.p_name||'¿Ü '||(select count(m_no)-1 from cart where m_no =3)||'°Ç'  
+from cart c join p_emo p on p.p_no = c.p_no 
+where m_no = 3 and rownum =1;
+
+
+--ÃÑ±¸¸Å¾×
+select sum(p.p_price) ÃÑ±¸¸Å¾× from cart c join p_emo p on c.p_no = p.p_no where m_no=3;
+
+INSERT INTO jumun VALUES (7, sysdate, 
+(select p.p_name||'ì™¸ '||(select count(m_no)-1 from cart where m_no =3)||'ê±´'  
+from cart c join p_emo p on p.p_no = c.p_no where m_no = 3 and rownum =1), 
+(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=3),1);
+
+INSERT INTO jumun VALUES (?, sysdate, 
+(select p.p_name||'ì™¸ '||(select count(m_no)-1 from cart where m_no =?)||'ê±´'  
+from cart c join p_emo p on p.p_no = c.p_no where m_no = ? and rownum =1), 
+(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=?),?);
+
+

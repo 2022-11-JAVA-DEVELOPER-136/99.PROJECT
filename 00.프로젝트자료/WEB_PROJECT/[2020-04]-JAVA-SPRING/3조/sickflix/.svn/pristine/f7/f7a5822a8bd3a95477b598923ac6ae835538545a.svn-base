@@ -1,0 +1,29 @@
+<%@page import="com.itwill.board.Board"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.board.BoardService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+	BoardService bs = new BoardService();
+	ArrayList<Board> BoardList = bs.findBoardList(pageConfig);
+	%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<ol>
+		<%
+			for (Board board : boardList) {
+		%>
+		<li><%=Board%></li>
+		<%
+			}
+		%>
+	</ol>
+</body>
+</html>

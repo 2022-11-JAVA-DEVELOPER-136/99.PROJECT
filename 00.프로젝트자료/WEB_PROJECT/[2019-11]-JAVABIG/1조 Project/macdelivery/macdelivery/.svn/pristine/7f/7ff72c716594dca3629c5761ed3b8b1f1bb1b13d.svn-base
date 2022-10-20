@@ -1,0 +1,25 @@
+package com.itwill.jumun_detail.model;
+
+import java.util.ArrayList;
+
+
+public class JumunDetailService {
+	private JumunDetailDao jumunDetailDao;
+
+	public JumunDetailService() throws Exception {
+		jumunDetailDao = new JumunDetailDao();
+	}
+
+	public ArrayList<JumunDetail> selectByNo(int j_no) throws Exception {
+		return jumunDetailDao.selectByNo(j_no);
+	}
+	
+	public boolean insertJumunDetail(JumunDetail jumunDetail) throws Exception {
+		return jumunDetailDao.insertJumunDetail(jumunDetail);
+	}
+	
+	public boolean deleteJumunDetail(int j_no) throws Exception {
+		return jumunDetailDao.deleteJumunDetail(j_no);
+	}
+	
+}

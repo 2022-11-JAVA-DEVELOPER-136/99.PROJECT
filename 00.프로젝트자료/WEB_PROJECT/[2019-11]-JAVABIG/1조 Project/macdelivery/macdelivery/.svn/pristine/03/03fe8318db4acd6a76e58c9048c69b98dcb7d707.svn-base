@@ -1,0 +1,36 @@
+package com.itwill.product.controller;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.product.model.Product;
+import com.itwill.product.model.ProductService;
+import com.itwill.summer.Controller;
+
+public class ProductListController implements Controller {
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="";
+		String product_noStr=request.getParameter("p_up_no");
+		if(product_noStr==null||product_noStr.equals("")) {
+			forwardPath="redirect:product_main.do";
+		}
+		try {
+			ProductService productService=new ProductService();
+			ArrayList<Product> productList=productService.findByUpno(Integer.parseInt(product_noStr));
+			if(productList==null) {
+				forwardPath="";
+			}else {
+				request.setAttribute("productList", productList);
+				forwardPath="forward:/WEB-INF/view/product_list.jsp";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="";
+		}
+		
+		return forwardPath;
+		
+	}
+}

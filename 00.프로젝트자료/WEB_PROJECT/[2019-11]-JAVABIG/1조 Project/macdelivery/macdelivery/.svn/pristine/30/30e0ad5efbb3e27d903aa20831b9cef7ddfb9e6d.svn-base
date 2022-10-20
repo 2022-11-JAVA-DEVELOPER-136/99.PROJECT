@@ -1,0 +1,93 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.itwill.cart.model.CartService;
+import com.itwill.jumun.model.Jumun;
+import com.itwill.jumun.model.JumunService;
+import com.itwill.jumun_detail.model.JumunDetail;
+import com.itwill.jumun_detail.model.JumunDetailService;
+import com.itwill.store.model.StoreService;
+import com.itwill.summer.Controller;
+
+public class JumunDetailActionController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath = "forward:/WEB-INF/view/McDelivery_orderSuccess.jsp";
+		
+		try {
+			HttpSession session = request.getSession();
+			JumunService jumunService = new JumunService();
+			JumunDetailService jumunDetailService = new JumunDetailService();
+			CartService cartservice = new CartService();
+			StoreService storeService = new StoreService();
+			int m_no = (Integer)session.getAttribute("m_no");
+			System.out.println(m_no+"---------------m_no-----------------");
+			String ss = request.getParameter("s_name");
+			System.out.println(ss);
+			int s_no = storeService.selectByName(ss);
+			System.out.println(s_no);	
+			
+			int sum = 0;
+			int j_phone = Integer.parseInt(request.getParameter("j_phone"));
+			System.out.println(j_phone);	
+			
+			String j_address = request.getParameter("j_address");
+			System.out.println(j_address);	
+			
+			String j_demand = request.getParameter("j_demand");
+			System.out.println(j_demand);	
+			
+			
+			ArrayList<HashMap> cartList = (ArrayList<HashMap>) session.getAttribute("cartList");
+			System.out.println(cartList+"------JDAC------");
+			ArrayList<String> nameList = new ArrayList();
+			ArrayList<Integer> qtyList = new ArrayList();
+			ArrayList<Integer> productList = new ArrayList();
+			ArrayList<JumunDetail> jumunDetailList = new ArrayList();
+			
+			
+			for (int i = 0; i < cartList.size(); i++) {
+				nameList.add((String) cartList.get(i).get("p_name"));
+				System.out.println((String) cartList.get(i).get("p_name"));
+				qtyList.add((Integer)cartList.get(i).get("c_quantity"));
+				System.out.println((Integer)cartList.get(i).get("c_quantity"));
+				productList.add((Integer)cartList.get(i).get("p_no"));
+				System.out.println((Integer)cartList.get(i).get("p_no"));
+			}
+			//총액
+			for (int i = 0; i < cartList.size(); i++) {
+				sum += (int) cartList.get(i).get("c_price");
+			}
+			for (int i = 0; i < cartList.size(); i++) {
+				jumunDetailList.add(new JumunDetail(productList.get(i),qtyList.get(i)));
+				System.out.println(qtyList.get(i)+"-----"+productList.get(i));
+				
+			}
+			
+			jumunService.insertJumun(new Jumun(m_no,s_no,sum,j_address,j_demand,j_phone));
+			jumunDetailService.insertJumunDetail(jumunDetailList);
+			cartservice.deleteAll(m_no);
+			System.out.println("카트딜리트 "+m_no);
+			// int m_no, int s_no, int j_price, String j_address, String j_demand
+			if (session.getAttribute("member") != null) {
+				int m_no6 = (int)session.getAttribute("m_no");
+				System.out.println(m_no6);
+				CartService cs = new CartService();
+				int cartCount = cs.cartCount(m_no6);
+				request.setAttribute("cartCount", cartCount);
+			}
+			return forwardPath;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return forwardPath;
+	}
+
+}

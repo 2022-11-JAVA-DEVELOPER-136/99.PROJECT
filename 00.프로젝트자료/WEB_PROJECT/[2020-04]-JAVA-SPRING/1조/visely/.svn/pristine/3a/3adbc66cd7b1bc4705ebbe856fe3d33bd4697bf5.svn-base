@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!-- saved from url=(0157)http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getSellerProductDetailViewDesc&prdNo=2573591007&isPreview=false&isIgnoreAuth=false&isRenewYn=Y -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	
+
+	
+		
+		
+			<link rel="stylesheet" href="./prdc_detail.css" type="text/css">
+			<link rel="stylesheet" href="./product_v4.css" type="text/css">
+
+			<link rel="stylesheet" href="./edit_template.css" type="text/css">
+		
+	
+
+	<title>Everytime 십일절 - 11번가</title>
+	
+
+
+	<script type="text/javascript" src="./jquery-1.5.min.js(1).다운로드"></script>
+	<script type="text/javascript" src="./dateUtil.js.다운로드"></script>
+	<script type="text/javascript">
+		var detailHtmlList = null;
+		var detailHtmlKeyList = null;
+		var resizeThread;
+		function parentFrmResize(){
+			if(!parent) return;
+
+			if(!parent.document.getElementById("prdDescIfrm")) return;
+			if(!document.body) return;
+
+			try{
+				parent.document.getElementById("prdDescIfrm").height = document.documentElement.scrollHeight;
+				parent.callEventFromIfram('layoutUpdate');
+			}catch(e){}
+		}
+		resizeThread = setInterval("parentFrmResize()", 100);	//0.1초마다 실행
+
+		function handleError() {
+			return true;
+		}
+
+		window.onload = function(){
+			if(!resizeThread && resizeThread != null) clearInterval(resizeThread);
+
+			//상품상세 상품정보 이미지 우클릭 방지
+			document.oncontextmenu=function(){return true;};
+		};
+		window.onerror = handleError;
+
+		function iframeResizeFunc(height) {
+			if( jQuery("iframe").length == 1 ) {
+				jQuery("iframe").css("height", height + "px");
+				parentFrmResize();
+			}
+		}
+
+		var detailViewID = "";
+		var changeDetailViewID = "";
+		var selectRepresentID = "";
+		var taggingViewType = "";
+
+		var globalSelectIndex = 0;
+
+		jQuery(document).ready(function() {
+
+			if(detailHtmlKeyList != null && detailHtmlKeyList != undefined) {
+				var i = 1;
+				for(var findIndex=0; detailHtmlKeyList.length>findIndex; findIndex++) {
+					jQuery("#optlyTitleNameID", parent.document).append('<option value="'+ findIndex +'">[옵션 '+ i +']' + detailHtmlKeyList[findIndex] + '</option>')
+					i++;
+				}
+			}
+
+
+			jQuery('.btn_wrap').mouseover(function(){
+				jQuery(this).addClass('selected');
+				return false;
+			});
+			jQuery('.btn_wrap').mouseout(function(){
+				jQuery(this).removeClass('selected');
+				return false;
+			});
+
+			jQuery('.optImg .btn_view').click(function(evt){
+				var mainElement = ((window.event)?(evt.srcElement):(evt.currentTarget));
+				jQuery('html', parent.document).addClass('smt_optdim');
+
+				selectRepresentID = mainElement.parentElement.parentElement.parentElement.id;
+				for(var findIndex=0; detailHtmlKeyList.length>findIndex; findIndex++) {
+					if(detailHtmlKeyList[findIndex] == selectRepresentID) {
+						globalSelectIndex = findIndex;
+						break;
+					}
+				}
+				//globalSelectIndex = detailHtmlKeyList.indexOf(selectRepresentID);
+				otherInfoCheck();
+				if(detailHtmlKeyList != null && detailHtmlKeyList != undefined) {
+					//jQuery("#smtOptionViewImage", parent.document).html(detailHtmlList[detailHtmlKeyList.indexOf(selectRepresentID)]);
+					jQuery("#optlyTitleNameID", parent.document).val(globalSelectIndex);
+					jQuery("#smtOptionViewImage", parent.document).html(detailHtmlList[globalSelectIndex]);
+				} else {
+					jQuery("div.smt_optly", parent.document).find("div.detail_img").find("img").attr("src", "/img/product/opt_nothing.gif").attr("alt", "상품설명 이미지가 없습니다.");
+				}
+				// 상품상세 탭 레이어 클래스 추가 작업
+				var $tapContent	= $('.product_detail_explain_wrap', parent.document);
+				if($tapContent && $tapContent.hasClass('is_fixed')) {	// 상단 고정 해제
+					$tapContent.removeClass('is_fixed');
+				}
+				if($tapContent && !$tapContent.hasClass('is_layer')) {	// 클래스 추가
+					$tapContent.addClass('is_layer');
+				}
+				return false;
+			});
+			jQuery('.optImg .btn_opt').click(function(evt){
+
+				if($('#prcDpYn', parent.document).val() == "N"){
+					alert("해당 옵션은 품절 등의 사유로 선택이 불가합니다.");
+					return false;
+				}
+
+				var smtOptVal = {};
+
+				smtOptVal.optItemNo = $(this).attr("data-optItemNo");
+				smtOptVal.optValueNo = $(this).attr("data-optValueNo");
+
+				parent.callEventFromIfram('selectedSmartOption', smtOptVal);
+			});
+
+			jQuery('#optlyAddOptionID', parent.document).click(function(evt){
+
+				if($('#prcDpYn', parent.document).val() == "N" || $('#smtSlodoutID', parent.document).css("display") == "block"){
+					alert("해당 옵션은 품절 등의 사유로 선택이 불가합니다.");
+					return false;
+				}
+
+				var smtOptVal = {};
+
+				smtOptVal.optItemNo = $('#smtOptImg', parent.document).attr("data-optItemNo");
+				smtOptVal.optValueNo = $('#smtOptImg', parent.document).attr("data-optValueNo");
+
+				parent.callEventFromIfram('selectedSmartOption', smtOptVal);
+			});
+
+			jQuery('.smt_optly .btn_close', parent.document).click(function(evt){
+				try {
+					jQuery('html', parent.document).removeClass('smt_optdim');
+				} catch(e){}
+				return false;
+			});
+
+			jQuery('.smt_optly .btn_prev', parent.document).click(function(evt){
+				try {
+					globalSelectIndex = Number(globalSelectIndex)-Number(1);
+					changeLayeredImage();
+				} catch(e){}
+				return false;
+			});
+
+			jQuery('.smt_optly .btn_next', parent.document).click(function(evt){
+				try {
+					globalSelectIndex = Number(globalSelectIndex)+Number(1);
+					changeLayeredImage();
+				} catch(e){}
+				return false;
+			});
+
+			jQuery('.smt_optly .optlyTitleNameID', parent.document).change(function(evt){
+				try {
+					globalSelectIndex = $("#optlyTitleNameID", parent.document).val();
+					changeLayeredImage();
+				} catch(e){}
+				return false;
+			});
+
+			function changeLayeredImage() {
+				//var viewImgInfo = "";
+
+				if(globalSelectIndex < 0) globalSelectIndex = Number(detailHtmlList.length-1);
+				if(globalSelectIndex >= detailHtmlList.length) globalSelectIndex = 0;
+
+				selectRepresentID = detailHtmlKeyList[globalSelectIndex];
+				jQuery("#optlyTitleNameID", parent.document).val(globalSelectIndex);
+				//대표상품의 품절여부 확인
+				otherInfoCheck();
+				jQuery("#smtOptionViewImage", parent.document).html(detailHtmlList[globalSelectIndex]);
+				//jQuery("div[id='"+detailViewID+"']").attr("class","smt_optdetail");
+			}
+			parent.document.getElementById("prdDescIfrm").height = document.body.offsetHeight;
+		});
+
+		function otherInfoCheck() {
+			jQuery("#taggingHeaderInfoID", parent.document).scrollTop(0,0);
+			if(jQuery("div[id='"+selectRepresentID+"']").find(".soldout_wrap").length > 0) {
+				jQuery("#smtSlodoutID", parent.document).attr("style", "display:block");
+			} else {
+				jQuery("#smtSlodoutID", parent.document).attr("style", "display:none");
+			}
+		}
+	</script>
+	<script>
+		$(document).ready(function(){
+			$(document).bind("contextmenu", function(e) {
+				return false;
+			});
+		});
+		$(document)[0].oncontextmenu = function() { return false; }
+		$(document).mousedown(function(e) {
+			if( e.button == 2 ) {
+				return false;
+			} else {
+				return true;
+			}
+		});
+	</script>
+
+</head>
+<body>
+<script>
+// 오른쪽 클릭 방지
+document.oncontextmenu=function(){return false;};
+// 마우스 드래그 방지
+document.ondragstart=function(){return false;};
+// 선택 방지
+// document.onselectstart=function(){return false;};
+// 키 입력 방지
+// document.onkeydown=function(){return false;};
+</script>
+
+	
+	
+	
+	
+		<div class="ifrm_prdc_detail"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="width: 890px; margin: 0px auto; color: rgb(51, 51, 51); font-family: 돋움, Dotum, 굴림, gulim, Helvetica, AppleGothic, sans-serif; font-size: 12px; text-align: center; background-color: rgb(255, 255, 255);"><tbody><tr><td align="center"><div id="partContents_3_0" style="margin: 0px; padding: 0px;"><div style="margin: 0px; padding: 0px;"><p style="padding: 0px;"><img src="./7741678.jpg" alt="450상품권" style="border: 0px none; margin: 0px; padding: 0px; vertical-align: top;"></p></div><img src="./20191105141225282_VFFP1D98.jpg" title="" alt="" style="border: 0px none; margin: 0px; padding: 0px; vertical-align: top;"></div></td></tr></tbody></table></div>
+	
+
+
+
+
+</body></html>

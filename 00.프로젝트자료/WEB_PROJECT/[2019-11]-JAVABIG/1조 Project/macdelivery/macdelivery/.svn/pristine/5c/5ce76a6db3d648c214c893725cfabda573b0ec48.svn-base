@@ -1,0 +1,31 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.cart.model.CartService;
+import com.itwill.summer.Controller;
+
+public class CartCountSumActionController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		CartService cartService;
+		String m_no2 = request.getParameter("m_no");
+		int m_no = Integer.parseInt(m_no2);
+		String forwardPath="forward:/WEB-INF/view/cart.jsp";
+		System.out.println("토탈카운트 "+m_no);
+		try {
+			cartService = new CartService();
+			cartService.countSum(m_no);
+			
+			ArrayList<HashMap> itemList = cartService.selectAll(m_no);
+			request.setAttribute("cartList", itemList);
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/view/cart.jsp";
+		}return forwardPath;
+	}
+}

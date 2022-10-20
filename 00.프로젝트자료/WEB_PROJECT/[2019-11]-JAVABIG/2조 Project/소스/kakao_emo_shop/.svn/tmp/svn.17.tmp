@@ -1,0 +1,37 @@
+select * from cart;
+select * from jumun;
+select * from md_emolist;
+select * from member;
+select * from p_emo;
+select * from p_emostyle;
+
+select md.m_no 이번놈이가진이모티콘 ,p.p_name from md_emolist md
+join p_emo p on p.p_no = md.p_no where md.m_no= 2;
+
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (1, 1 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (2, 2 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (3, 3 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (4, 4 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (5, 5 , 2);
+commit;
+
+--총 주문건수
+select p.p_name||'외 '||(select count(m_no)-1 from cart where m_no =3)||'건'  
+from cart c join p_emo p on p.p_no = c.p_no 
+where m_no = 3 and rownum =1;
+
+
+--총구매액
+select sum(p.p_price) 총구매액 from cart c join p_emo p on c.p_no = p.p_no where m_no=3;
+
+INSERT INTO jumun VALUES (7, sysdate, 
+(select p.p_name||'외 '||(select count(m_no)-1 from cart where m_no =3)||'건'  
+from cart c join p_emo p on p.p_no = c.p_no where m_no = 3 and rownum =1), 
+(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=3),1);
+
+INSERT INTO jumun VALUES (?, sysdate, 
+(select p.p_name||'외 '||(select count(m_no)-1 from cart where m_no =?)||'건'  
+from cart c join p_emo p on p.p_no = c.p_no where m_no = ? and rownum =1), 
+(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=?),?);
+
+

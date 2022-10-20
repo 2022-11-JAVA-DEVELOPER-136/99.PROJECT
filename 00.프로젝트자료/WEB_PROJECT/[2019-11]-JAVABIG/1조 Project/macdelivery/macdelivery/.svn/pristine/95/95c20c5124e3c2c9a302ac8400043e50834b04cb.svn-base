@@ -1,0 +1,90 @@
+package com.itwill.member.model;
+
+import com.itwill.member.exception.ExistedMemberException;
+import com.itwill.member.exception.MemberNotFoundException;
+import com.itwill.member.exception.PasswordMismatchException;
+
+public class MemberService {
+	MemberDao memberDao;
+	public MemberService() throws Exception{
+		memberDao = new MemberDao();
+	}
+	
+	/*
+	 * 회원가입
+	 */
+	public int registerMember(Member member) throws ExistedMemberException, Exception {
+		//아이디중복체크
+		if(memberDao.existedMember(member.getM_id())) {
+			throw new ExistedMemberException( member.getM_id()+" 는 이미존재하는 아이디입니다.");
+		}
+		//가입!
+		return memberDao.create(member);
+	}
+	/*
+	 * 로그인
+	 */
+	public Member login(String m_id,String m_pwd) throws MemberNotFoundException,PasswordMismatchException,Exception {
+		//아이디존재여부
+		if(!memberDao.existedMember(m_id)) {
+			throw new MemberNotFoundException(m_id +"는 존재하지 않는 아이디 입니다.");
+		}
+		//패쓰워드일치여부
+		Member member = memberDao.findMember(m_id);
+		if(!member.isMatchPassword(m_pwd)) {
+			throw new PasswordMismatchException("패쓰워드가 일치하지않습니다.");
+		}
+		return member;
+	}
+	/*
+	 * 아이디 중복체크
+	 */
+	public boolean isMatchId(String m_id)throws Exception {
+		return memberDao.existedMember(m_id);
+	}
+	/*
+	 * 로그아웃
+	 */
+	//로그아웃은 세션에 있는 로그인정보를 삭제해야함. 여기서 할 일 없음.
+	/*
+	 * 회원수정
+	 */
+	public boolean update(Member member) throws Exception {
+			int rs = memberDao.update(member);
+			boolean isSuccess = false;
+			if(rs == 1) {
+				isSuccess = true;
+			}
+			return isSuccess;
+		
+	}
+	/*
+	 * 회원삭제
+	 */
+	public boolean remove(int m_no) throws Exception {
+		int rs = memberDao.delete(m_no);
+		boolean isSuccess = false;
+		if(rs == 1) {
+			isSuccess = true;
+		}
+		return isSuccess;
+		
+	}
+	/*
+	 * 상세보기
+	 */
+	public Member findMember(int m_no) throws MemberNotFoundException,Exception {
+		Member member = memberDao.findMember(m_no);
+		if(member==null) {
+			throw new MemberNotFoundException("존재하지않는 사용자입니다.");
+		}
+		return member;
+	}
+	/***************회원아이디로 회원번호 찾기*************************/
+	
+	public int findById(String m_id) throws Exception {
+		Member member= memberDao.findMember(m_id);
+		return member.getM_no();
+	}
+	/*******************************************************************/
+}

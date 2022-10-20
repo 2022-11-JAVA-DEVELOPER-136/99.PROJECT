@@ -1,0 +1,102 @@
+package com.itwill.store.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class StoreDao {
+
+	private DataSource ds;
+
+	public StoreDao() throws Exception {
+		InitialContext ic = new InitialContext();
+		ds = (DataSource) ic.lookup("java:/comp/env/jdbc/OracleDB");
+	}
+
+	/*
+	 * CREATE
+	 */
+	public boolean insertStore(Store store) throws Exception {
+		boolean isSuccess = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(StoreSQL.STORE_INSERT);
+			pstmt.setString(1, store.getS_name());
+			pstmt.setString(2, store.getS_address_si());
+			pstmt.setString(3, store.getS_address_gu());
+			pstmt.setString(4, store.getS_address_detail());
+			int insertRowCount = pstmt.executeUpdate();
+			System.out.println(insertRowCount);
+			if (insertRowCount == 1) {
+				isSuccess = true;
+			}
+		} catch (Exception e) {
+			isSuccess = false;
+		} finally {
+			if (con != null)
+				con.close();
+		}
+		return isSuccess;
+	}
+	/*
+	 * READ BY ALL
+	 */
+	public ArrayList<Store> selectAll() throws Exception {
+		ArrayList<Store> storeList = new ArrayList<Store>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(StoreSQL.STORE_SELECT_BY_ALL);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				storeList.add(new Store(rs.getInt("s_no"), rs.getString("s_name"), rs.getString("s_address_si"),
+						rs.getString("s_address_gu"), rs.getString("s_address_detail")));
+			}
+			
+		}finally{
+			if(rs!=null)
+				rs.close();
+			if(pstmt!=null)
+				pstmt.close();
+			if(con!=null)
+				con.close();
+		}
+		return storeList;
+		
+	}
+	
+	
+	/*
+	 * READ BY NAME
+	 */
+	public Store selectByName(String name) throws Exception {
+		Store store = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(StoreSQL.STORE_SELECT_BY_NAME);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				store = new Store(rs.getInt("s_no"), rs.getString("s_name"), rs.getString("s_address_si"),
+						rs.getString("s_address_gu"), rs.getString("s_address_detail"));
+			}
+		} finally {
+			if (con != null)
+				con.close();
+		}
+		return store;
+	}
+
+}

@@ -1,0 +1,44 @@
+package com.itwill.testcontroller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
+
+import com.itwill.member.Member;
+import com.itwill.member.MemberService;
+import com.itwill.summer.Controller;
+
+public class MemberLoginActionController implements Controller{
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	//	String forwardPath = "forward:/WEB-INF/testview/memberLogin.jsp";
+		String forwardPath = "";
+		if(request.getMethod().equalsIgnoreCase("GET")){
+			response.sendRedirect("user_login_form.jsp");
+			
+		}
+		Member loginUser=null;
+		try{
+			
+			String userId=request.getParameter("m_id");
+			String password=request.getParameter("m_pass");
+			MemberService userService=new MemberService();
+			loginUser=userService.login(userId,password);
+			session.setAttribute("sUserId", userId);
+			session.setAttribute("sUser", loginUser);
+			response.sendRedirect("user_main.jsp");
+			
+		
+		}catch(Exception e){
+			e.printStackTrace();
+			response.sendRedirect("user_error.jsp");
+		}
+		
+		
+		
+		return forwardPath;
+	}
+	
+	
+}

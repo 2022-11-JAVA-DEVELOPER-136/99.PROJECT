@@ -1,0 +1,11 @@
+package exception;
+
+public class JumunDetailNotFoundException extends Exception {
+	public JumunDetailNotFoundException() {
+		
+	}
+	
+	public JumunDetailNotFoundException(String msg) {
+		super(msg);
+	}
+}

@@ -1,0 +1,41 @@
+<Context>
+  <Resource name="jdbc/OracleDB" 
+					auth="Container" 
+					type="javax.sql.DataSource" 
+					username="visely" 
+					password="team1" 
+					driverClassName="oracle.jdbc.driver.OracleDriver" 
+					factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+					url="jdbc:oracle:thin:@182.237.126.19:1521:XE" 
+					maxTotal="8"
+					maxIdle="3"/>
+					
+ <!-- *******    :sid  /서비스이름  
+                  sid 는 콜론    서비스는 슬러시  2시간 찾음...*********-->
+<!--    <Resource name="jdbc/OracleDB" 
+			auth="Container" 
+			type="javax.sql.DataSource" 
+			username="jshan" 
+			password="jshan12!@" 
+			driverClassName="oracle.jdbc.driver.OracleDriver" 
+			factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+			url="jdbc:oracle:thin:@pjk7777.iptime.org:1521/orcl" 
+			maxTotal="8"
+			maxIdle="3"
+			 />   
+ --> 
+
+ <!-- 		<Resource name="jdbc/OracleDB" 
+			auth="Container" 
+			type="javax.sql.DataSource" 
+			username="scott" 
+			password="tiger" 
+			driverClassName="oracle.jdbc.driver.OracleDriver" 
+			factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+			url="jdbc:oracle:thin:@192.168.10.41:1521:orcl" 
+			maxTotal="8"
+			maxIdle="3"
+			 /> -->	
+ </Context> 
+ 
+  

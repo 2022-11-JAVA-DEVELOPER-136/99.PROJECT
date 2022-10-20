@@ -1,0 +1,44 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.jumun.model.Jumun;
+import com.itwill.jumun.model.JumunService;
+import com.itwill.jumun_detail.model.JumunDetail;
+import com.itwill.jumun_detail.model.JumunDetailService;
+import com.itwill.summer.Controller;
+
+public class MyPageJumunHistoryController implements Controller {
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath = "";
+		
+		try {
+			/*
+			JumunService jumunService = new JumunService();
+			JumunDetailService jumunDetailService = new JumunDetailService();
+			
+			jumunService.insertJumun(new Jumun(1008,8004,3000,"갱냄","하야크"));
+			
+			ArrayList<JumunDetail> jumunDetail =
+			
+			//jumunDetailService.selectByNo(Integer.parseInt(request.getParameter("j_no")));
+			jumunDetailService.selectByNo(8070060);
+			request.setAttribute("jumundetail",jumunDetail);
+			
+			*/
+			forwardPath = "forward:/WEB-INF/view/McDelivery_myPage_jumunHistory.jsp";
+		
+		} catch (Exception e) {
+			forwardPath = "forward:/WEB-INF/view/error.jsp";
+		}
+		
+		return forwardPath;
+	}
+
+
+}

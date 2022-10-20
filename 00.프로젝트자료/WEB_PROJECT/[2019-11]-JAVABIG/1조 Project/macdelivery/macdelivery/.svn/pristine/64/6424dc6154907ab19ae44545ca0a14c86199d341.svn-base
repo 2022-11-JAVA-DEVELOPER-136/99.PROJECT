@@ -1,0 +1,9 @@
+package com.itwill.jumun.model;
+
+public class JumunSQL {
+	public final static String JUMUN_SELECT_ALL = "select * from jumun";
+	public final static String JUMUN_SELECT_BY_NO = "select * from jumun where j_no=?";
+	public final static String JUMUN_DELETE = "delete from jumun where j_no=?";
+	public final static String JUMUN_INSERT = "insert into jumun values(seq_jumun_no.nextval,?,?,sysdate,?,?,?)";
+
+}

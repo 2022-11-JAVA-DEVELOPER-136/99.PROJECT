@@ -1,0 +1,32 @@
+package com.itwill.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.member.model.MemberService;
+import com.itwill.summer.Controller;
+
+public class RegisterIdCheckController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+
+		String m_id = request.getParameter("m_id");
+		String forwardPath = null;
+
+		try {
+			MemberService memberService = new MemberService();
+			boolean isExistedId = memberService.isMatchId(m_id);
+			if (isExistedId == true) {
+				request.setAttribute("status", "isExisted");
+				forwardPath = "forward:/WEB-INF/view/McDelivery_register.jsp";
+			} else {
+				request.setAttribute("status", "NotFound");
+				forwardPath = "forward:/WEB-INF/view/McDelivery_register.jsp";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath = "forward:/WEB-INF/view/error.jsp";
+		}
+		return forwardPath;
+	}
+}

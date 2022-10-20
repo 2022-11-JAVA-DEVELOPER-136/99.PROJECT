@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!-- saved from url=(0241)http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&brdInfoClfNo=2573591007&curPage=1&isMart=false&storeNo=&martNo=&pageTypCd=first&sellerMemId=acl0108&ldispCtgrNo=1001444&isSohoPrd=false&isTour=false&isRenewYn=Y -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	
+	<title>쇼핑 스트리트, 11번가</title>
+	<link rel="stylesheet" href="./default.css" type="text/css">
+	<link rel="stylesheet" href="./product_v4.css" type="text/css">
+    <link rel="stylesheet" href="./listing_v3.css" type="text/css">
+
+
+	<script async="" src="./analytics.js.다운로드"></script><script type="text/javascript" src="./jquery-1.5.min.js(1).다운로드"></script>
+<script type="text/javascript" src="./common.js.다운로드"></script>
+	<script type="text/javascript" src="./common.login.js.다운로드"></script>
+	<script type="text/javascript" src="./productCommonUtil.js.다운로드"></script>
+
+	<script type="text/javascript">
+	var _LOGIN_TARGET_URL_ = "https://login.11st.co.kr";	
+	</script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-68494772-1', 'auto');
+	
+	</script>
+<script type="text/javascript" charset="euc-kr" async="" data-requirecontext="_" data-requiremodule="/js/service/product/product.qna.js?v=1" src="./product.qna.js.다운로드"></script><script type="text/javascript" charset="euc-kr" async="" data-requirecontext="_" data-requiremodule="jquery" src="./jquery-1.12.4.min.js(1).다운로드"></script><script type="text/javascript" charset="euc-kr" async="" data-requirecontext="_" data-requiremodule="productCommon" src="./productCommon.js(1).다운로드"></script><script type="text/javascript" charset="euc-kr" async="" data-requirecontext="_" data-requiremodule="productQna" src="./productQna.js.다운로드"></script><script type="text/javascript" charset="euc-kr" async="" data-requirecontext="_" data-requiremodule="googleAnalytics" src="./googleAnalytics.js(1).다운로드"></script></head>
+<body class="prdc_wrap_ifrm">
+<div class="prdc_qna">
+    
+
+    
+    
+    
+        
+        
+        <div class="bbs_filter">
+        
+        <label for="prdcQnASch2" class="chk_wrap"><input id="chkQnADtlsSecret" type="checkbox">비밀글 제외</label>
+            <label for="selQnaDtlsCd" class="hidden_txt" style="overflow:hidden;visibility:hidden;position:absolute">상품QnA 조회조건</label>
+            <span class="box_select"><select name="selQnaDtlsCd" id="selQnaDtlsCd"><option value="" selected="selected">문의유형(전체)</option><option value="01">상품</option><option value="02">배송</option><option value="03">반품/취소</option><option value="04">교환/변경</option><option value="05">기타</option></select></span>
+        </div>
+
+    <table class="prdc_bbs" summary="이 표는 상품 Q&amp;A 및 내용이 번호,문의유형,문의/답변,작성자,작성일로 구성되어 있습니다.">
+        <caption>상품 Q&amp;A</caption>
+        <colgroup><col style="width:85px;"><col style="width:auto"><col style="width:96px;"><col style="width:115px;"></colgroup>
+        <thead>
+        <tr>
+            <!-- <th scope="col">번호</th> -->
+            <th scope="col">문의유형</th>
+            <th scope="col">문의/답변</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        
+        
+        
+            
+            
+            
+            
+                <tr>
+                    
+                    <td class="td_section">기타</td>
+                    <td class="txt_view"><span class="state complete">답변완료</span>
+                    
+                
+                    
+                    
+                    <a id="showCloseDetail" class="txt_ellipsis" href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" data-index="0" data-brdinfono="140772669" data-subinfono="140778847"> 메인보드 받았는데
+m2 스크류 셋트가 보이질 않네요
+어떻게 받을 수 있을까요?</a>
+                </td>
+                    <td class="td_write">tin******</td>
+                    <td class="td_date">2019-12-20 15:34</td>
+                </tr>
+                <tr class="trQna" id="trQnqContDtl0" style="display:none">
+                    <td colspan="4" class="qna_expand" id="dvQnqContDtl0" style="display:none">
+                    <div class="question">
+                        <span class="ico_question">질문</span>
+                          메인보드 받았는데
+<br>m2 스크류 셋트가 보이질 않네요
+<br>어떻게 받을 수 있을까요?<br>
+                        <div class="btn_action">
+                        
+                        
+                        <a href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" id="report" class="nwtxt_link" data-brdinfono="140772669" data-clfcd="01" data-contcd="03">신고하기<span class="ico"></span></a><!-- [16-08-29 ckh] 링크 구조 수정 -->
+                        </div>
+                    </div>
+                
+                    <div class="answer">
+                        <span class="ico_answer">답변</span>
+                        
+                        
+                        안녕하세요  고객님 
+<br>문의주신 내용은 유선으로  안내해드렸습니다  
+<br>감사합니다  <br>
+                        <div class="btn_action">
+                        <a href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" id="report" class="nwtxt_link" data-brdinfono="140778847" data-clfcd="01" data-contcd="03">신고하기<span class="ico"></span></a><!-- [16-08-29 ckh] 링크 구조 수정 -->
+                        </div>
+                    </div>
+                
+                    </td>
+                </tr>
+            
+            
+            
+            
+            
+                <tr>
+                    
+                    <td class="td_section">상품</td>
+                    <td class="txt_view"><span class="state complete">답변완료</span>
+                    
+                
+                    
+                    
+                    <a id="showCloseDetail" class="txt_ellipsis" href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" data-index="1" data-brdinfono="139066683" data-subinfono="139086882"> 안녕하세요. 방금 구매했습니다.
+박스가 중요하니 박스에 직접 테이프를 붙이는 일은 없었으면 합니다.
+뽁?이로 두껍게 잘 포장해서 오늘 보내주세요.
+감사합니다.</a>
+                </td>
+                    <td class="td_write">jus****</td>
+                    <td class="td_date">2019-11-18 12:48</td>
+                </tr>
+                <tr class="trQna" id="trQnqContDtl1" style="display:none">
+                    <td colspan="4" class="qna_expand" id="dvQnqContDtl1" style="display:none">
+                    <div class="question">
+                        <span class="ico_question">질문</span>
+                          안녕하세요. 방금 구매했습니다.
+<br>박스가 중요하니 박스에 직접 테이프를 붙이는 일은 없었으면 합니다.
+<br>뽁?이로 두껍게 잘 포장해서 오늘 보내주세요.
+<br>감사합니다.<br>
+                        <div class="btn_action">
+                        
+                        
+                        <a href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" id="report" class="nwtxt_link" data-brdinfono="139066683" data-clfcd="01" data-contcd="03">신고하기<span class="ico"></span></a><!-- [16-08-29 ckh] 링크 구조 수정 -->
+                        </div>
+                    </div>
+                
+                    <div class="answer">
+                        <span class="ico_answer">답변</span>
+                        
+                        
+                        안녕하세요  라이프비전입니다 
+<br>
+<br>고객님의 상품은 당일 발송 됩니다 
+<br>제품 포장은 에어캡포장+ 택배포장 + 파손주의 스티커부착으로 진행됩니다  
+<br>출고가 시작되면  cj 대한통운에서 주문시 연락처로  출고 문자가 자동 발송됩니다.
+<br>정확한 상세현황은 cj 대한통운 어플이나, 스마트택배 어플에 주문시 연락처 동기화해 놓으시면 
+<br>발송일  오후 9시 이후 부터   배송상황이 업데이트 되어   실시간 조회 가능합니다.
+<br>고객님의 배송 지역에 따라 평균  1~3일 정도 배송 기간이  있습니다 
+<br>참고 부탁 드립니다.  감사합니다 <br>
+                        <div class="btn_action">
+                        <a href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" id="report" class="nwtxt_link" data-brdinfono="139086882" data-clfcd="01" data-contcd="03">신고하기<span class="ico"></span></a><!-- [16-08-29 ckh] 링크 구조 수정 -->
+                        </div>
+                    </div>
+                
+                    </td>
+                </tr>
+            
+            
+            
+            
+            
+                <tr>
+                    
+                    <td class="td_section">배송</td>
+                    <td class="txt_view"><span class="state complete">답변완료</span>
+                    
+                
+                    
+                    
+                        비밀글입니다. <span class="ico_bbslock">게시물잠김</span>
+                    
+                    
+                </td>
+                    <td class="td_write">f94******</td>
+                    <td class="td_date">2019-11-17 16:29</td>
+                </tr>
+                <tr class="trQna" id="trQnqContDtl2" style="display:none">
+                    <td colspan="4" class="qna_expand" id="dvQnqContDtl2" style="display:none">
+                    <div class="question">
+                        <span class="ico_question">질문</span>
+                        <br>
+                        <div class="btn_action">
+                        
+                        
+                        <a href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductQnAList&amp;brdInfoClfNo=2573591007&amp;curPage=1&amp;isMart=false&amp;storeNo=&amp;martNo=&amp;pageTypCd=first&amp;sellerMemId=acl0108&amp;ldispCtgrNo=1001444&amp;isSohoPrd=false&amp;isTour=false&amp;isRenewYn=Y#this" id="report" class="nwtxt_link" data-brdinfono="139020287" data-clfcd="01" data-contcd="03">신고하기<span class="ico"></span></a><!-- [16-08-29 ckh] 링크 구조 수정 -->
+                        </div>
+                    </div>
+                
+                
+                    </td>
+                </tr>
+            
+        
+    
+    </tbody>
+    </table>
+    
+    <div class="btn_btm_wrap">
+        <button type="button" id="faqCenter" class="btn_nw_grege nw_h_l">고객센터 문의하기</button>
+        <button type="button" id="write" class="btn_nw_gray nw_h_l">상품 문의하기</button>
+    </div>
+
+    
+
+
+
+
+
+
+	
+	
+	<div class="s_paging_v2">
+	
+		<!-- <a href="#this" class="prev" title="이전목록"><span class="hide">이전목록</span></a> -->
+	
+	
+		<span>
+	
+		
+		
+			<strong>1</strong>
+			
+		
+	
+		</span>
+	
+		<!-- <a href="#this" class="next" title="다음목록"><span class="hide">다음목록</span></a> -->
+	
+	
+	</div>
+	
+
+
+    <form name="pageForm" action="http://www.11st.co.kr/product/SellerProductDetail.tmall" method="get">
+        <input type="hidden" name="method" value="getProductQnAList">
+        <input type="hidden" name="brdInfoClfNo" value="2573591007">
+        <input type="hidden" name="curPage" value="1">
+        <input type="hidden" name="qnaDtlsCd" value="">
+        <input type="hidden" name="pageTypCd" value="first">
+        <input type="hidden" name="secretYn" value="N">
+        <input type="hidden" name="myQnaYn" value="N">
+        <input type="hidden" name="isMart" value="N">
+        <input type="hidden" name="isSohoPrd" value="false">
+        <input type="hidden" name="keyNo" value="">
+        <input type="hidden" name="pageList" value="20191220153427|">
+        <input type="hidden" name="sellerMemId" value="acl0108">
+        <input type="hidden" name="ldispCtgrNo" value="1001444">
+        <input type="hidden" name="isRenewYn" value="Y">
+        <input type="hidden" name="pageSize" value="10">
+        <input type="hidden" name="targetFrm" value="">
+    </form>
+    </div>
+    
+    
+
+
+
+
+<script type="text/javascript" src="./require.js.다운로드" data-main="/js/service/product/product.qna.js?v=1" charset="euc-kr"></script>
+<script type="text/javascript">
+	define( "prdVar", {
+		isMart : 'false',
+		qnaDtlsCd : "",
+		qnaList : 	"[skt.tmall.business.unityboard.product.join.ProductQnaInfoBO@19284f45, skt.tmall.business.unityboard.product.join.ProductQnaInfoBO@256c47ea, skt.tmall.business.unityboard.product.join.ProductQnaInfoBO@67e566d7]", 
+		targetFrm : "",
+		isSnsMember : "false",
+		noMailMem : "N",
+		writeUrl : 'https://www.11st.co.kr/product/ProductQnaForm.tmall?method=insertProductQnAForm&isSSL=Y&hostUrl='+window.location.host+'&prdNo=' + $("input[name=brdInfoClfNo]").val() + "&isSohoPrd="+false+ "&isTour="+false
+	});	
+</script>
+	<script type="text/javascript">		
+	
+	function goPage(type, startNum, keyNo){ // 외부 jsp 에서 require.js 안의 펑션을 호출할수 없으므로 펑션 추가
+		$("input[name=pageTypCd]").val(type);
+		$("input[name=curPage]").val(startNum);
+		$("input[name=keyNo]").val(keyNo);
+
+		document.pageForm.submit();
+	}
+	
+	function _fnContsInfoRefresh(contTyp, trgtPrdNo, page, keyNo, pageLst){
+		if(trgtPrdNo != $("input[name=brdInfoClfNo]").val()){
+			alert("해당상품페이지가 닫혔습니다.");
+			return;
+		}
+		var pageTypCd = (page%10 == 1) ? "first" : "page";
+
+		$("input[name=pageList]").val(pageLst);
+		goPage(pageTypCd, page, keyNo);
+	}
+	</script>
+</body></html>

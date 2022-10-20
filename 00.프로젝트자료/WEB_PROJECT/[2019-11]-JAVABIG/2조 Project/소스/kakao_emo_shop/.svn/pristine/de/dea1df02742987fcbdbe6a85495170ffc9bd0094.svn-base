@@ -1,0 +1,13 @@
+/error.do=com.itwill.controller.KakaoEroController
+/test.do=com.itwill.testcontroller.EmoTestController
+/noticetest.do=com.itwill.testcontroller.NoticeListTestController
+/memtest.do=com.itwill.testcontroller.memTestController
+#/emolisttest.do=com.itwill.testcontroller.EmoListTestController
+#/memwriteform.do=com.itwill.testcontroller.memberWriteFormControllerTest
+#/memwriteaction.do=com.itwill.testcontroller.memberWriteActionControllerTest
+/emoinsertform.do=com.itwill.testcontroller.EmoInsertController
+/emoactionform.do=com.itwill.testcontroller.EmoActionController
+#/memberinsertform.do=com.itwill.testcontroller.MemberInsertController
+#/memberactionform.do=com.itwill.testcontroller.MemberActionController
+/membermodifyactionform.do=com.itwill.testcontroller.MemberModifyformController
+/memberloginform.do=com.itwill.testcontroller.MemberLoginController

@@ -1,0 +1,24 @@
+
+<%@page import="com.itwill.shop.product.Product"%>
+<%@page import="com.itwill.shop.product.ProductService"%>
+<%@page import="com.itwill.shop.cart.CartService"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@include file="member_login_check.jspf %>
+<%
+	if (request.getMethod().equalsIgnoreCase("GET")) {
+		response.sendRedirect("shop_product_list.jsp");
+		return;
+	}
+	//장바구니에 영화를 담고 shop_view_cart.jsp 로 redirection
+	String p_no = request.getParameter("p_no");
+	// 우리는 qty 없음  ->  String cart_qty = request.getParameter("cart_qty");
+	if (p_no== null) {
+		response.sendRedirect("shop_product_list.jsp");
+		return;
+	}
+	
+	CartService cartService = new CartService();
+	cartService.add(sM_id,parseInt(p_no),Integer.parseInt(cart_qty));
+	response.sendRedirect("shop_view_cart.jsp");
+%>

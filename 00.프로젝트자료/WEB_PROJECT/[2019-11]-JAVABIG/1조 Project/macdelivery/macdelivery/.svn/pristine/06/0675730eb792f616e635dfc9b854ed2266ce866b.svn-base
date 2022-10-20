@@ -1,0 +1,58 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.product.model.ProductService"%>
+<%@page import="com.itwill.product.model.Product"%>
+<%@page import="com.itwill.product.model.ProductDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%-- 	<%
+		ProductDao productDao = new ProductDao();
+		ArrayList<Product> productlist = productDao.getProductListByNo(105);
+		//ArrayList<Product> productlist=productDao.getProductList();
+		//Product product=productDao.getProductByNo(1015);
+	%>
+
+</body>
+ <h3>
+	<%
+		for (int i = 0; i < productlist.size(); i++) {
+			out.println(productlist.get(i));
+			%><hr><%
+		}
+	%>
+</h3>  --%>
+ 
+ <%
+ 		ProductService ps = new ProductService();
+ 	    ArrayList setList = ps.findSet(3002);
+ 	    
+ 	  Product singleProduct = (Product)setList.get(0);
+ 	  ArrayList sideProduct = (ArrayList)setList.get(1);
+ 	  ArrayList drinkProduct = (ArrayList)setList.get(2);
+ 	  
+ 	  out.print(singleProduct.getP_name());%>
+ 	  <hr>
+ 	  <%
+ 	  
+ 	  for(int i=0;i<sideProduct.size();i++){
+ 		  
+ 		  Product sidemenu = (Product)sideProduct.get(i);
+ 		  out.print(sidemenu.getP_name() + " ");
+ 	  }
+		%><hr><% 	 
+ 	 for(int i=0;i<drinkProduct.size();i++){
+ 		Product drinkmenu = (Product)drinkProduct.get(i);
+		  out.print(drinkmenu.getP_name());
+	  }
+
+ %>
+
+
+
+</html>

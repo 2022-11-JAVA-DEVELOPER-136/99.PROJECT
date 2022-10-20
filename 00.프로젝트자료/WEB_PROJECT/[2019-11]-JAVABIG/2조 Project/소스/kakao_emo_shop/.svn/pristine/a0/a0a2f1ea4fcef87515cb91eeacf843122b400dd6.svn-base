@@ -1,0 +1,34 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.jumun.JumunDetail;
+import com.itwill.jumun.JumunService;
+import com.itwill.notice.Notice;
+import com.itwill.notice.NoticeService;
+import com.itwill.summer.Controller;
+
+public class EmoBuyFormController implements Controller {
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath = "";
+		try {
+			JumunService jumunService = new JumunService();
+			String m_no = request.getParameter("m_no");
+			ArrayList<JumunDetail> jumunList = jumunService.getJumunEmoList(Integer.parseInt(m_no));
+			request.setAttribute("jumunList", jumunList);
+			
+			forwardPath = "forward:/WEB-INF/view/jumun_main.jsp";
+			
+		} catch (Exception e) {
+			forwardPath = "redirect:error.do";
+			e.printStackTrace();
+		}
+		return forwardPath;
+	}
+
+}

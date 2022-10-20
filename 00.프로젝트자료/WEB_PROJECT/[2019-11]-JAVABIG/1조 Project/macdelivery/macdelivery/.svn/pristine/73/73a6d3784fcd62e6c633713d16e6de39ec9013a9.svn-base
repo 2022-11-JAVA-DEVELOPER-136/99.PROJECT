@@ -1,0 +1,39 @@
+package com.itwill.jumun_detail.model;
+
+public class JumunDetail {
+	
+	private int p_no;
+	private int j_no;
+	private int jd_quantity;
+	//getter
+	public int getP_no() {
+		return p_no;
+	}
+	public int getJ_no() {
+		return j_no;
+	}
+	public int getJd_quantity() {
+		return jd_quantity;
+	}
+	//constructor
+	public JumunDetail() {
+		
+	}
+	
+	public JumunDetail(int p_no, int j_no, int jd_quantity) {
+		this.p_no=p_no;
+		this.j_no=j_no;
+		this.jd_quantity=jd_quantity;
+	}
+	
+	//setter
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+	public void setJ_no(int j_no) {
+		this.j_no = j_no;
+	}
+	public void setJd_quantity(int jd_quantity) {
+		this.jd_quantity = jd_quantity;
+	}
+}

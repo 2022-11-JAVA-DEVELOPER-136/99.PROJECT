@@ -1,0 +1,5 @@
+package com.itwill.member.controller;
+
+public class MemberRegisterController {
+
+}

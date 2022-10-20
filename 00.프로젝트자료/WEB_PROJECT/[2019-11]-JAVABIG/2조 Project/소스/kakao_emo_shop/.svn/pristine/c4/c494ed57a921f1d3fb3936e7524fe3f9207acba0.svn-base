@@ -1,0 +1,33 @@
+package com.itwill.emo;
+
+public class EmoService {
+	private EmoDao emoDao;
+	public EmoService() throws Exception{
+		emoDao = new EmoDao();
+	}
+	
+	/*
+	 * 이모티콘 리스트 반환
+	 * List<Emo>
+	 */
+	
+	/*
+	 * 이모티콘 1개 반환
+	 * Emo
+	 */
+	
+	/*
+	 * 이모티콘 수정(readcount)
+	 * boolean
+	 */
+	
+	/*
+	 * 이모티콘 추가
+	 * boolean
+	 */
+	
+	/*
+	 * 이모티콘 삭제
+	 * boolean
+	 */
+}

@@ -1,0 +1,191 @@
+package jumun_detail;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import jumun.Jumun;
+
+public class JumunDetailDAO {
+private DataSource dataSource;
+	
+	public JumunDetailDAO() throws Exception {
+		InitialContext ic=new InitialContext();
+		dataSource=(DataSource)ic.lookup("java:/comp/env/jdbc/OracleDB");
+		//System.out.println("UserDao()생성자:"+this);
+	}
+	
+	/*
+	 * JumunDetailDao Test 생성자
+	 */
+	public JumunDetailDAO(DataSource dataSource) throws Exception {
+		this.dataSource=dataSource;
+		System.out.println("UserDao()생성자:"+this);
+	}
+	
+	/*
+	 * 주문상세관리 테이블에 새로운 주문상세 생성
+	 */
+	public int create(JumunDetail jumunDetail) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertQuery = "insert into jumunDetail values(?,?,?)";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(insertQuery);
+			pstmt.setInt(1, jumunDetail.getJd_no());
+			pstmt.setInt(2, jumunDetail.getJ_no());
+			pstmt.setInt(3, jumunDetail.getP_no());
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+
+	/*
+	 * 기존의 주문상세정보를 수정
+	 */
+	public int update(JumunDetail jumunDetail) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String updateQuery = "update jumunDetail set j_no=?, p_no=?, where jd_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(updateQuery);
+			pstmt.setInt(1, jumunDetail.getJ_no());
+			pstmt.setInt(2, jumunDetail.getP_no());
+			pstmt.setInt(3, jumunDetail.getJd_no());
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+
+	/*
+	 * 주문상세번호에 해당하는 주문을 삭제
+	 */
+	public int remove(int jd_no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String removeQuery = "delete from jumunDetail where jd_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(removeQuery);
+			pstmt.setInt(1, jd_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	/*
+	 * 주문상세번호에 해당하는 정보를 데이타베이스에서 찾아서
+	 * JumunDetail 도메인클래스에 저장하여 반환
+	 */
+	public JumunDetail findJumunDetail(int jd_no) throws Exception {
+		JumunDetail jumunDetail = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectQuery = "select j_no, p_no where jd_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			pstmt.setInt(1, jd_no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				jumunDetail = new JumunDetail(jd_no,
+								  			  rs.getInt("j_no"),
+								  			  rs.getInt("p_no"));
+			}
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return jumunDetail;
+	}
+	
+	/*
+	 * 모든 주문상세정보를 데이타베이스에서 찾아서 
+	 * List<JumunDetail> 콜렉션 에 저장하여 반환
+	 */
+	public ArrayList<JumunDetail> findJumunDetailList() throws Exception {
+		ArrayList<JumunDetail> jumunDetailList= new ArrayList<JumunDetail>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectQuery = "select jd_no, j_no, p_no from jumun";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				jumunDetailList.add(new JumunDetail(rs.getInt("jd_no"),
+													rs.getInt("j_no"),
+													rs.getInt("p_no")));
+			}
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return jumunDetailList;
+	}
+	
+	/*
+	 * 인자로 전달되는 번호의 주문상세가 존재하는지의 여부를 판별
+	 */
+	public boolean existedJumunDetail(int jd_no) throws Exception{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String existedQuery="select count(*) cnt from jumunDetail where jd_no=?";
+		try{
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(existedQuery);
+			pstmt.setInt(1, jd_no);
+			rs=pstmt.executeQuery(); 
+			int count=0;
+			if(rs.next()){
+				count=rs.getInt("cnt");
+			}
+			if(count==1){
+				return true;
+			} else{
+				return false;
+			}
+		} finally {
+			if(rs!=null)
+				rs.close();
+			if(pstmt!=null)
+				pstmt.close();
+			if(con!=null)
+				con.close();
+		}
+	}
+	
+}

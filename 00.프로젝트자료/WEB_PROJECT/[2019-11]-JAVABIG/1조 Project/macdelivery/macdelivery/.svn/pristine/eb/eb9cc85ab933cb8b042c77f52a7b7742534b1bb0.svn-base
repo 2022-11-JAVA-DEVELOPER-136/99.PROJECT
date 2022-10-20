@@ -1,0 +1,130 @@
+package com.itwill.member;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class MemberAddressListDao {
+	private DataSource dataSource;
+
+	public MemberAddressListDao() throws Exception {
+		InitialContext ic = new InitialContext();
+		dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/OracleDB");
+	}
+	public int create(MemberAddressList memberAddressList) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertQuery = "insert into MemberAddressList values(?,seq_Address_no.nextval,?,?,?);";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(insertQuery);
+			pstmt.setInt(1, memberAddressList.getM_no());
+			pstmt.setString(2, memberAddressList.getM_address_si());
+			pstmt.setString(3, memberAddressList.getM_address_gu());
+			pstmt.setString(4, memberAddressList.getM_address_detail());
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+
+	public int update(MemberAddressList memberAddressList) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String updateQuery = "update MemberAddressList set m_address_si=?,m_address_gu=?,m_address_detail=? where m_no=? and ma_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(updateQuery);
+			pstmt.setString(1, memberAddressList.getM_address_si());
+			pstmt.setString(2, memberAddressList.getM_address_gu());
+			pstmt.setString(3, memberAddressList.getM_address_detail());
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+
+	public int delete(int m_no,int ma_no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String deleteQuery = "delete from MemberAddressList where m_no=? and ma_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(deleteQuery);
+			pstmt.setInt(1, m_no);
+			pstmt.setInt(2, ma_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+
+	public MemberAddressList findAddressOne(int m_no,int ma_no) throws Exception {
+		MemberAddressList memberAddressList = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectQuery = "select m_no,ma_no,m_address_si,m_address_gu,m_address_detail from MemberAddressList where m_no=? and ma_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			pstmt.setInt(1, m_no);
+			pstmt.setInt(2, ma_no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				memberAddressList = new MemberAddressList(rs.getInt("m_no"), rs.getInt("ma_no"), rs.getString("m_address_si"),
+						rs.getString("m_address_gu"), rs.getString("m_address_detail"));
+			}
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return memberAddressList;
+	}
+	public ArrayList<MemberAddressList> findAddressAll() throws Exception {
+		ArrayList<MemberAddressList> addressList = new ArrayList<MemberAddressList>();
+		MemberAddressList memberAddressList = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectQuery = "select * from MemberAddressList";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				memberAddressList = new MemberAddressList(rs.getInt("m_no"), rs.getInt("ma_no"), rs.getString("m_address_si"),
+						rs.getString("m_address_gu"), rs.getString("m_address_detail"));
+				addressList.add(memberAddressList);
+			}
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return addressList;
+	}
+}

@@ -1,0 +1,53 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="com.itwill.member.Member"%>
+<%@page import="com.itwill.member.MemberService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="member_login_check.jspf" %>    
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("shop_main.jsp");
+		return;
+	}
+	
+	response.setContentType("text/html;charset=UTF-8");
+
+	//파라미터값 받기
+	String m_id = request.getParameter("M_id");
+	String password = request.getParameter("M_password");
+	String password2 = request.getParameter("password2");
+	String name = request.getParameter("M_name");
+	String phone = request.getParameter("M_phone");
+	String email = request.getParameter("M_email");
+	
+	if (password == null || password2 == null || name == null || phone == null || email == null || 
+			password.equals("") || password2.equals("") || name.equals("") || phone.equals("") || 
+			email.equals("") || !password.equals(password2)) {
+			response.sendRedirect("shop_main.jsp");
+			return;
+		}
+	
+	MemberService memberService=new MemberService();
+	Member member = memberService.findMember(m_id);
+	
+	int rows = memberService.update(new Member(m_id, password, name, phone , email));
+	
+	if (rows == 1) {
+		response.sendRedirect("member_view.jsp?member_id="+m_id);
+	} else {
+		response.sendRedirect("member_error.jsp");	
+	}
+	
+	
+	/* try{
+		memberService.update(new Member(password, name, phone, email ));
+		RequestDispatcher rd=
+			request.getRequestDispatcher("member_view.jsp");
+		rd.forward(request, response);
+		
+	}catch(Exception e){
+		e.printStackTrace();
+		response.sendRedirect("member_main.jsp");
+		return;
+	} */
+%>

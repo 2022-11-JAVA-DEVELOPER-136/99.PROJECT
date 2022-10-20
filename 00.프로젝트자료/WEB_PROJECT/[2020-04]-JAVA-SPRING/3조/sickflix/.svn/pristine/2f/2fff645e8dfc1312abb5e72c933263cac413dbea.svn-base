@@ -1,0 +1,31 @@
+package TEST;
+
+import javax.sql.DataSource;
+import TEST.JavaSeDataSource;
+
+import Genre.Genre;
+import Genre.GenreDAO;
+
+public class testMain {
+
+	public static void main(String[] args) throws Exception {
+		GenreDAO gservice = new GenreDAO(JavaSeDataSource.getDataSource());
+		
+		System.out.println("<<<<<<<<<< Genre >>>>>>>>>>");
+		System.out.println("------ create ------");
+		System.out.println(gservice.create(new Genre(4, "로맨스")));
+		
+		System.out.println("------ update ------");
+		System.out.println(gservice.update(new Genre(4, "새드무비")));
+		
+		System.out.println("------ remove ------");
+		System.out.println(gservice.remove(4));
+		
+		System.out.println("------ findGenre ------");
+		System.out.println(gservice.findGenre(1));
+		
+		System.out.println("------ findGenreList ------");
+		System.out.println(gservice.findGenreList());
+	}
+
+}

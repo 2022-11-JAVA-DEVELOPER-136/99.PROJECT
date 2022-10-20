@@ -1,0 +1,84 @@
+package com.itwill.service;
+
+import java.util.ArrayList;
+
+import com.itwill.dao.BoardDaoImpl;
+import com.itwill.dto.Board;
+
+
+public class BoardService {
+	private static BoardService _getInstance;
+	private BoardDaoImpl boardDaoImpl;
+	
+	private BoardService() {
+		boardDaoImpl = new BoardDaoImpl();
+	}
+	
+	public static BoardService getInstance() {
+		if(BoardService._getInstance==null) {
+			_getInstance = new BoardService();
+		}
+		return _getInstance;
+	}
+	
+	
+	
+	public ArrayList<Board> selectAll(int start, int last) throws Exception {
+		ArrayList<Board> boardList = null;
+		
+		boardList = boardDaoImpl.selectAll(start, last);
+		return boardList;
+	}
+	
+	public Board lookupBoard(int bNo) throws Exception {
+		Board selectBoard = null;
+		
+		selectBoard = boardDaoImpl.selectKey(bNo);
+		if(selectBoard!=null) {
+			boardDaoImpl.updateViewCNT(bNo);
+		}
+		return selectBoard;
+	}
+	
+	public Board selectOne(int bNo) throws Exception {
+		Board selectBoard = null;
+		
+		selectBoard = boardDaoImpl.selectKey(bNo);
+		return selectBoard;
+	}
+	
+	public int create(Board board) throws Exception {
+		int rowCount = -999;
+		
+		rowCount = boardDaoImpl.create(board);
+		return rowCount;
+	}
+	
+	public int creatReply(Board board) throws Exception {
+		int rowCount = -999;
+		
+		rowCount = boardDaoImpl.createReply(board);
+		return rowCount;
+	}
+	
+	public int update(Board board) throws Exception {
+		int rowCount = -999;
+		
+		rowCount = boardDaoImpl.update(board);
+		return rowCount;
+	}
+	
+	public int delete(int bNo) throws Exception {
+		int rowCount = -999;
+		
+		rowCount = boardDaoImpl.delete(bNo);
+		return rowCount;
+	}
+	
+	public int count() {
+		int count = boardDaoImpl.getBoardCount();
+		return count;
+	}
+	
+	
+}

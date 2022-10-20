@@ -1,0 +1,15 @@
+#/test.do=com.itwill.testcontroller.EmoTestController
+#/memtest.do=com.itwill.testcontroller.memTestController
+/emolisttest.do=com.itwill.testcontroller.EmoListTestController
+<<<<<<< .mine
+#/emoinserttest.do=com.itwill.testcontroller.EmoInsertController
+||||||| .r524
+=======
+>>>>>>> .r525
+#/memwriteform.do=com.itwill.testcontroller.memberWriteFormControllerTest
+#/memwriteaction.do=com.itwill.testcontroller.memberWriteActionControllerTest
+<<<<<<< .mine
+#/emoinsertform.do=com.itwill.controller.EmoInsertController||||||| .r524
+=======
+/emoinsertform.do=com.itwill.testcontroller.EmoInsertController
+/emoactionform.do=com.itwill.testcontroller.EmoActionController>>>>>>> .r525

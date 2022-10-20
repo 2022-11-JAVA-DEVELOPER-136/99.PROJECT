@@ -1,0 +1,97 @@
+package com.itwill.jumun;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import com.itwill.cart.Cart;
+
+public class JumunDao {
+	private DataSource dataSource;
+	public JumunDao() throws Exception {
+		InitialContext ic=new InitialContext();
+		dataSource=(DataSource)ic.lookup("java:/comp/env/jdbc/OracleDB");
+	}
+	
+	//회원 번호 인자로 받아서 주문상세정보,총가격 INSERT (추가행수반환)
+	
+	public  int add(int m_no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertQuery = "INSERT INTO jumun VALUES "
+							+ "(JUMUN_J_NO_SEQ.nextval, sysdate,(select p.p_name||'외 '||(select count(m_no)-1 from cart where m_no =?)||'건' "
+							+ "from cart c join p_emo p on p.p_no = c.p_no where m_no = ? and rownum =1),"
+							+ "(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=?),?)";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(insertQuery);
+			pstmt.setInt(1, m_no);
+			pstmt.setInt(2, m_no);
+			pstmt.setInt(3, m_no);
+			pstmt.setInt(4, m_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	//주문 취소시 주문번호 인자로 받아서 해당 주문 DELETE (삭제행수반환)
+	public  int deleteJumun(int j_no) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String removeQuery = "delete from jumun where j_no = ?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(removeQuery);
+			pstmt.setInt(1, j_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	
+	//주문시 카트번호 받아와서 주문디테일에 카트보유이모티콘 INSERT
+	
+	
+	public  int addDetailEmoList(int m_no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertQuery = "INSERT INTO ";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(insertQuery);
+			pstmt.setInt(1, m_no);
+			pstmt.setInt(2, m_no);
+			pstmt.setInt(3, m_no);
+			pstmt.setInt(4, m_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}	
+	
+	

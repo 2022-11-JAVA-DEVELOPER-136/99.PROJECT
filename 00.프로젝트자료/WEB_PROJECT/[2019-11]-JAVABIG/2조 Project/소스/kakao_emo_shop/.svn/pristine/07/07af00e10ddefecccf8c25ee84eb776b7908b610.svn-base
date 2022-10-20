@@ -1,0 +1,113 @@
+package com.itwill.member;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import com.itwill.user.User;
+
+public class MemberDao {
+	private DataSource dataSource;
+	
+	public MemberDao() throws Exception {
+		InitialContext ic = new InitialContext();
+		dataSource = (DataSource)ic.lookup("java:/comp/env/jdbc/OracleDB");
+		
+	}
+	
+	public int create(Member member) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String Sql = "insert into MEMBER(M_NO,M_NINAME,M_ID,M_PASS,MD_NO)"+ 
+				"values(m_No.nextval,?,?,?,md_No.nextval)";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(Sql);
+			pstmt.setString(1,member.getM_niname());
+			pstmt.setString(1,member.getM_id());
+			pstmt.setString(1,member.getM_pass());
+			int row = pstmt.executeUpdate();
+			return row;
+			
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	
+	//delete from MEMBER where M_ID=?;
+	public int remove(String m_id) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String Sql ="delete from MEMBER where M_ID=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(Sql);
+			pstmt.setString(1, m_id);
+			int row = pstmt.executeUpdate();
+			return row;
+			
+			
+			
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	
+	
+	public int update(Member member) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String Sql = "UPDATE member set M_NINAME=?,M_PASS=? where m_Id=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(Sql);
+			pstmt.setString(1, member.);
+
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	
+	
+	
+	/*
+	 M_NO	NUMBER(10,0)	No		1	회원번호
+	 M_NINAME	VARCHAR2(50 BYTE)	No		2	회원닉네임
+	 M_ID	VARCHAR2(50 BYTE)	No		3	회원아이디
+	 M_PASS	VARCHAR2(50 BYTE)	No		4	회원비밀번호
+ 	MD_NO	NUMBER(10,0)	Yes		5	회원상세번호
+	 
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

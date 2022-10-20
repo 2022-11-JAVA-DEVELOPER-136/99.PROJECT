@@ -1,0 +1,40 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.product.model.Product;
+import com.itwill.product.model.ProductService;
+import com.itwill.summer.Controller;
+
+public class ProductListController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardpath = "";
+
+		try {
+			ProductService productService = new ProductService();
+			ArrayList<Product> burgerList = productService.findByUpno(101);
+			ArrayList<Product> morningList = productService.findByUpno(102);
+			ArrayList<Product> sideList = productService.findByUpno(103);
+			ArrayList<Product> drinkList = productService.findByUpno(104);
+			ArrayList<Product> dessertList = productService.findByUpno(105);
+
+			request.setAttribute("burgerList", burgerList);
+			request.setAttribute("morningList", morningList);
+			request.setAttribute("sideList", sideList);
+			request.setAttribute("drinkList", drinkList);
+			request.setAttribute("dessertList", dessertList);
+			forwardpath = "forward:/WEB-INF/view/McDelivery_ProductList.jsp";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return forwardpath;
+
+	}
+
+}

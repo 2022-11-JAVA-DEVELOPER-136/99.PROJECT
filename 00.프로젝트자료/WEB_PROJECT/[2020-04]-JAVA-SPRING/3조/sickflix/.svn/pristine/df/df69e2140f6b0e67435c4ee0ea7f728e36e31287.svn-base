@@ -1,0 +1,233 @@
+package Product;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+
+
+
+public class ProductDao {
+	private static final String p_no = null;
+	private DataSource dataSource;
+	
+	public ProductDao() throws Exception {
+		InitialContext ic=new InitialContext();
+		dataSource =(DataSource)ic.lookup("java:/comp/env/jdbc/OracleDB");
+	}
+	
+	/*
+	 * 제품테이블에 새로운 제품 생성.
+	 */
+	
+	public int create(ProductDto productDto) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String inserQuery = "insert into product(?, ?, ?, ?, ?, ?, ?)";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(inserQuery);
+			pstmt.setInt(1, productDto.getP_no());
+			pstmt.setString(2, productDto.getP_title());
+			pstmt.setInt(3, productDto.getP_price());
+			pstmt.setString(4, productDto.getP_desc());
+			pstmt.setString(5, productDto.getP_runtime());
+			pstmt.setInt(6, productDto.getP_rate());
+			pstmt.setInt(7, productDto.getG_no());
+			
+			int rows = pstmt.executeUpdate();
+			return rows;
+		}finally {
+			if (pstmt != null)
+				pstmt.close();
+			if(con != null)
+				con.close();
+		}
+	}
+			
+	
+	/*
+	// UPDATE 제품정보 수정
+	*/
+		public int update(ProductDto productDto) throws Exception {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String updateQuery = 
+					"update product set p_title=?, p_price=?, p_desc=?,p_runtime=?, p_rate=?, g_no=?";
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(updateQuery);
+			
+				pstmt.setString(1, productDto.getP_title());
+				pstmt.setInt(2, productDto.getP_price());
+				pstmt.setString(3, productDto.getP_desc());
+				pstmt.setString(4, productDto.getP_runtime());
+				pstmt.setInt(5, productDto.getP_rate());
+				pstmt.setInt(6, productDto.getG_no());
+				int rows = pstmt.executeUpdate();
+				return rows;
+			} finally {
+				if(pstmt != null)
+					pstmt.close();
+				if(con != null)
+					con.close();
+			}
+		}
+		/*
+		 * 원하는 제품 삭제.
+		 */
+		public int remove(String p_no) throws Exception {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String removeQuery = "delete from product where p_no=?";
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(removeQuery);
+				pstmt.setString(1, p_no);
+				int rows = pstmt.executeUpdate();
+				return rows;
+			} finally {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			}
+		}
+/*
+ *  원하는 제품찾기		
+ */
+		public ProductDto findp(int p_no) throws Exception {
+			ProductDto productDto = null;
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String selectQuery = 
+					"select p_title, p_price, p_desc, p_runtime, p_rate, g_no"
+					+ "from product wehre p_no=?";
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(selectQuery);
+				pstmt.setInt(1, p_no);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					productDto = new ProductDto(rs.getInt(p_no),
+							rs.getString("p_title"), rs.getInt("p_price"),
+							rs.getString("p_desc"), rs.getString("p_runtime"),
+							rs.getInt("p_rate"), rs.getInt("g_no"));
+				}
+			}finally {
+				if (rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(con != null)
+					con.close();
+			}
+			return productDto;
+		}
+
+		/*
+		 * 모든제품 정보를 찾아서 
+		 * list<ProductDto> 콜렉션에 저장하여 반환 
+		 */
+		//insert into product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no)
+		
+	public ArrayList<ProductDto> findProductList() throws Exception {
+		ArrayList<ProductDto> proudctList = new ArrayList<ProductDto>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectQuesry = 
+		"select p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no from product";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuesry);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				findProductList().add(new ProductDto(
+						rs.getInt("p_no"),
+						rs.getString("p_title"),
+						rs.getInt("p_price"),
+						rs.getString("p_desc"),
+						rs.getString("p_runtime"),
+						rs.getInt("p_rate"),
+						rs.getInt("g_no")
+										));
+			}
+		}finally {
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(con != null)
+				con.close();
+		}
+		return proudctList;
+	
+	}
+		
+	public boolean existedProduct(ProductDto product) throws Exception{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String existedQuery=
+				"select count(*) cnt from product where p_no=?";
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(existedQuery);
+			pstmt.setString(1, p_no);
+			rs=pstmt.executeQuery();
+			int count=0;
+			if(rs.next()){
+				count=rs.getInt("cnt");
+			}
+			if(count==1){
+				return true;
+			}else{
+				return false;
+			}
+		}finally{
+			if(rs!=null)
+				rs.close();
+			if(pstmt!=null)
+				pstmt.close();
+			if(con!=null)
+				con.close();
+		}
+			
+			
+		}
+	}
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+

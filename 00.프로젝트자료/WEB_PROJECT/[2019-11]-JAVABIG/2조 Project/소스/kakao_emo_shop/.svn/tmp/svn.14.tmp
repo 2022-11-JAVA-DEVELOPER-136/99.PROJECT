@@ -1,0 +1,12 @@
+package com.itwill.jumun;
+/*
+ J_NO	NUMBER(10,0)	No		1	주문번호
+ J_DATE	DATE	Yes	"sysdate		 "	2	주문날짜
+ J_DESC	VARCHAR2(50 BYTE)	Yes		3	주문설명
+ J_PRICE	NUMBER(10,0)	Yes		4	주문총가격
+ M_NO	NUMBER(10,0)	Yes		5	회원번호
+ */
+public class Jumun {
+
+	
+}

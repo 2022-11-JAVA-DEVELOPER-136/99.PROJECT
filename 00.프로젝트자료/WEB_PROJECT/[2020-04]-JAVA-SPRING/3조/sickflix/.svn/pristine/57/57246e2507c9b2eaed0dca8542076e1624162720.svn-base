@@ -1,0 +1,57 @@
+<%@page import="com.itwill.shop.product.Product"%>
+<%@page import="com.itwill.shop.product.ProductService"%>
+<%@page import="com.itwill.shop.cart.CartItemDto"%>
+<%@page import="com.itwill.shop.cart.CartService"%>
+<%@page import="com.itwill.jumun.Jumun"%>
+<%@page import="com.itwill.jumun.JumunService"%>
+<%@page import="com.itwill.jumun_detail.JumunDetail"%>
+<%@page import="com.itwill.jumun_detail.JumunDetailService"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("cart_view.jsp");
+		return;
+	}
+	
+	ProductService productService = ProductService.getInstance();
+	CartService cartService = CartService.getInstance();
+	JumunService jumunService = JumunService.getInstance();
+	JumunDetailService jumunDetailService = JumunDetailService.getInstance();
+	
+	String m_id = (String) session.getAttribute("sM_id");
+	String stot = request.getParameter("tot");
+	int tot = Integer.parseInt(stot);
+	
+	try{
+		ArrayList<CartItemDto> cartList = cartService.findCartItemList(m_id);
+		Product cartProduct = productService.findProduct(cartList.get(0).getP_no());
+		
+		Jumun jumun = new Jumun();
+		
+		if (cartList.size() == 1) {
+			jumun.setJ_desc(cartProduct.getP_title());
+		} else {
+			jumun.setJ_desc(cartProduct.getP_title() + " 외 " + (cartList.size()-1) +"편");
+		}
+		
+		jumun.setJ_price(tot);
+		jumun.setM_id(m_id);
+		jumunService.create(jumun);
+		int new_jno = jumunService.findRecentJumun(m_id);
+		
+		JumunDetail jumunDetail = new JumunDetail();
+		jumunDetail.setJ_no(new_jno);
+		
+		for (int i=0; i < cartList.size(); i++) {
+			int p_no = cartList.get(i).getP_no();
+			jumunDetail.setP_no(p_no);
+			jumunDetailService.create(jumunDetail);
+		}
+		response.sendRedirect("jumun_success.jsp?j_no="+new_jno);
+	}catch(Exception e){
+		response.sendRedirect("member_error.jsp");
+	}
+	
+%>

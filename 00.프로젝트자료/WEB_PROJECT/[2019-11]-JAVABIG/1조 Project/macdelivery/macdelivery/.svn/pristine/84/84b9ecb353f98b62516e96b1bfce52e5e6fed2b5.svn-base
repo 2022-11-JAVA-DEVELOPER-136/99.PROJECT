@@ -1,0 +1,196 @@
+<%@page import="com.itwill.jumun.model.Jumun"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.jumun.model.JumunService"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+
+<%
+	Boolean isExistedId = (Boolean)request.getAttribute("isExistedId");
+	String m_id = (String) request.getAttribute("m_id");
+	String m_name = (String) request.getAttribute("m_name");
+	String m_jumin = (String) request.getAttribute("m_jumin");
+	String m_phone = (String) request.getAttribute("m_phone");
+	String m_email = (String) request.getAttribute("m_email");
+	String m_address = (String) request.getAttribute("m_address");
+	m_id = (m_id == null) ? "" : m_id;
+	m_name = (m_name == null) ? "" : m_name;
+	m_jumin = (m_jumin == null) ? "" : m_jumin;
+	m_phone = (m_phone == null) ? "" : m_phone;
+	m_email = (m_email == null) ? "" : m_email;
+	m_address = (m_address == null) ? "" : m_address;
+	
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript">
+ var isExistedId = <%=isExistedId%>;
+	if(isExistedId != null){
+		if(isExistedId){
+			alert("이미 존재하는 아이디 입니다.");
+		}else{
+			alert("사용가능한 아이디 입니다.");
+		}
+	}
+ 
+function id_overlap_ckeck() {
+	
+	var m_id = document.getElementsByName("m_id")[0].value;
+	var m_name = document.getElementsByName("m_name")[0].value;
+	var m_jumin = document.getElementsByName("m_jumin")[0].value;
+	var m_phone = document.getElementsByName("m_phone")[0].value;
+	var m_email = document.getElementsByName("m_email")[0].value;
+	var m_address = document.getElementsByName("m_address")[0].value;
+	
+	window.location.href="McDelivery_register_idCheck.do?m_id="+m_id+"&m_name="+m_name+"&m_jumin="+m_jumin+
+														"&m_phone="+m_phone+"&m_email="+m_email+"&m_address="+m_address;
+}
+
+function validateCheck(){
+	var m_pwd = document.getElementsByName("m_pwd")[0].value;
+	var m_pwd_check = document.getElementsByName("m_pwd_check")[0].value;
+	
+	if(m_pwd != m_pwd_check){
+		alert("비밀번호가 일치하지않습니다.");
+		return false;
+	}
+	
+	return true;
+}
+//window.onload=id_overlap_check; 
+</script>
+<title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
+<link rel="stylesheet" href="css/aos.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+	<header class="site-navbar" role="banner">
+		<div class="site-navbar-top">
+			<div class="container">
+				<div class="row align-items-center">
+
+					<div
+						class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-center">
+						<a href="main.jsp" class="js-logo-clone"><image
+								src="images/maclogo.jpg" sizealt="" width="150" class="center"></a>
+					</div>
+
+					<div class="col-6 col-md-4 order-3 order-md-3 text-right">
+						<div class="site-top-icons">
+							<ul>
+								<li><a href="#"><span class="icon icon-person"></span></a></li>
+								<li><a href="cart.html" class="site-cart"> <span
+										class="icon icon-shopping_cart"></span> <span class="count">2</span>
+								</a></li>
+								<li class="d-inline-block d-md-none ml-md-0"><a href="#"
+									class="site-menu-toggle js-menu-toggle"><span
+										class="icon-menu"></span></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="site-navigation text-right text-md-center"
+			role="navigation">
+			<div class="container">
+				<ul class="site-menu js-clone-nav d-none d-md-block">
+					<li class="has-children active"><a href="index.html">Home</a>
+					</li>
+					<li><a href="McDelivery_product_list.do">메뉴</a></li>
+					<li><a href="#">고객문의</a></li>
+					<%
+						if (session.getAttribute("member") == null) {
+					%>
+					<li><a href="McDelivery_login_form.do">로그인</a></li>
+					<%
+						} else {
+					%>
+					<li><a href="McDelivery_mypage_jumunhistory.do">마이페이지</a></li>
+					<%
+						}
+					%>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+	<div class="wrapper">
+		<form name='f' class="form-signin" method="post"
+			action="McDelivery_register_action.do" onsubmit="return validateCheck();">
+			<h2 class="form-signin-heading">Register Form</h2>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-7  text-left">
+						<input type="text" id="m_id" class="form-control" name="m_id"
+							placeholder="ID" value="<%=m_id%>" required autofocus/>
+
+					</div>
+					<div class="col-md-5  text-right">
+						<div class="form-group">
+							<button class="btn btn-lg btn-primary" type="button"
+								onClick="id_overlap_ckeck()">중복확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="m_pwd"
+					placeholder="Password" required />
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="m_pwd_check"
+					placeholder="Password_Check"  required />
+			</div>
+			<div class="form-group">
+				<input name="m_name" type="text" class="form-control"
+					placeholder="Name" value="<%=m_name %>"  required autofocus />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="m_jumin"
+					placeholder="주민번호" value="<%=m_jumin %>"  required autofocus />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="m_phone"
+					placeholder="Phone_Number" value="<%=m_phone %>" required autofocus />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="m_email"
+					placeholder="E-mail" value="<%=m_email %>"  required autofocus />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="m_address"
+					placeholder="Address" value="<%=m_address %>"  required autofocus />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-lg btn-primary btn-block" type="button">취소</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+package Genre;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import javax.sql.DataSource;
+import javax.naming.InitialContext;
+
+import com.itwill.user.Exception;
+
+public class GenreDAO {
+	private DataSource dataSource;
+	
+	public GenreDAO() throws Exception {
+		InitialContext ic = new InitialContext();
+		dataSource = (DataSource)ic.lookup("java/comp/env/jdbc/OracleDB");
+		
+	}
+	
+	/*
+	사용자관리에서 데이타베이스와의 작업을 전담하는 클래스
+	genre 테이블에 사용자를 추가,삭제,검색,수정등의 작업을한다.
+	*/
+	/*
+	public GenreDao(DataSource dataSource) throws Exception {
+	this.dataSource=dataSource;
+	//System.out.println("UserDao()생성자:"+this);
+	 */
+	
+	/*
+	 * 장르관리테이블에 새로운사용자생성
+	 */
+	public int create(Genre genre) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertQuery = "insert into genre VALUES (?,?,?)";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(insertQuery);
+			pstmt.setInt(1, genre.getG_no());
+			pstmt.setString(2, genre.getG_name());
+			pstmt.setInt(3, genre.getP_no());
+			int rows = pstmt.executeUpdate();
+			return rows;
+		}finally {
+			if(pstmt != null)
+				pstmt.close();
+			if(con != null)
+				con.close();
+		}
+		
+	}
+	
+	
+	/*
+	 * 기존의 장르정보를 수정
+	 */
+	public int update(Genre genre) throws Exception{
+		Connection con= null;
+		PreparedStatement pstmt = null;
+		String updateQuery = "update genre set g_name=?,p_no=? where g_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt= con.prepareStatement(updateQuery);
+			pstmt.setString(1, genre.getG_name());
+			pstmt.setInt(2, genre.getP_no());
+			pstmt.setInt(3, genre.getG_no());
+			int rows = pstmt.executeUpdate();
+			return rows;
+		}finally {
+			if(pstmt != null)
+				pstmt.close();
+			if(con != null)
+				con.close();
+		}
+	}
+	
+	
+	/*
+	 * 장르번호에해당하는 장르를 삭제
+	 */
+	
+	public int remove(int G_no) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String removeQuery = "delete from genre where G_no=?";
+		try {
+			con= dataSource.getConnection();
+			pstmt= con.prepareStatement(removeQuery);
+			pstmt.setInt(1, G_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+			}finally {
+				if(pstmt != null)
+					pstmt.close();
+				if(con != null)
+					con.close();
+			}
+	}
+	
+	
+	/*
+	 *장르번호에 해당하는 정보를 데이타베이스에서 찾아서
+	 * Genre 도메인클래스에 저장하여 반환
+	 */
+	
+	public Genre findGenre(int g_no) throws Exception{
+		Genre genre = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectQuery= "select g_no, g_name,p_no from genre where g_no=?";
+		try {
+			con= dataSource.getConnection();
+			pstmt= con.prepareStatement(selectQuery);
+			pstmt.setInt(1, g_no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				genre = new Genre(rs.getInt("g_no"),
+								  rs.getString("g_name"),
+								  rs.getInt("p_no"));
+			}
+		}finally {
+			if(rs !=null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(con != null)
+				con.close();
+		}
+		return genre;
+	}
+	
+	
+	/*
+	 * 모든장르번호 정보를 데이타베이스에서 찾아서 
+	 * List<genre> 콜렉션 에 저장하여 반환 
+	 */
+	public ArrayList<Genre> findGenreList() throws Exception{
+		ArrayList<Genre> genreList = new ArrayList<Genre>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		String selectQuery = "select g_no,g_name,p_no from genre";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				genreList.add(new Genre(
+						rs.getInt("g_no"),
+						rs.getString("g_name"),
+						rs.getInt("p_no")));
+			}
+		}finally {
+			if(rs != null)
+				rs.close();
+			if(pstmt != null)
+				pstmt.close();
+			if(con !=null)
+				con.close();
+			
+		}
+		return genreList;
+		
+	}
+	
+}

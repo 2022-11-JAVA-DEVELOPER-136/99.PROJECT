@@ -1,0 +1,64 @@
+package jumun;
+
+import java.util.ArrayList;
+
+public class JumunService {
+
+	private JumunDAO jumunDAO;
+	private static JumunService _instance;
+	
+	private JumunService() throws Exception{
+		jumunDAO=new JumunDAO();
+		System.out.println("JumunService()생성자:"+this);
+	}
+	
+	// 객체를 만들려면 생성자가 아닌 getInstance() 정적 메소드를 사용해야 한다. 
+	public static JumunService getInstance() throws Exception {
+		if (JumunService._instance == null) {
+			JumunService._instance = new JumunService();
+		}
+		return JumunService._instance;
+	}
+	
+	
+	public int create(Jumun jumun) throws Exception {
+		return jumunDAO.create(jumun);
+	}
+	
+	
+	/*
+	 * 주문리스트
+	 */
+	public ArrayList<Jumun> findJumunList() throws Exception {
+		return jumunDAO.findJumunList();
+	}
+	
+	
+	/*
+	 * 주문1개보기
+	 */
+	public Jumun findJumun(int j_no) throws Exception {
+		Jumun jumun = jumunDAO.findJumun(j_no);
+		if (jumun == null) {
+			throw new UserNotFoundException(userId+" 는 존재하지 않는 아이디입니다.");
+		}
+		return user;
+	}
+	
+	
+	/*
+	 * 회원탈퇴
+	 */
+	public int remove(String userId) throws Exception {
+		return userDao.remove(userId);
+	}
+	
+	
+	/*
+	 * 회원수정
+	 */
+	public int update(User user) throws Exception {
+		return userDao.update(user);
+	}
+		
+}

@@ -1,0 +1,20 @@
+package com.itwill.jumun_detail;
+
+public class JumunDetailSQL {
+
+			//제품상세 추가하기
+			public static final String INSERT_JUMUNDETAIL =
+					"insert into jumun_detail values (jdno_seq.nextval, ?, ?)";
+			//제품상세 업데이트
+			public static final String UPDATE_JUMUNDETAIL =
+					"update jumun_detail set j_no=?, p_no=? where jd_no=?";
+			//제품상세 삭제하기
+			public static final String DELETE_JUMUNDETAIL =
+					"delete from jumun_detail where jd_no=?";
+			//제품상세 1개 찾기
+			public static final String FIND_JUMUNDETIAL =
+					"select j_no, p_no from jumun_detail where jd_no=?";
+			//제품상세 모든 정보 찾기
+			public static final String FIND_ALL_JUMUNDETAIL =
+					"select jd_no, j_no, p_no from jumun_detail";
+}

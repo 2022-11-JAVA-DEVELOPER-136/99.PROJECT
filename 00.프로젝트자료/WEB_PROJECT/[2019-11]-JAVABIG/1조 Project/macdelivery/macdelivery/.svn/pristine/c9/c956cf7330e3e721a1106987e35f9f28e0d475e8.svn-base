@@ -1,0 +1,40 @@
+package com.itwill.member.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.member.exception.ExistedMemberException;
+import com.itwill.member.model.Member;
+import com.itwill.member.model.MemberService;
+import com.itwill.summer.Controller;
+
+public class MemberRegisterActionController implements Controller {
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String m_id = request.getParameter("m_id");
+		String m_pwd = request.getParameter("m_pwd");
+		String m_name = request.getParameter("m_name");
+		String m_jumin = request.getParameter("m_jumin");
+		String m_phone = request.getParameter("m_phone");
+		String m_email = request.getParameter("m_email");
+		String m_address = request.getParameter("m_address");
+		Member member = new Member(m_id,m_pwd,m_name,m_jumin,m_phone,m_email,m_address);
+		
+		String forwardPath = null;
+		try {
+			MemberService memberService = new MemberService();
+			memberService.registerMember(member);
+			
+			forwardPath = "redirect:/main.do";
+		}catch(ExistedMemberException e) {
+			forwardPath = "forward:/WEB-INF/view/error.jsp";
+			request.setAttribute("msg", e.getMessage());
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return forwardPath;
+	}
+
+}

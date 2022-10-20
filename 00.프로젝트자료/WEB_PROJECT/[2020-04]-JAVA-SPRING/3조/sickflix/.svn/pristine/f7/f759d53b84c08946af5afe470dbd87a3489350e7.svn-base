@@ -1,0 +1,25 @@
+<%@page import="com.itwill.board.BoardService"%>
+<%@page import="com.itwill.board.Board"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%	
+	Board board = new Board();
+	try {
+		int b_no = 2;
+		BoardService bs = new BoardService();
+		board = bs.findBoard(b_no);
+	} catch (Exception e) {
+
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

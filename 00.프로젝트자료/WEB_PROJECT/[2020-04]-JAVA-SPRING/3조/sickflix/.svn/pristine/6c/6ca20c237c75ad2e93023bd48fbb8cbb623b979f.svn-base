@@ -1,0 +1,85 @@
+
+package com.itwill.member;
+/*
+ * - 회원관리 비즈니스로직(예외처리,트랜젝션,보안,로깅)을 수행하는 클래스
+ * - 웹컴퍼넌트(서블릿,JSP)에서 직접접근(메쏘드호출)하는 클래스
+ * - Dao를 이용해서 데이타베이스를 조작작업하는 클래스
+ */
+
+import java.util.ArrayList;
+
+
+
+public class MemberService {
+
+		private MemberDAO memberDao;
+		private static MemberService _instance;
+	
+		public MemberService() throws Exception {
+		memberDao = new MemberDAO();
+		System.out.println("MemberService()생성자 : " + this);
+	}
+	public static MemberService getInstance() throws Exception {
+		if (MemberService._instance == null) {
+			MemberService._instance = new MemberService();
+		}
+		return MemberService._instance;
+	}
+	/*
+	 * 회원가입
+	 */
+		public int create(Member member) throws Exception,ExistedMemberException {
+		// 1.아이디중복체크
+		if (memberDao.existedMember(member.getM_id())) {
+			throw new ExistedMemberException(member.getM_id() + "는 이미 존재하는 아이디입니다.");
+		}
+		return memberDao.create(member);
+	}
+	/*
+	 * 회원 로그인
+	 */
+		public Member login(String m_id, String m_password) throws Exception, MemberNotFoundException, PasswordMismatchException {
+		// 1.아아디 존재 여부
+		Member member = memberDao.findMember(m_id);
+		if (member == null) {
+			throw new MemberNotFoundException(m_id + "는 존재하지 않는 아이디입니다.");
+			
+		}
+		// 2.패스워드 일치 여부
+		if (!member.isMatchPassword(m_password)) {
+			throw new PasswordMismatchException("패스워드가 일치하지 않습니다.");
+		}
+		return member;
+	}
+	/*
+	 * 회원1명보기
+	 */
+		public Member findMember(String m_id) throws Exception,MemberNotFoundException {
+		Member member = memberDao.findMember(m_id);
+		if (member == null) {
+			throw new MemberNotFoundException(m_id + "는 존재하지 않는 아이디입니다.");
+			
+		}
+		return member;
+	}
+	/*
+	 * 회원 리스트
+	 */
+		public ArrayList<Member> findMemberList() throws Exception {
+		return memberDao.findMemberList();
+		}
+
+	/*
+	 * 회원탈퇴
+	 */
+		public int remove(String m_id) throws Exception {
+			return memberDao.remove(m_id);
+		}
+	/*
+	 * 회원수정
+	 */
+		public int update(Member member) throws Exception {
+			return memberDao.update(member);
+		}
+	}
+

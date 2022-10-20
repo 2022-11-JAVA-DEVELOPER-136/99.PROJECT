@@ -1,0 +1,45 @@
+package itwill.shop.cart;
+
+public class Cart {
+	private String c_item_no; //카트아이템번호
+	private String m_id;	  //회원번호
+	private String p_no;	  //제품번호
+
+	public Cart() {
+
+	}
+
+	public Cart(String c_item_no, String m_id, String p_no) {
+		super();
+		this.c_item_no = c_item_no;
+		this.m_id = m_id;
+		this.p_no = p_no;
+	}
+
+	public String getC_item_no() {
+		return c_item_no;
+	}
+
+	public void setC_item_no(String c_item_no) {
+		this.c_item_no = c_item_no;
+	}
+
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public String getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(String p_no) {
+		this.p_no = p_no;
+	}
+	
+	
+
+}

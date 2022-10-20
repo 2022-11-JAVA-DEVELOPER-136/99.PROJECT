@@ -1,0 +1,176 @@
+DROP TABLE board CASCADE CONSTRAINTS;
+DROP TABLE jumun_detail CASCADE CONSTRAINTS;
+DROP TABLE jumun CASCADE CONSTRAINTS;
+DROP TABLE cart CASCADE CONSTRAINTS;
+DROP TABLE product CASCADE CONSTRAINTS;
+DROP TABLE genre CASCADE CONSTRAINTS;
+DROP TABLE member CASCADE CONSTRAINTS;
+DROP SEQUENCE board_seq;
+DROP SEQUENCE pno_seq;
+DROP SEQUENCE gno_seq;
+DROP SEQUENCE cno_seq;
+DROP SEQUENCE jno_seq;
+DROP SEQUENCE jdno_seq;
+
+CREATE SEQUENCE board_seq;
+CREATE SEQUENCE pno_seq;
+CREATE SEQUENCE gno_seq;
+CREATE SEQUENCE cno_seq;
+CREATE SEQUENCE jno_seq;
+CREATE SEQUENCE jdno_seq;
+
+/**********************************/
+/* Table Name: 회원 */
+/**********************************/
+CREATE TABLE member(
+		m_id                          		VARCHAR2(50)		 NULL ,
+		m_password                    		VARCHAR2(50)		 NOT NULL,
+		m_name                        		VARCHAR2(50)		 NULL ,
+		m_phone                       		VARCHAR2(50)		 NULL ,
+		m_email                       		VARCHAR2(100)		 NULL 
+);
+
+COMMENT ON TABLE member is '회원';
+COMMENT ON COLUMN member.m_id is '회원아이디';
+COMMENT ON COLUMN member.m_password is '회원비밀번호';
+COMMENT ON COLUMN member.m_name is '회원이름';
+COMMENT ON COLUMN member.m_phone is '회원연락처';
+COMMENT ON COLUMN member.m_email is '회원이메일';
+
+
+/**********************************/
+/* Table Name: 장르 */
+/**********************************/
+CREATE TABLE genre(
+		g_no                          		NUMBER(10)		 NULL ,
+		g_name                        		VARCHAR2(20)		 NULL 
+);
+
+COMMENT ON TABLE genre is '장르';
+COMMENT ON COLUMN genre.g_no is '장르번호';
+COMMENT ON COLUMN genre.g_name is '장르이름';
+
+
+/**********************************/
+/* Table Name: 제품 */
+/**********************************/
+CREATE TABLE product(
+		p_no                          		NUMBER(10)		 NULL ,
+		p_title                       		VARCHAR2(200)		 NOT NULL,
+		p_price                       		NUMBER(10)		 DEFAULT 0		 NULL ,
+		p_desc                        		VARCHAR2(255)		 NULL ,
+		p_image                       		VARCHAR2(20)		 NULL ,
+		p_runtime                     		VARCHAR2(20)		 NULL ,
+		p_rate                        		NUMBER(4, 2)		 NULL ,
+		g_no                          		NUMBER(10)		 NULL 
+);
+
+COMMENT ON TABLE product is '제품';
+COMMENT ON COLUMN product.p_no is '제품번호';
+COMMENT ON COLUMN product.p_title is '제품제목';
+COMMENT ON COLUMN product.p_price is '제품가격';
+COMMENT ON COLUMN product.p_desc is '제품내용';
+COMMENT ON COLUMN product.p_image is '제품이미지';
+COMMENT ON COLUMN product.p_runtime is '제품런타임';
+COMMENT ON COLUMN product.p_rate is '제품평점';
+COMMENT ON COLUMN product.g_no is '장르번호';
+
+
+/**********************************/
+/* Table Name: 장바구니 */
+/**********************************/
+CREATE TABLE cart(
+		c_item_no                     		NUMBER(10)		 NULL ,
+		m_id                          		VARCHAR2(20)		 NULL ,
+		p_no                          		NUMBER(10)		 NULL 
+);
+
+COMMENT ON TABLE cart is '장바구니';
+COMMENT ON COLUMN cart.c_item_no is '카트아이템번호';
+COMMENT ON COLUMN cart.m_id is '회원번호';
+COMMENT ON COLUMN cart.p_no is '제품번호';
+
+
+/**********************************/
+/* Table Name: 주문 */
+/**********************************/
+CREATE TABLE jumun(
+		j_no                          		NUMBER(10)		 NULL ,
+		j_desc                        		VARCHAR2(255)		 NOT NULL,
+		j_date                        		DATE		 DEFAULT sysdate		 NULL ,
+		j_price                       		NUMBER(10)		 DEFAULT 0		 NULL ,
+		m_id                          		VARCHAR2(50)		 NULL 
+);
+
+COMMENT ON TABLE jumun is '주문';
+COMMENT ON COLUMN jumun.j_no is '주문번호';
+COMMENT ON COLUMN jumun.j_desc is '주문내용';
+COMMENT ON COLUMN jumun.j_date is '주문날짜';
+COMMENT ON COLUMN jumun.j_price is '주문총액';
+COMMENT ON COLUMN jumun.m_id is '회원아이디';
+
+
+/**********************************/
+/* Table Name: 주문상세 */
+/**********************************/
+CREATE TABLE jumun_detail(
+		jd_no                         		NUMBER(10)		 NULL ,
+		j_no                          		NUMBER(10)		 NULL ,
+		p_no                          		NUMBER(10)		 NULL 
+);
+
+COMMENT ON TABLE jumun_detail is '주문상세';
+COMMENT ON COLUMN jumun_detail.jd_no is '주문상세번호';
+COMMENT ON COLUMN jumun_detail.j_no is '주문번호';
+COMMENT ON COLUMN jumun_detail.p_no is '제품번호';
+
+
+/**********************************/
+/* Table Name: 게시판 */
+/**********************************/
+CREATE TABLE board(
+		b_no                          		NUMBER(10)		 NULL ,
+		b_title                       		VARCHAR2(255)		 NOT NULL,
+		m_id                          		VARCHAR2(20)		 NULL ,
+		b_content                     		VARCHAR2(255)		 NULL ,
+		b_date                        		DATE		 DEFAULT sysdate		 NULL ,
+		b_readcount                   		NUMBER(10)		 DEFAULT 0		 NULL ,
+		groupno                       		NUMBER(10)		 NULL ,
+		step                          		NUMBER(10)		 NULL ,
+		depth                         		NUMBER(10)		 NULL 
+);
+
+COMMENT ON TABLE board is '게시판';
+COMMENT ON COLUMN board.b_no is '게시판번호';
+COMMENT ON COLUMN board.b_title is '제목';
+COMMENT ON COLUMN board.m_id is '회원아이디';
+COMMENT ON COLUMN board.b_content is '내용';
+COMMENT ON COLUMN board.b_date is '작성일';
+COMMENT ON COLUMN board.b_readcount is '조회수';
+COMMENT ON COLUMN board.groupno is '그룹';
+COMMENT ON COLUMN board.step is '스텝';
+COMMENT ON COLUMN board.depth is '뎁스';
+
+
+
+ALTER TABLE member ADD CONSTRAINT IDX_member_PK PRIMARY KEY (m_id);
+
+ALTER TABLE genre ADD CONSTRAINT IDX_genre_PK PRIMARY KEY (g_no);
+
+ALTER TABLE product ADD CONSTRAINT IDX_product_PK PRIMARY KEY (p_no);
+ALTER TABLE product ADD CONSTRAINT IDX_product_FK0 FOREIGN KEY (g_no) REFERENCES genre (g_no);
+
+ALTER TABLE cart ADD CONSTRAINT IDX_cart_PK PRIMARY KEY (c_item_no);
+ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK0 FOREIGN KEY (p_no) REFERENCES product (p_no);
+ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK1 FOREIGN KEY (m_id) REFERENCES member (m_id);
+
+ALTER TABLE jumun ADD CONSTRAINT IDX_jumun_PK PRIMARY KEY (j_no);
+ALTER TABLE jumun ADD CONSTRAINT IDX_jumun_FK0 FOREIGN KEY (m_id) REFERENCES member (m_id);
+
+ALTER TABLE jumun_detail ADD CONSTRAINT IDX_jumun_detail_PK PRIMARY KEY (jd_no);
+ALTER TABLE jumun_detail ADD CONSTRAINT IDX_jumun_detail_FK0 FOREIGN KEY (j_no) REFERENCES jumun (j_no);
+ALTER TABLE jumun_detail ADD CONSTRAINT IDX_jumun_detail_FK1 FOREIGN KEY (p_no) REFERENCES product (p_no);
+
+ALTER TABLE board ADD CONSTRAINT IDX_board_PK PRIMARY KEY (b_no);
+ALTER TABLE board ADD CONSTRAINT IDX_board_FK0 FOREIGN KEY (m_id) REFERENCES member (m_id);
+

@@ -1,0 +1,673 @@
+@media (min-width: 1200px) {
+
+  .container {
+    width: 100%;
+    padding: 0 !important;
+  }
+  .container.seese-reduced {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 1170px;
+  }
+  .seese-header .seese-logo.site-logo {
+    min-width: 126px;
+    max-width: 150px;
+    width: auto;
+  }
+
+  .comment-theme img,
+  .seese-commentbox .col-lg-2 img {
+    width: 85px;
+    height: 85px;
+  }
+  .seese-cntr-box {padding-left: 82px;}
+  .seese-sidebar .seese-recent-blog .box {padding-right: 7px;}
+  .seese-sidebar .seese-recent-blog .boxright {padding-left: 8px;}
+  .seese-sidebar .seese-recent-blog .boxright.col-lg-12 {padding-left: 15px;}
+  .single .seese-has-sidebar.seese-has-leftCol .seese-blog-post,
+  .seese-contentCol.seese-has-sidebar.seese-has-leftCol .seese-masonry-blog,
+  .seese-contentCol.seese-has-sidebar.seese-has-leftCol .seese-standard-blog {
+    margin: 0 0 0 auto;}
+  .seese-content-area .wpcf7 {padding-right: 30px;}
+  .seese-team-box img {width: 100%;}
+  .seese-shop-has-sidebar.seese-has-leftCol,
+  .seese-has-leftCol.seese-sidebar-space-one {padding-left: 55px;}
+  .seese-shop-has-sidebar.seese-has-rightCol,
+  .seese-has-rightCol.seese-sidebar-space-one {padding-right: 55px;}
+  .seese-has-leftCol.seese-sidebar-space-two {padding-left: 130px;}
+  .seese-has-rightCol.seese-sidebar-space-two {padding-right: 130px;}
+  
+  
+}
+
+@media (min-width: 992px) and (max-width: 1750px) {
+	.wisely-billing-info .subsection .checkout-billing, .wisely-billing-info .subsection .checkout-last {width: 100% !important;  margin: 0!important;}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .seese-specialPage {left: -29px;}
+  .seese-gototop {right: -20px;}
+  .seese-gallery li {max-height: 230px;}
+  .seese-mainmenu ul li.seese-megamenu > ul {width: 698px;}
+  .hd-wrapper {width:100% !important;}
+  .woocommerce ul.products li { padding: 30px !important; min-height: 400px !important; }
+  .mypage-wrapper {width:100%;}
+  .lightBox {width: 80% !important; margin:auto !important; padding: 1.5em 2em; left:10%}
+  	.lightBox a.btn-fillgrey, .lightBox a.btn-fillBlue {width: 140px !important;}
+
+	.mypage-content .mypage-row .half {width:100%;}
+	.dl-horizontal.mypage-info dd a.btn-fillgreyBox {float: left; padding: 9px 20px;}
+	.dl-horizontal.mypage-info dd .mypage-input {float: left;}
+	.dl-horizontal.mypage-info dd .mypage-input {float: left; margin-right: 5px;}
+	
+	.mypage840 {width:640px;}
+}
+
+@media (min-width: 1199px) and (max-width: 1499px) {
+	.lightBox {width: 60% !important; margin:auto !important; padding: 1.5em 2em; left:20%}
+  		.lightBox a.btn-fillgrey, .lightBox a.btn-fillBlue {width: 140px !important;}
+
+}
+
+@media (min-width: 1130px) and (max-width: 1199px) {
+	.seese-gototop {right: 1%;}
+	.seese-specialPage {left: .5%;}
+
+}
+
+@media (min-width: 1074px) and (max-width: 1130px) {
+	.seese-gototop {right: -.5%;}
+	.seese-specialPage {left: -1%;}
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 991px) {
+	.mypage-content .subsection-text {margin-left:0px !important;}
+	.subsection-wrapper {display:flex !important;}
+	.hd-wrapper {width:100% !important;}
+	.section-content.half-half .subsection-text .image {text-align:center !important; padding:54px;}
+	.seese-mainmenu {margin: 0 !important;}
+	.seese-mainmenu ul li {margin: 0 0 0 25px !important;}
+	.seese-contentCol .section-content.aligncenter p {text-align:center !important;}
+	.mypage-wrapper {width:100%;}
+	.roundselectBox .roundBox .infomark {top: 42% !important; right: -28px !important; left:auto !important;}
+	.tabs-wrapper .faq-tabs li a {padding:15px 40px !important;}
+	
+	.lightBox {width:90% !important; margin: auto !important; padding: 1.5em; left:5%;}
+  	.lightBox a.btn-fillgrey, .lightBox a.btn-fillBlue {width: 46% !important;}
+	.lightBox .product-order-num {float: left !important; margin-top: 10px !important; margin-left: -30px !important;}
+	.glide-wrapper .glide {width:200px !important; height:200px !important;}
+	.glide__slide {width:200px !important;}
+	
+	.mypage640, .mypage840, .box500 {width:480px !important;}
+	.wisely-order-review {width:100% !important;}
+	.wisely-shipping-info .subsection {width:100%; margin: 0 auto;}
+	
+	.fillbackground-store {background:url(../images/fillbgimage-03.jpg) -350px 0 no-repeat; height: 450px; padding: 40px 0 !important; background-size: initial; border-bottom:1px solid #ccc;}
+		.fillbackground-store.subsection .title {margin-left: 350px; margin-bottom: 12px !important; letter-spacing: -1px;}
+		.fillbackground-store.subsection .desc {margin-left: 350px; letter-spacing: -1px;}
+		.fillbackground-store.subsection a.link-underline {font-size: 14px !important; margin: 0;}
+	
+	.mypage-content .mypage-row .half {width:100%;}
+	.dl-horizontal.mypage-info dd a.btn-fillgreyBox {float: left; padding: 9px 20px;}
+	.dl-horizontal.mypage-info dd .mypage-input {float: left; margin-right: 5px;}
+	
+	#subscription-product .roundBox-col-2 {padding-bottom: 0px !important;}
+	.subscription-period .best-tag {top: 46% !important; left: auto !important; right: 15px !important;}
+	.wrapper960 {width:100%;}
+	.wrapper1120 {width:100%;}
+	 .subsection-box {width: 94% !important; margin: 3% !important;}
+   	.subsection-box a.btn-strokeblue,.subsection-box a.btn-strokeblue-small {display:none;}
+		.subsection-box .desc { float: left; text-align: center; width: 100%; }
+			.subsection-box.box1 .image, .subsection-box.box2 .image  {float:none; margin:0 auto;}
+		.subsection-box.box2 {margin-bottom:30px;}
+		.subsection.store-list .floatR {width:100%;}
+		.subsection-box.box3 {float:left; width: 44% !important; padding: 20px 25px; }
+			.subsection-box.box3 .image {width:100%;}
+		.subsection-box.box4 {float:right; width: 44% !important; padding: 20px 25px;}
+			.subsection-box.box4 .image {width:100%;}
+		.bluetag-area { width: 100%; margin-bottom: 15px;}
+			.bluetag {float: none; margin: 0 auto;}
+	
+	.woocommerce ul.products li {padding: 10px !important; min-height: 300px !important;}
+	
+	.roundBox-product.orderList .product-name {font-size:18px;}
+  
+	.seese-topright li {margin-left: 25px;}
+	.seese-specialPage {left: -29px;}
+	.seese-gototop {right: -20px;}
+	.seese-rightCol {margin-top: 64px;}
+	.seese-leftCol {margin-bottom: 64px;}
+	.seese-team-box .seese-team-text p {line-height: 18px;font-size: 12px;}
+	.seese-gallery li {max-height: 172px;}
+	.seese-mainmenu ul li.seese-megamenu > ul {width: 519px;}
+	.seese-form-order-filter select { min-width: 200px; }
+  
+	.lightBox {width: 90% !important;margin: auto !important;padding: 1.5em;left: 5%;}
+	.lightBox a.btn-fillgrey, .lightBox a.btn-fillBlue {width: 46% !important; padding: 13px 0 !important;}
+	.lightBox .product-name {font-size:24px !important;}
+	.lightBox .product-price {margin: 10px 0 15px !important; font-size: 24px;}
+	.lightBox .product-descList {float: left; position: relative; margin: 0px 0px 15px!important; font-size: 16px; width: 100%;}
+	.lightBox .product-order-num {float: right !important; margin-top: 10px !important; position: absolute !important; right: 30px; bottom: 80px;}
+	.lightBox .product-order-num2 {margin-top: 10px !important; position: absolute; top: 50px; left: 50%;}
+	.lightBox .lastbtnBox {margin-top: 0px !important;}
+	.lightBox .product-order-num {float: left !important; margin-top: 10px !important; margin-left: -30px !important;}
+	.lightBox .product-img, .lightBox .product-name, .lightBox .product-price, .lightBox .product-info {float:left !important; width:100% !important; position:relative;}
+	.lightBox .product-img {text-align: center;}
+	.glide-wrapper .glide {width:200px !important; height:200px !important; margin:0 auto;}
+	.glide__slide {width:200px !important;}
+	
+	.subscription-period .roundBox-col-3 .roundBox {width:100% !important;}
+	.subscription-period .best-tag {top: 38% !important; left: auto !important; right: 15px !important;}
+	.subscription-period .period-img img {width: 45px; height: 58px; float: left; min-width: auto !important; margin-top: 0px !important;}
+	.subscription-period .product-period {float:right !important; width:75% !important; padding: 15px 0 0 0 !important; text-align: left;}
+
+
+}
+
+@media (min-width: 900px) and (max-width: 991px) {
+	.seese-gototop {right: 1%;}
+	.seese-specialPage {left: .5%;}
+}
+
+
+@media (max-width: 768px) {
+.woocommerce-cart-form__cart-item .product-name {padding-left: 20px;} 
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.wrapper960 {width:100%;}
+	.wrapper1120 {width:100%;}
+	.hd-wrapper {width:100% !important;}
+	.seese-fixed-header .seese-header {/*border-bottom:none;*/}
+	.subsection-wrapper.paddingtb {padding-top:70px; padding-bottom: 70px;}
+	.section-content {padding-left:15px !important; padding-right:15px !important;}
+	.home .section-content.half-half .subsection-text .image {padding: 0px 0 20px;}
+	.section-content.half-half .img-graph {height:340px;}
+	.home .section-content.half-half  a.link-underline {margin: 10px 0 !important;}
+	
+	.page-id-3035 .wisely-order-review .subsection.orderList .mypage-title,
+	#signup_area .mypage-title {font-size: 28px !important; font-family:'notokr-light'; color: #333333; margin-top: 0px !important;}
+	.wisely-shipping-info .title, .wisely-billing-info .title {margin-top: 50px;}
+	#signup_area .subsection-wrapper.paddingtb {padding-top:50px !important;}
+	#login_area .stitle2 {margin: 0px 0 50px;}
+	.mobile-subscription .subsection-wrapper.paddingtb {padding-top: 50px;}
+	.mobile-subscription.subsection .image img {height:230px;}
+	
+	.lightBox {width: 90% !important;margin: auto !important;padding: 1.5em;left: 5%;}
+	#password_recovery_area {margin: 0 !important; left: 5%; width: 90% !important;}
+  	.lightBox a.btn-fillgrey, .lightBox a.btn-fillBlue {width: 46% !important; padding: 13px 0 !important;}
+	.lightBox .product-name {font-size:24px !important;}
+	.lightBox .product-price {margin: 10px 0 15px !important; font-size: 24px;}
+	.lightBox .product-descList {float: left; position: relative; margin: 0px 0px 15px!important; font-size: 16px; width: 100%;}
+	.lightBox .product-order-num {float: right !important; margin-top: 10px !important; position: absolute !important; right: 30px; bottom: 80px;}
+	.lightBox .product-order-num2 {margin-top: 10px !important; position: absolute; top: 50px; left: 50%;}
+	.lightBox .lastbtnBox {margin-top: 0px !important;}
+	.lightBox .product-order-num {float: left !important; margin-top: 10px !important; margin-left: -30px !important;}
+	.lightBox .product-img, .lightBox .product-name, .lightBox .product-price, .lightBox .product-info {float:left !important; width:100% !important; position:relative;}
+	.lightBox .product-img {text-align: center;}
+	.glide-wrapper .glide {width:200px !important; height:200px !important; margin:0 auto;}
+	.glide__slide {width:200px !important;}
+	
+	/* Singn up, Sign in */
+	body.page-id-32 .subsection-wrapper.paddingtb,
+	body.page-id-2990 .subsection-wrapper.paddingtb,
+	body.page-id-3056 .subsection-wrapper.paddingtb {padding:0 !important;}
+	.control-label, .signupBox .form-group, .form-group .col-xs-12 {text-align:left !important; padding:0;}
+	body.page-id-2990 .btn-fillBlue, body.page-id-3056 .btn-fillBlue {margin-bottom: 70px;}
+	.password-msg {left: 0px; }
+	.signupBox .signup-input {width:100% !important;}
+	
+	/* Subscription */
+	.subsection.subscription-faq, .subsection#section-faq  {background: #f6f6f6;}
+	.subsection.mobile-subscription .subsection-text .title {font-family: 'notokr-regular';}
+	
+	/* Brand Story */
+	.subsection.fillbgimage-04 {background-size: 270%; height: 530px;}
+		.subsection.fillbgimage-04 .title {margin-top: 140px;}
+	
+	/* Help */
+	body.page-id-20 .seese-fixed-header .seese-header {background: #f6f6f6 !important;}
+	.arconix-faq-wrap {border-bottom:none !important;}
+	.arconix-faq-wrap, .arconix-faq-content {padding:0px !important;}
+	
+	/* Store */
+	body.page-id-18 .seese-fixed-header .seese-header {border:none;}
+	.subsection-box .product-name {font-size:22px;}
+	.subsection-box .product-desc {font-size:15px;}
+	.subsection-box .product-price {font-size:18px; margin-top: 20px;}
+	.subsection-box .bluetag-area .bluetag-best {float: initial;}
+	.fillbackground-store {background: url(../images/fillbgimage-mobile-03.jpg) top left no-repeat; height: 320px; padding: 40px 0 !important; background-size: initial; border-bottom:1px solid #ccc;}
+		.fillbackground-store.subsection .title {margin-left: 105px; font-size: 26px !important; margin-bottom: 12px !important; letter-spacing: -1px;}
+		.fillbackground-store.subsection .desc {margin-left: 105px; font-size: 13px !important; letter-spacing: -1px;}
+		.fillbackground-store.subsection a.link-underline {font-size: 14px !important; margin: 0;}
+	.subsection.store-main .title.align-center {letter-spacing: -1px; font-family: 'notokr-regular'; margin-top: 5px !important;}
+	.subsection.store-list .title.align-center {letter-spacing: -1px; font-size: 30px !important; font-family: 'notokr-regular';}
+	
+	.subsection.store-list .floatR {width:100%;}
+	.subsection-box {width:100% !important;}
+	.subsection-box a.btn-strokeblue,.subsection-box a.btn-strokeblue-small {display:none;}
+		.subsection-box .desc { float: left; text-align: center; width: 100%; }
+		.subsection-box.box2 {margin-bottom:30px;}
+		.subsection-box.box3 {float:left; width: 48% !important; padding:40px 20px; }
+			.subsection-box.box3 .image {width:100%; margin-bottom:30px;}
+		.subsection-box.box4 {float:right; width: 48% !important; padding:40px 20px;}
+			.subsection-box.box4 .image {width:100%; margin-bottom:30px;}
+		.bluetag-area { width: 100%; margin-bottom: 15px;}
+			.bluetag {float: none; margin: 0 auto;}
+	
+	.subsection-box .image {float: initial !important; text-align: center; margin: 0 auto;}
+	
+	/* Product */
+	.seese-product-image-col, .single-product .seese-single-product-showcase, .seese-product-summary-col {padding: 0 !important;}
+	.wisely-price-selection .selectable .item-name {letter-spacing: -1px;}
+	.wisely-price-selection .selectable .item-name {width:33%;}
+	.wisely-price-selection .selectable .price {width:43%;}
+	.wisely-checkout-buttons .button, .wisely-checkout-buttons-mobile .button {padding:15px 17% !important;}
+	
+	.wisely-cart-container .cart-minus, .wisely-cart-container .cart-minus:hover {background-size: 70%;}
+	.wisely-cart-container .cart-plus, .wisely-cart-container .cart-plus:hover {background-size: 70%;}
+	.wisely-cart-container .cart-val {width: 40px; font-size: 22px;}
+	.cart-total-price-value {font-size:25px;}
+	
+	/* Cart & Checkout */
+	.subsection.subscription-product .section-content.aligncenter,
+	.subsection.subscription-period .section-content.aligncenter {padding:0 !important;}
+	.roundBox-col-2 .roundBox {width: 90% !important; margin-bottom: 12px !important;}
+	.roundselectBox .infomark {float:right; margin-top: 50px;}
+	
+	body.woocommerce-checkout .section-content {padding:0 !important;}
+	.wisely-cart .sub-title {font-size: 16px;}
+	.wisely-order-review {width:auto !important; margin:60px auto 0 !important;}
+	.subsection.orderList .mypage-title {margin:20px 0 30px !important;}
+	#cart-summary-total {text-align:right; color:#333; font-family: 'notokr-medium' !important; color:#0096ff; font-size:24px;}
+	.cart-buttons a.btn-fillBlue {font-size: 18px; float: right; padding: 13px 0 !important; width: 54%; margin-left:0 !important;}
+	.cart-buttons a.btn-strokegrey {font-size: 18px; float: left; padding: 12px 0 !important; width: 44%;}
+	a.btn-strokrdarkgrey {font-size: 18px;  padding: 12px 0 !important; width: 44%;}
+	
+	.table.orderDetailTable tr.product {border-top:1px solid #ccc;} 
+	.table.orderDetailTable tr.shipping {border-top:1px solid #ccc;}
+	.table.orderDetailTable .Topbar td {display:none;}
+	
+	.subsection#signup_area, .subsection#login_area, .subsection#loggedin_area  {padding:0 15px !important;}
+	.subsection#password_recovery_area {}
+	.subsection.orderList {padding:0 15px;}
+	.productList .m-productImg {float:left; width:40%; margin:10px 0px 10px 0;}
+	.productList .m-productName {float: left; width:55%; margin:30px 0 10px; font-size: 18px; font-family: 'norkr-regular'; }
+	.productList .m-productQuantity {font-size:14px; float: left;}
+	.m-productPrice {font-size: 18px; width:80px; font-family: 'norkr-regular'; letter-spacing: -1px;}
+	
+	.table.orderDetailTable tr.product td {font-size: 16px; padding:0 !important;}
+	.table.orderDetailTable tr.shipping td {font-size:16px; padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px;}
+	.table.orderDetailTable tr.total td {font-size:20px; padding-top:20px; padding-bottom:20px;}
+	.table.orderDetailTable tr.total-next td {font-size:20px;}
+	.table.orderDetailTable tr.total-subscription td {font-size:16px;}
+	
+	.table.orderDetailTable tr.total td,
+	.table.orderDetailTable tr.total-next td,
+	.table.orderDetailTable tr.total-subscription td {background:#f6f6f6; padding-left:20px; padding-right:20px;}
+	
+		.table.orderDetailTable tr.total span.m-left,
+		.table.orderDetailTable tr.total-next span.m-left,
+		.table.orderDetailTable tr.total-subscription span.m-left {float:left;}
+		
+		.table.orderDetailTable tr .line {display:none;}
+		
+		.table.orderDetailTable tr.total span.m-right,
+		.table.orderDetailTable tr.total-next span.m-right,
+		.table.orderDetailTable tr.total-subscription span.m-right {float:right; width:auto !important;}
+	
+	.wisely-shipping-info .subsection,.wisely-shipping-info .subsection .half, .shipping-edit .half {width:100% !important;}
+	.subsection.orderList .mypage-msg {padding:0 !important;}
+	
+	/* Mypage */
+	.mypage .sidebar { padding-right: 0px; width: 100%; }
+	.mypage .mypage-content { box-shadow:none; width: 100%;}
+	
+	.mypage-msg {width:100%; font-size:14px;}
+	.mypage-msg.btn-mgTop100 {margin-top:0px; font-size:14px; text-align:right; padding:0px; padding-right: 20px;}
+	.wisely-shipping-info .tabBar {background: #fff; box-shadow: 0px 3px 12px #ddd;}
+		.wisely-shipping-info .tabBar li {width:50%; text-align:center;}
+	.checkout-row.form-inline {padding:0 15px !important;}
+		.checkout-row.form-inline dl {padding:0 !important;}
+	.checkout-row input#recent_address_zipcode, .checkout-row input#new_address_zipcode {float: left; width: 45% !important;}
+	.mypage-form a.btn-filldarkgreyBox {float:left;}
+	.checkout-row .mypage-form a.btn-fillgreyBox {padding: 12px 0 !important; font-size: 16px !important; float: right; width: 50%; text-align: center;}
+	
+	.lightBox .product-type {font-size: 20px;}
+	
+	.checkout-row input#recent_address_name,
+	.checkout-row input#recent_address_phone,
+	.checkout-row input#recent_address_address1,
+	.checkout-row input#recent_address_address2,
+	.checkout-row textarea#recent_order_comments,
+	.checkout-row input#new_address_name,
+	.checkout-row input#new_address_phone,
+	.checkout-row input#new_address_address1,
+	.checkout-row input#new_address_address2,
+	.checkout-row textarea#new_order_comments {width:100% !important;}
+	#shipping_info_area .subsection-wrapper.btn-mgBottom50 {margin-bottom:0;}
+	
+	label.payment_method_title {padding-bottom: 20px;}
+	
+	.wisely-billing-info .subsection.col-xs-12 {padding:0 15px !important;}
+		.wisely-billing-info .subsection.col-xs-12 .col-xs-12  {padding:0px !important;}
+	.checkout-last label {font-size:16px !important; letter-spacing: -1px; line-height: 200%;}
+	
+	.mypage-msg strong {font-size: 22px;}
+	.mypage-desc {font-size: 25px; letter-spacing: -1px;}
+	.mypage a.btn-lineBox {padding: 10px; font-size: 16px; width: 48%; min-width:auto;}
+		.mypage a.btn-lineBox img {height:30px;}
+	 
+	.mypage .subsection {margin-right: 0px !important; padding: 0px !important; margin-left:0px !important;min-height: 440px !important;}
+	.mypage .subsection .title {font-size: 24px !important; font-family: 'notokr-medium'; color: #333; margin-bottom: 20px !important;}
+	
+	.mypage .sidebar {padding:0 0 20px !important; margin:0 !important; box-shadow: 0px 4px 5px #ccc; z-index: 2; border-top: 1px solid #ccc; background: #FFF;}
+	.mypage-content {box-shadow: none !important; width:100% !important; padding: 0px !important;}
+	.mypage-content .subsection {padding: 0px !important;}
+	
+	.mypage-sidebar {width:100%; text-align:center;}
+	.mypage640, .mypage840, .box500, .box400 {width:100% !important;}
+		.box500 .mypage-stitle {padding:0;}
+		
+		.red-title {font-size:16px; letter-spacing:-0.5px;}
+		.topline {padding-top: 20px; margin-top: 70px;}
+	.mypage-wrapper {width:100%; padding: 0 0 50px !important;}
+	.mypage-input.full-width {width: 100%; float: left;}
+	.mypage .title {font-size: 24px !important; margin: 30px 0 20px !important;}
+	.mypage-content .subsection-text .title {padding-left:15px;}
+	.mypage-title {font-size: 24px !important; font-family: 'notokr-medium'; color: #999; margin-bottom: 40px !important; margin-top: 30px !important;}
+	.tabBar li {font-size: 18px; padding: 15px 0; width:50%; text-align:center;}
+	
+	.mypage .roundBox {margin-bottom:10px;}
+	.roundBox.next-payment-date .pull-right.desc {font-size: 20px; padding-right: 60px !important;}
+	
+	.calendar table {width:100% !important;}
+	
+	.roundselectBox .roundBox {padding:10px 20px 10px 20px !important;}
+	.roundselectBox .roundBox.selected-border {padding:9px 19px 9px 19px !important;}
+	.roundselectBox .roundBox.selected {background-size:31px 24px !important;}
+	.roundselectBox .roundBox.selected, .roundselectBox .roundBox.unselected {padding:8px 18px 8px 38px !important; margin-right:0;}
+	
+	.roundBox .pull-left { padding: 15px 0px 10px 25px; }
+	.roundBox .stitle strong {font-size:20px;}
+	.mypage-content .subsection-text {margin-left:0px !important;}
+	.roundselectBox .roundBox .product-name {font-size:18px; text-align: right; margin-top:9px;padding-bottom:4px !important;}
+	.roundselectBox .roundBox .product-quantity {font-size:16px !important; text-align: right; padding: 0 !important;}
+	.roundselectBox .roundBox .product-price {font-size:16px; text-align: right;}
+	.roundBox-product .product-img {padding: 10px 0 !important; width: 30%;}
+	.roundBox-product .product-order {float: right !important; line-height: 100% !important; padding: 10px 0px 10px !important; width: 65%; font-size: 14px; font-family: 'notokr-medium' !important;}
+	.roundBox-product .product-name {line-height: 70px !important; font-size: 21px !important; float: right; width: 65%;}
+	.roundBox-product .product-name .number {font-size:14px;    top: 26px;    height: 45px;}
+	.roundBox .pull-right.desc {width: 60% !important; font-size:18px; padding:15px 45px 10px 0px !important;}
+	.mypage-row a.link-red {padding:0px !important;}
+	a.btn-fillblueBox {float: left; padding: 9px 20px;}
+	.nextDate ul li {font-size: 16px;}
+	.nextDate span.date {padding-left:0px; font-size: 20px;}
+	.tipBox ul {font-size: 15px;}
+	.tabBar.orderList {margin: 40px 0px 10px 0px !important;}
+		.date-info {margin-bottom:15px;}
+		.date-info .floatR {float:left;}
+		.status-info {padding:20px !important;}
+		.status-info .shipping-status {font-size: 18px;}
+	.roundBox .pull-right.desc a {right: 20px; top: 14px;}
+	.roundBox-product.orderList .product-img {padding:0 !important;}
+	.roundBox-product.orderList .product-name {float: left; padding:0 !important;  position: relative;}
+	.roundBox-product.orderList .product-order {float: right !important; width: 100%; text-align: right;position: inherit;}
+	.table.orderDetailTable tr.product img.img-product {width:42%;}
+	.product-name .floatL {font-size:18px;}
+	.product-name .floatR {float: right; padding-left: 0px; font-size: 18px;}
+		a.btn-more {width: 58px; height: 26px; background: url(/wp-content/themes/wisely/assets/images/btn-more.png) 10px 9px no-repeat; top: 0px !important; left: 0px !important; position: relative;}
+	.shipping-info-1 label, .shipping-info-2 label {width: 100px; text-align: left; padding-right: 20px; height: auto !important; line-height: 150%; padding-bottom: 24px;}
+	ul.shipping-info-1, ul.shipping-info-2 {float:left; width:100%; font-size:18px;}
+		ul.shipping-info-1 li, ul.shipping-info-2 li {float:left; width:100%;}
+	
+   .mobile-main-slide .subsection-wrapper.paddingtb {padding-top:100px;}
+   .subsection .title {font-size:35px !important; margin-bottom: 30px !important; text-align:left; padding: 0px; letter-spacing:-1px;}
+   .subsection .title.align-center {text-align:center !important; padding: 0 !important;}
+   .subsection .desc.align-left {text-align:left !important;}
+   .subsection .title2 {font-size:42px !important;}
+   
+	.woocommerce.single .seese-product-summary-col {max-width:100% !important;}
+	.seese-product-summary-col .entry-summary {min-width:100% !important;}
+	.wisely-cart-container {float: right; margin-top: -30px;}
+	.seese-product-summary-col .wisely-cart-container {float:left; width: 100%; margin:10px 0 !important;}
+	
+   .seese-footer .widget_nav_menu li a {font-size:16px !important;}
+   .seese-copyright  {font-size:13px !important;}
+   .section-content.half-half {padding-top:0 !important;}
+   .section-content.half-half .subsection-text .image {text-align:center !important; padding:40px;}
+   
+   body.page-id-24 .section-content.half-half img {height: 360px;}
+   .section-content.half-half2, .section-content.half-half3 {padding-top: 50px; padding-bottom: 50px;}
+   body.page-id-20 .subsection-wrapper.paddingtb {padding-top: 50px; padding-bottom: 20px;}
+   
+   /* .section-content p {text-align:left !important;} */
+   .subscription-faq .title {text-align:center !important;}
+   .subsection.mobile-main-slide .subsection-text .title, 
+   .subsection.mobile-subscription .subsection-text .title {text-align:center !important;  letter-spacing:-1px;}
+   .ft-sns {float: left; width: 100%; list-style: none; font-size: 20px; padding-bottom: 34px; margin-bottom: 40px; border-bottom: 1px solid #555;}
+   .ft-sns li {width: 33% !important; margin:0 !important; text-align: center;}
+   .hd-bar {height:62px;}
+   .pdTop20-sm {padding-top:20px;}
+   
+   .subsection, .section-content {padding:0;}
+   .dl-horizontal.mypage-form dt {width: 100% !important; text-align:left !important;}
+   .dl-horizontal.mypage-form dd {width: 100% !important; margin-left: 0px !important; text-align: left;}
+   .dl-horizontal.mypage-info dt {width: 100% !important; text-align:left !important;}
+   .dl-horizontal.mypage-info dd {width: 100% !important; margin-left: 0px !important;}
+	 .mypage-content .mypage-row .half {width:100%;}
+	 .dl-horizontal.mypage-info.full dt br {display:none;}
+	 .dl-horizontal.mypage-info dd a.btn-fillgreyBox,
+	 .dl-horizontal.mypage-form dd a.btn-fillgreyBox {float: left; padding: 9px 20px;}
+	 .dl-horizontal.mypage-info a#btn-update-marketing {margin-top: -15px !important;}
+	 .dl-horizontal.mypage-info dd .mypage-input,
+	 .dl-horizontal.mypage-form .mypage-input {float: left; margin-right: 5px;}
+	 .dl-horizontal.mypage-info .checkBox {margin-top: 5px;}
+   .mypage-row label {width: 100% !important; text-align: left !important; padding-bottom: 7px;}
+   .mypage-row a.link-red {padding: 40px 20px;}
+   .mypage-content .fillbackground {padding-bottom:10px !important;}
+   .sidebar .dropdown {width: 230px; margin: 0 auto;}
+   .sidebar .dropdown-menu {width: 230px; margin:0; padding:0; top:60px; }
+   .sidebar .dropdown-menu>li>a {padding: 12px 20px; font-size: 20px;}
+   .sidebar .dropdown-menu .divider {margin:0;}
+   .roundselectBox .roundBox .infomark {top: 42% !important; right: -28px !important;  left:auto !important;}
+	
+	.big-title {font-size:25px;}
+	.small-title {font-size:18px;}
+	#subscription-product .roundselectBox .roundBox .product-img {padding-right: 10px;}
+	#subscription-product .roundselectBox .roundBox.unselected {background-size:24px 24px !important;}
+	#subscription-product .roundselectBox .roundBox .product-img {padding-right: 10px !important;}
+	
+	#simple-products .roundBox {padding-bottom: 10px !important;}
+	.title-desc {font-size: 16px !important; line-height: 130% !important;}
+	#subscription-product .roundBox-col-2 {padding-bottom: 0px !important;}
+	.subscription-period .roundBox-col-3 .roundBox {width:100% !important;}
+	.subscription-period .best-tag {top: 38% !important; left: auto !important; right: 15px !important;}
+	.subscription-period .period-img img {width: 45px; height: 58px; float: left; min-width: auto !important; margin-top: 0px !important;}
+	.subscription-period .product-period {float:right !important; width:75% !important; padding: 15px 0 0 0 !important; text-align: left;}
+	.roundselectBox .roundBox.selected {background-position-x: 9px;}
+
+	.tabs-wrapper .faq-tabs {float:left; width:100%; padding:0 !important;}
+	.tabs-wrapper .faq-tabs li {float:left; width:33%;}
+	.tabs-wrapper .faq-tabs li a {letter-spacing: -1px; padding:10px 0 !important; font-size:15px;}
+	
+	.seese-contentCol h1.product_title {font-size:30px;}
+	.wisely-shipping-desc {margin-top:10px;}
+	.wisely-price-selection .single-item-price {font-size:22px;}
+	.wisely-shipping-desc {font-size:14px;}
+	.wisely-price-selection {margin-top: 40px;}
+	#support_free_shipping, .seese_single_product_excerpt, .woocommerce-product-details__short-description, .product_meta, .first-payment-date {display: none;}
+	.woocommerce-Price-amount amount {font-size:20px;}
+	.product-shipping {font-size:18px;}
+	.mobile-main-slide .product-price {font-size:20px; margin: 7px 0 0 0;}
+	.subscription-period .product-period {font-size:20px;}
+	.help .subsection .title {font-size: 35px !important; text-align:center !important; margin-bottom: 0px !important; letter-spacing: -1px !important; padding:0 !important;}
+	.help .subsection .stitle {font-size: 20px !important; margin: 10px 0 70px !important;}
+	.help .subsection .desc { letter-spacing:0px !important;}
+	.help .fillbackground .desc img {width: 25px;}
+	.help .fillbackground .desc .col-xs-12 {padding-bottom: 50px;}
+	.arconix-faq-title {font-size:16px;}
+	.faq-more {width:100%; padding: 25px !important;}
+	.faq-more h4 {font-size: 30px !important;}
+	.faq-more ul li {font-size: 14px !important;}
+
+	/** lightbox */
+	.lb-notification .lb-message {font-size: 23px; font-family: 'notokr-regular'; color: #666; line-height: 150%; text-align:center; }
+	.lb-notification .btn-fillgrey {width:100% !important;}
+	
+  .retina-logo {display: block;}
+  .default-logo {display: none;}
+  .seese-topright li {margin-left: 12px;}
+  .seese-specialPage {left: -34px;}
+  .seese-gototop {right: -28px;}
+  .seese-fixed-header .seese-wrapper {margin-top: 62px;}
+  .admin-bar .seese-fixed-header .seese-wrapper {margin-top: 52px;}
+  .seese-rightCol {margin-top: 64px;}
+  .seese-leftCol {margin-bottom: 64px;}
+  .seese-aside {width:360px;}
+  .seese-contentCol ul.owl-carousel .owl-nav .owl-next,
+  .seese-contentCol ul.owl-carousel .owl-nav .owl-prev {margin-left: 0;margin-right: 0;}
+  .seese-team-box {
+    margin: 20px auto;
+    text-align: center;
+    width: auto;
+    max-width: 380px;
+  }
+  .seese-cntr-box {text-align: center;}
+  .seese-btn-mode .seese-btn {margin-bottom: 10px;}
+  form {overflow: auto;}
+  .woocommerce-cart form {overflow: inherit;}
+  table {width: auto !important;}
+  .slick-slider .seese-prslr-content .seese-prslr-title {
+    font-size: 18px;
+    margin-bottom: 0px;
+    line-height: normal;
+  }
+  .slick-slider .seese-prslr-content .seese-prslr-desc {
+    font-size: 14px;
+    line-height: normal;
+    margin-bottom: 4px;
+  }
+  .slick-slider .seese-prslr-content .seese-prslr-price,
+	.slick-slider .seese-prslr-content .seese-prslr-shopNow-title a {
+    font-size: 12px;
+    line-height: normal;
+    margin-bottom: 0;
+  }
+  .seese-aside .widget_shopping_cart_content .buttons {width: 260px;}
+  .modal-lg {margin: 200px auto;}
+  .seese-gallery li {max-height: 100px;}
+  .woocommerce.single table.variations tr {display: block;}
+  .seese-pagination .newer,
+	.seese-pagination .older {text-align: center;}
+  .seese-pagination .newer {margin-bottom: 20px;}
+  .seese-aside .widget_shopping_cart_content .total {width: 260px;}
+  #seese-mobilemenu .slicknav_menu .slicknav_btn {
+    margin-top: 0;
+    width: 28px;
+    height: 22px;
+    z-index: 99;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+	}
+  .seese-topright {z-index: 1111; position: absolute; top:20px; right: 20px; padding: 0 !important; margin:0 !important;margin-left:inherit; margin-right:inherit;}
+  .header_logo.simple {float: none; width: 100px !important; margin: 0 auto !important; padding: 10px 0 6px !important; position: initial;}
+  .header_logo {z-index: 1111; position:absolute; top:10px; left: 50%; padding: 0 !important; margin-left: -50px !important; margin-right:inherit;}
+  	.header_logo #wisely-logo-svg {width: 100px !important; height: 40px !important;fill:#353535 !important;}
+  
+  .admin-bar #seese-mobilemenu .slicknav_menu .slicknav_btn {top: 77px;}
+  .admin-bar .seese-fixed-header #seese-mobilemenu .slicknav_menu .slicknav_btn {top: 32px;}
+  .seese-sharebar .sharebox {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .seese-sharebar .tagbox {
+    text-align: left;
+    width: 100%;
+  }
+  .seese-footer .widget_nav_menu li {margin-bottom: 10px;}
+  .blog .seese-contentCol .owl-carousel .owl-nav .owl-prev,
+	.single .seese-contentCol .owl-carousel .owl-nav .owl-prev,
+	.blog .seese-contentCol .owl-carousel .owl-nav .owl-next,
+	.single .seese-contentCol .owl-carousel .owl-nav .owl-next {
+    height: 35px;
+    line-height: 35px;
+    width: 35px;
+  }
+  .single .seese-contentCol .owl-carousel.seese-related-product-slider .owl-nav .owl-next,
+	.single .seese-contentCol .owl-carousel.seese-related-product-slider .owl-nav .owl-prev {
+    width: auto;
+    height: auto;
+  }
+  .seese-commentbox li .children, .seese-commentbox ul ul {margin-left: 50px;}
+  .seese-blog-pagination .newer {margin-bottom: 15px;}
+  .seese-blog-pagination .older,
+	.seese-blog-pagination .newer {text-align: center;}
+	
+	.mobile-hide {display:none !important;}
+}
+
+@media (max-width: 667px) {
+	.seese-specialPage a,
+	.seese-gototop a {display: none;}
+  .single-product .seese-single-product-showcase .seese-single-product-menu a {margin-top: -50px;}
+}
+
+@media (max-width: 508px) {
+.single-product .seese-single-product-showcase .seese-single-product-menu {display: none;}
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  .wpcf7-form label {width: 100%;}
+  .wpcf7-form label:first-child {margin: 0 0 24px;}
+  .slick-slider .seese-prslr-content .seese-prslr-desc,
+  .slick-slider .seese-prslr-content .seese-prslr-price,
+  .seese-prslr-intro span {display: none;}
+  .seese-gallery li {max-height: 62px;}
+  .woocommerce-Tabs-panel .comment_container .description {
+    float: left;
+    width: 100%;
+    clear: both;
+    padding: 16px 0;
+  }
+  .post-password-form label {display: block;margin-bottom: 10px;}
+	.post-password-form input {width: 100%;}
+	.seese-commentbox li .children, .seese-commentbox ul ul {margin-left: 20px;}
+	.track_order h2,
+  .seese-containerWrap #seese-woo-register-wrap h2,
+  .seese-containerWrap #seese-woo-login-wrap h2,
+	.seese-contentCol h1.post-heading,
+	.seese-title-area .page-title {font-size: 38px;}
+  .single-product .seese-single-product-showcase .seese-single-product-menu a {display: none;}
+	.seese-shop-wrapper .seese-load-more-controls.seese-btn-mode .seese-btn {padding-left: 30px;padding-right: 30px;}
+
+}
+
+@media (max-width: 414px) {
+	
+  .slick-slider .seese-prslr-content.v_center {top: 17%;}
+  .slick-slider .seese-prslr-content.h_left {left: 10%;}
+  .slick-slider .slick-dots{top:19%;}
+  .seese-title-area .page-title {padding: 0 6px;}
+}
+
+@media (max-width: 375px) {
+	
+	.seese-topright li {margin-left: 6px;}
+	/*
+	.seese-topright li a > span.seese-cart-count {display: none;}
+	*/
+}
+
+@media (max-width: 768px) {
+    /** checkout-done > vbank for mobile */
+    .checkout-done-vbank { font-family:'notokr-light'; font-size:16px; width:100%; margin:60px auto;}
+    .checkout-done-vbank .msg { font-size:35px; text-align:center;}
+    .checkout-done-vbank ul { width:85%; margin:30px auto 0; }
+}

@@ -1,0 +1,27 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.shop.product.Product"%>
+<%@page import="com.itwill.shop.product.ProductService"%>
+<%@page import="com.itwill.shop.cart.CartItemDto"%>
+<%@page import="com.itwill.shop.cart.CartService"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@include file="member_login_check.jspf" %>
+<%
+	if (request.getMethod().equalsIgnoreCase("GET")) {
+		response.sendRedirect("product_list.jsp");
+		return;
+	}
+
+	try {
+		String sp_no = request.getParameter("p_no");
+		int p_no = Integer.parseInt(sp_no);
+		String m_id = (String) session.getAttribute("sM_id");
+		
+		CartService cartService = CartService.getInstance();
+		cartService.add(new CartItemDto(0, m_id, p_no));
+		response.sendRedirect("cart_view.jsp");
+	} catch(Exception e) {
+		response.sendRedirect("product_list.jsp");
+	}
+%>

@@ -1,0 +1,69 @@
+﻿package com.itwill.shop.product;
+
+import java.util.ArrayList;
+
+/*
+ * 회원관리 비즈니스로직(예외처리, 트랜젝션, 보안, 로깅)을 수행하는 클래스
+ */
+public class ProductService {
+	private ProductDao productDao;
+	private static ProductService _instance;
+	
+	public ProductService() throws Exception{
+		productDao = new ProductDao();
+		System.out.println("ProductService()생성자:"+this );
+	}
+	
+	public static ProductService getInstance() throws Exception {
+		if(ProductService._instance==null) {
+			ProductService._instance=new ProductService();
+		}
+		return ProductService._instance;
+	}
+	
+	
+	/*
+	 *  제품추가
+	 */
+	public int create(ProductDto productDto) throws Exception {
+		return productDao.create(productDto);
+	}
+	
+	
+	/*
+	 * 제품 하나 보기
+	 */
+	public ProductDto FindProduct (int p_no) throws Exception,ProductNotFoundException {
+		ProductDto productDto = productDao.findProduct(p_no);
+		if(productDto==null) {
+			throw new ProductNotFoundException(p_no+" 존재하지않는 제품입니다.");
+		}
+		return productDto;
+	}
+	
+	
+	/*
+	 * 제품리스트
+	 */
+	ArrayList<ProductDto> findProductList() throws Exception {
+		return productDao.findProductList();
+	}
+	
+	
+	/*
+	 * 제품 삭제
+	 */
+	public int remove(int p_no) throws Exception {
+		return productDao.remove(p_no);
+	}
+	
+	
+	/*
+	 * 제품 수정
+	 */
+	
+	public int update(ProductDto productDto) throws Exception {
+		return productDao.update(productDto);
+	}
+
+}

@@ -1,0 +1,10 @@
+1. 테이블정의서 작성(주키,외래키)
+2. sql 파일작성
+    A. drop sequence,table	
+    B. create sequence
+    C. table create,constraint 설정(PK,FK)
+    D. data insert
+   
+ex> bigcat-2016-25.sql
+3. sql정의서 작성
+

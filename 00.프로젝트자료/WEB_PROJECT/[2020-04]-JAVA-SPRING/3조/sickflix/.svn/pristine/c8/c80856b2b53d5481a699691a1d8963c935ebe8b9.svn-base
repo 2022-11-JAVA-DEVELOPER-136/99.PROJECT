@@ -1,0 +1,58 @@
+<%@page import="com.itwill.jumun.JumunDAO"%>
+<%@page import="com.itwill.shop.cart.CartItemDto"%>
+<%@page import="com.itwill.jumun_detail.JumunDetail"%>
+<%@page import="com.itwill.jumun.Jumun"%>
+<%@page import="com.itwill.jumun_detail.JumunDetailService"%>
+<%@page import="com.itwill.jumun.JumunService"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="com.itwill.member.PasswordMismatchException"%>
+<%@page import="com.itwill.member.MemberNotFoundException"%>
+<%@page import="com.itwill.member.Member"%>
+<%@page import="com.itwill.member.MemberService"%>
+<%@page import="java.net.URLDecoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("jumun_view.jsp");
+		return;
+	}
+
+	try {
+		String m_id = (String) session.getAttribute("sM_id");
+		
+		JumunService jumunService = JumunService.getInstance();
+		JumunDetailService jumunDetailService = JumunDetailService.getInstance();
+		
+		jumunService.create(Jumun);
+		jumunDetailService.create(JumunDetail);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		response.sendRedirect("jumun_success.jsp");
+
+	}catch(MemberNotFoundException e){
+		request.setAttribute("msg1",e.getMessage());
+		
+		RequestDispatcher rd=
+			request.getRequestDispatcher("member_login_form.jsp");
+		rd.forward(request, response);
+	}catch(PasswordMismatchException e){
+		String msg2 = URLEncoder.encode(e.getMessage(), "UTF-8");
+		response.sendRedirect("jumun_view.jsp?msg2="+msg2);
+	}catch(Exception e){
+		e.printStackTrace();
+		response.sendRedirect("member_error.jsp");
+	}
+	
+	
+%>

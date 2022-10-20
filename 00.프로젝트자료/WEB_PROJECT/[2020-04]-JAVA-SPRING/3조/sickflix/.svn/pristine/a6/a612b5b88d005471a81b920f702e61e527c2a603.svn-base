@@ -1,0 +1,29 @@
+package com.itwill.shop.cart.test;
+
+import com.itwill.genre.test.JavaSeDataSource;
+import com.itwill.shop.cart.Cart;
+import com.itwill.shop.cart.CartDao;
+
+public class CartDaoTestMain {
+	public static void main(String[] args) throws Exception {
+		CartDao cDao = new CartDao(JavaSeDataSource.getDataSource());
+		
+		System.out.println("<<<<<<<<<< Cart >>>>>>>>>>");
+		System.out.println("------ isProductExist ------");
+		System.out.println(cDao.isProductExist("Gin", 4));
+		
+		System.out.println("------ add ------");
+		System.out.println(cDao.add(new Cart(104, "Gin", 10)));
+		
+		System.out.println("------ deleteCartItem ------");
+		System.out.println(cDao.deleteCartItem(4));
+		
+		System.out.println("------ deleteCart ------");
+		System.out.println(cDao.deleteCart(1));
+		
+		System.out.println("------ findGenreList ------");
+		System.out.println(cDao.findGenreList());
+		
+	}
+	
+}

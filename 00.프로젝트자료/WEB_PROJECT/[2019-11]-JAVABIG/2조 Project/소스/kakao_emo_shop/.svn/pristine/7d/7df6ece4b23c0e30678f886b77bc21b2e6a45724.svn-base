@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>member수정폼</h1><hr>
+<form action="memberactionform.do" method="post">
+	닉네임<input type="text" name="emo_name"><br/>
+	이름<input type="text" name="emo_price"><br/>
+	패스워드<input type="text" name="emo_context"><br/>
+	전화번호<input type="text" name="emo_gruopNo"><br/>
+	<input type="submit" value="등록">
+	<input type="reset" value="취소">
+</form>
+</body>
+</html>

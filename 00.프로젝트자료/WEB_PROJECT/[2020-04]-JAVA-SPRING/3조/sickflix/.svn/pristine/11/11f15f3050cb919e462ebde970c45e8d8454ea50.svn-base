@@ -1,0 +1,125 @@
+
+/*
+ * groupno : 최상위글과 그글의 답글들을 하나의 구룹으로 묶기위한컬럼
+ * step    : 같은그룹내에서의 순서를 가지고있는 컬럼
+ * depth   : 답글의 깊이를 가지고있는 컬럼
+ */
+
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('Gin','gini','김소진', '010-1234-5678','Gin@naver.com');
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('Woo','wori','김동우', '010-0234-5158','Woo@naver.com' );
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('Sick','sicky','김의식', '010-6234-6453','meSick@naver.com' );
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('Min','mini', '김성민', '010-1794-9338','mini@naver.com' );
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('Been','Bin', '임형빈', '010-9244-3926','bin@naver.com' );
+commit;
+
+
+INSERT INTO board(b_no, b_title, m_id, b_content, b_date, groupno ,step, depth) 
+VALUES(	board_sequence.nextval,
+        '회원가입하고싶어요',
+        'Gin',
+        '등업해주세요',
+        sysdate,
+        board_sequence.currval,
+        1,
+        0);
+commit;
+
+
+/*
+INSERT INTO Board ( boardno,title,writer,content,groupno,step) 
+VALUES (board_sequence.nextval, ?, ?, ?,board_sequence.currval, 1);
+commit;
+*/
+
+
+INSERT INTO genre(g_no, g_name) values(1, '드라마');
+INSERT INTO genre(g_no, g_name) values(2, 'SF');
+INSERT INTO genre(g_no, g_name) values(3, '스릴러');
+commit;
+
+
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (1, '기생충', 9000, '상위계층과 하위계층의 갈등과 드라마', '131분',  9.5,1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (2, '인터스텔라', 7000, '우주인의 시간여행', '169분', 9.1,2);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (3, '추격자', 6000, '사이코패스 연쇄살인마를 추격하는 형사', '123분', 9.09,3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (4, '인사이드아웃', 6000, '사람의 머릿속에 존재하는 감정에 대하여..', '102분', 9.4,1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (5, '건축학개론', 6000, '첫사랑의 추억', '118분', 8.66,1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (6, '인셉션', 6000, '타인의 꿈에 들어가 생각을 훔치는 특수요원', '147분', 9.64,2);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (7, '메멘토', 5000, '기억장애를 가진자의 복수', '112분', 9.07,3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (8, '23 아이덴티티', 5000, '수많은 인격 중 누가 누구를 위해 움직이는가', '117분', 7.94,3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (9, '옥자', 7000, '슈퍼돼지 옥자를 구출하려는 미자의 여정', '120분', 8.77,1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_runtime, p_rate, g_no) values (10, '맨인블랙', 5000, '외계인침공으로부터 지구를 구출하려는 두 형사', '98분', 8.69,2);
+commit;
+
+
+ --1번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (101, 'Gin', 2);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (102, 'Gin', 4);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (103, 'Gin', 7);
+commit;
+
+
+ --2번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (201, 'Woo', 4);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (202, 'Woo', 9);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (203,'Woo', 10);
+commit;
+
+
+ --3번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (301, 'Sick', 1);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (302, 'Sick', 3);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (303, 'Sick', 6);
+commit;
+
+
+ --4번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (401, 'Min', 1);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (402, 'Min', 5);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (403, 'Min', 8);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (404, 'Min', 10);
+commit;
+
+
+ --5번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (501, 'Been', 5);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (502, 'Been', 9);
+commit;
+
+
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (1000, '인턴스텔라 외(2)', sysdate, 18000, 'Gin');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (2000, '인셉션 외(2)', sysdate, 19000, 'Woo');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (3000, '기생충 외(2)', sysdate, 21000, 'Sick');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (4000, '기생충 외(3)', sysdate, 25000, 'Min');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (5000, '건축학개론 외(1)', sysdate, 13000, 'Been');
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (1001, 1000, 2);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (1002, 1000, 4); 
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (1003, 1000, 7); 
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (2001, 2000, 4);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (2002, 2000, 9); 
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (2003, 2000, 10); 
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (3001, 3000, 1);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (3002, 3000, 3); 
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (3003, 3000, 6); 
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (4001, 4000, 1);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (4002, 4000, 5);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (4003, 4000, 8);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (4004, 4000, 10);
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (5001, 5000, 5);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (5002, 5000, 9);
+commit;
+

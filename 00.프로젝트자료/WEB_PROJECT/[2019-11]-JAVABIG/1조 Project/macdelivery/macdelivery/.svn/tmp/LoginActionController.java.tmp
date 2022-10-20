@@ -1,0 +1,42 @@
+package com.itwill.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.itwill.member.exception.MemberNotFoundException;
+import com.itwill.member.exception.PasswordMismatchException;
+import com.itwill.member.model.Member;
+import com.itwill.member.model.MemberService;
+import com.itwill.summer.Controller;
+
+public class LoginActionController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		
+		String m_id = request.getParameter("m_id");
+		String m_pwd = request.getParameter("m_pwd");
+		String forwardPath = null;
+		
+		try {
+			MemberService memberService = new MemberService();
+			Member member = memberService.login(m_id, m_pwd);
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
+			session.setAttribute("m_no", member.getM_no());
+
+			forwardPath = "redirect:McDelivery_main.do";
+
+		} catch (MemberNotFoundException e) {
+			forwardPath = "forward:McDelivery_login.jsp";
+			request.setAttribute("msg", e.getMessage());
+		} catch (PasswordMismatchException e) {
+			forwardPath = "forward:McDelivery_login.jsp";
+			request.setAttribute("msg", e.getMessage());
+		} catch (Exception e) {
+			forwardPath = "forward:McDelivery_login.jsp";
+			e.printStackTrace();
+		}
+		return forwardPath;
+	}
+}

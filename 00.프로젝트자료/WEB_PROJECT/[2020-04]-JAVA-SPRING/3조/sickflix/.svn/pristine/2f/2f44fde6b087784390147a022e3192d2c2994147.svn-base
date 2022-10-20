@@ -1,0 +1,16 @@
+package com.itwill.shop.cart;
+
+public class CartSQL {
+	//카트 추가하기
+	public static final String INSERT_CART =
+			"INSERT INTO cart VALUES (?, ?, ?)";
+	//카트 아이템 삭제하기
+	public static final String DELETE_CART =
+			"delete from cart where c_item_no = ?";
+	//카트 삭제하기
+	public static final String DELETE_CART_ITEM =
+			"delete from cart where m_id=?";
+	//카트 모든 정보 갖고오기
+	public static final String FIND_ALL_CART =
+			"select c_item_no, p_no from cart where m_id=?";
+}

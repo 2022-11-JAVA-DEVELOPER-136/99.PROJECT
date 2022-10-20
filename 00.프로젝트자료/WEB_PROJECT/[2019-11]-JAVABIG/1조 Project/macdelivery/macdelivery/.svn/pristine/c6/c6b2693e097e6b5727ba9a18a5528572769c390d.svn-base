@@ -1,0 +1,27 @@
+package com.itwill.board.model;
+
+public class BoardService {
+	BoardDao boardDao;
+	public BoardService() throws Exception{
+		boardDao = new BoardDao();
+	}
+	/*
+	 * 게시글 쓰기 
+	 */
+	public int writeBoard(Board board)throws Exception{
+		return boardDao.create(board);
+	}
+	/*
+	 * 게시글 수정 
+	 */
+	/*
+	 * 게시글 삭제 
+	 */
+	/*
+	 * 게시글 상세보기   
+	 */
+	/*
+	 * 게시글 전체보
+	 */
+
+}

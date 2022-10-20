@@ -1,0 +1,65 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.itwill.jumun.model.Jumun;
+import com.itwill.jumun.model.JumunService;
+import com.itwill.jumun_detail.model.JumunDetail;
+import com.itwill.jumun_detail.model.JumunDetailService;
+import com.itwill.summer.Controller;
+
+public class JumunDetailActionController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath = "forward:/WEB-INF/view/McDelivery_Jumun.jsp";
+		try {
+			HttpSession session = request.getSession();
+
+			int m_no = Integer.parseInt((String) session.getAttribute("m_no"));
+			int s_no = Integer.parseInt(request.getParameter("s_no"));
+			int sum = 0;
+			int jd_qty = 0;
+			int j_phone = Integer.parseInt(request.getParameter("j_phone"));
+
+			ArrayList<HashMap> list = (ArrayList<HashMap>) request.getAttribute("list");
+			JumunService jumunService = new JumunService();
+			JumunDetailService jumunDetailService = new JumunDetailService();
+			ArrayList<String> nameList = new ArrayList();
+			ArrayList<Integer> qtyList = new ArrayList();
+			ArrayList<Integer> productList = new ArrayList();
+			ArrayList<JumunDetail> jumunDetailList = new ArrayList();
+			
+			String j_address = request.getParameter("j_address");
+			String j_demand = request.getParameter("j_demand");
+			
+			
+			for (int i = 0; i < list.size(); i++) {
+				nameList.add((String) list.get(i).get("p_name"));
+				qtyList.add((Integer)list.get(i).get("c_qty"));
+				productList.add((Integer)list.get(i).get("p_no"));
+			}
+			//총액
+			for (int i = 0; i < list.size(); i++) {
+				sum += (int) list.get(i).get("c_price");
+			}
+			for (int i = 0; i < list.size(); i++) {
+				jumunDetailList.add(new JumunDetail(qtyList.get(i),productList.get(i)));
+			}
+			
+			jumunService.insertJumun(new Jumun(m_no,s_no,sum,j_address,j_demand,j_phone));
+			jumunDetailService.insertJumunDetail(jumunDetailList);
+			// int m_no, int s_no, int j_price, String j_address, String j_demand
+			return forwardPath;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return forwardPath;
+	}
+
+}

@@ -1,0 +1,62 @@
+package com.itwill.product.model;
+
+import java.util.ArrayList;
+
+import com.itwill.member.model.Member;
+
+public class ProductService {
+	private ProductDao productDao;
+
+	public ProductService() throws Exception {
+		productDao = new ProductDao();
+	}
+
+	// create
+	public boolean create(Product product) throws Exception {
+		int rs = productDao.create(product);
+		boolean isSuccess = false;
+		if (rs == 1) {
+			isSuccess = true;
+		}
+		return isSuccess;
+
+	}
+
+	// read all
+	public ArrayList<Product> findAll() throws Exception {
+		return productDao.getProductList();
+	}
+
+	// read one
+	public Product findOne(int p_no) throws Exception {
+		return productDao.getProductByNo(p_no);
+	}
+
+	// read menu list
+	public ArrayList<Product> findByUpno(int p_up_no) throws Exception {
+		return productDao.getProductListByNo(p_up_no);
+	}
+
+	// update
+	public boolean update(Product product) throws Exception {
+		int rs = productDao.update(product);
+		boolean isSuccess = false;
+		if (rs == 1) {
+			isSuccess = true;
+		}
+		return isSuccess;
+
+	}
+
+	// delete
+	public boolean deleteByNo(int p_no) throws Exception {
+		int rs = productDao.delete(p_no);
+		boolean isSuccess = false;
+		if (rs == 1) {
+			isSuccess = true;
+		}
+		return isSuccess;
+
+	}
+
+}

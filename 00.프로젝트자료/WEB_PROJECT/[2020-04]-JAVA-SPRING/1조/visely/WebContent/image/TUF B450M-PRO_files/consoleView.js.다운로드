@@ -1,0 +1,55 @@
+/**
+ * @method: PROCUDT DETAIL - product info Controller
+ * @dependency: requireJS, jQuery, mwUI
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([
+            'jquery',
+            'mwUI',
+           
+        ], factory);
+    } else {
+        root.videoView = factory(
+            root.jQuery,
+            root.mwUI
+        );
+    }
+}(window || this, function($, mwUI) {
+    'use strict';
+
+    var videoView = {
+        init: function() {
+            this.setHandler();
+        },
+        setHandler: function() {
+        	if($("#detailvideo").length === 0){
+        		return;
+        	}
+        	var confirmYn = 'N';
+        	require(['cookieUtil'], function(TMCookieUtil) {
+        		confirmYn = TMCookieUtil.getSubCookie(0, "prdVideoConfirm");
+        		
+        		if(confirmYn === 'Y' ){
+    				$("#detailvideo").attr("controls" , "controls");
+    				$("#btn_movie_play").hide();
+    			}else{
+    				$("#btn_movie_play").show();
+    			}
+        		
+        		$("#btn_movie_play").on("click", function(){
+        			if(confirm("3G/LTE 등으로 접속 시 데이터 통화료가 발생할 수 있습니다.")){
+    					TMCookieUtil.add(0, "prdVideoConfirm" ,'Y');
+    					$("#detailvideo").attr("controls" , "controls");
+    					$("#detailvideo").trigger("play");
+    					$(this).hide();
+    				}
+        		});
+        		
+        	});
+        	
+        }
+    };
+
+    return videoView;
+}));

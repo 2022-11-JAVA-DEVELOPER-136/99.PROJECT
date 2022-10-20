@@ -1,0 +1,60 @@
+package com.itwill.shop.cart;
+
+import java.util.ArrayList;
+
+public class CartService{
+	private CartDao cartDao;
+	private static CartService _instance;
+	
+	private CartService() throws Exception{
+		cartDao = new CartDao();
+		System.out.println("CartService()생성자:"+this);
+	}
+	public static CartService getInstance() throws Exception{
+		if(CartService._instance==null) {
+			CartService._instance=new CartService();
+		}
+		return CartService._instance;
+	}
+	
+	
+	/*
+	 * 카트에 아이템 이미 담겨져있는지 체크
+	 */
+	public boolean isProductExist(String m_id, int p_no) throws Exception{
+		return isProductExist(m_id, p_no);
+	}
+	
+	
+	/*
+	 * 카트생성
+	 */
+	public int add (Cart cart) throws Exception{
+		return cartDao.add(cart);
+	}
+
+	
+	/*
+	 * 카트아이템삭제
+	 */
+	public int deleteCartItem(int c_item_no) throws Exception{
+		return cartDao.deleteCartItem(c_item_no);
+	}
+	
+	
+	/*
+	 * 카트삭제
+	 */
+	public int deleteCart(String m_id) throws Exception{
+		return cartDao.deleteCart(m_id);
+	}
+	
+	
+	/*
+	 * 카트에 특정멤버가 추가한 것 전체 리스트
+	 */
+	public ArrayList<Cart> getCartItemList(String m_id) throws Exception {
+		return cartDao.getCartItemList(m_id);
+	}
+	
+}

@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="genre_write_action.jsp" method="get">
+	장르 번호<input type="text" value="10" name="g_no"><br/>
+	장르 이름<input type="text" value="의식" name="g_name"><br/>
+	<input type="submit">
+</form>
+</body>
+</html>

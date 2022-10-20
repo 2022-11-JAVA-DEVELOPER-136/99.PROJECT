@@ -1,0 +1,15 @@
+package TEST;
+
+import Genre.GenreService;
+
+public class testMain {
+
+	public static void main(String[] args) throws Exception {
+		GenreService gservice = new GenreService();
+		
+		System.out.println("<<<<<<<<<< Genre >>>>>>>>>>");
+		System.out.println("------ create ------");
+		gservice.create(new Genre(4, "로맨스", ))
+	}
+
+}

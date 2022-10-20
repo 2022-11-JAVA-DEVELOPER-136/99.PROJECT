@@ -1,0 +1,43 @@
+/************************************************************************
+	  상품상세 내용부분iframe내 class 정의  
+************************************************************************/
+/* [RESET] */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd,form,fieldset,pre,figure,blockquote,input,button,textarea{padding:0;margin:0;}
+html{overflow-y:scroll;background:#fff;}
+body{color:#4d4d4d;font:12px/1.3 '돋움',dotum,Gulim, sans-serif;}
+:root body{font:12px/1.3 tahoma,'돋움',dotum,Gulim, sans-serif;}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section {display:block;}
+ul,ol,li{list-style:none;}
+img,fieldset,iframe{border:0 none;}
+table{*border-collapse:collapse;border-spacing:0;}
+caption,legend{overflow:hidden;font-size:0;line-height:0;}
+legend{*position:absolute;margin-left:-20px;}
+em,address{font-style:normal;}
+s{text-decoration:none;}
+a{color:#4d4d4d;text-decoration:none;}
+a:hover,a:active{outline:0;}
+a:hover,a:focus{text-decoration:underline;}
+body,div,textarea,iframe{scrollbar-3dlight-color:#ffffff;scrollbar-arrow-color:#919191;scrollbar-track-color:#f4f4f4;scrollbar-darkshadow-color:#ffffff;scrollbar-face-color:#ffffff;scrollbar-highlight-color:#cdcdcd;scrollbar-shadow-color:#c8c8c8;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+hr{display:none;}
+button,input,select,textarea{font:12px/1.4 '돋움',dotum,Gulim, sans-serif;vertical-align:middle;}
+:root button,:root input,:root select,:root textarea{font:12px/1.4 tahoma,'돋움',dotum,Gulim, sans-serif;}
+button{_border:none;}
+input[type='text']{padding:3px 4px 0;color:#4d4d4d;border:1px solid #bbb;}
+:root input[type='text']{padding:1px 4px 3px;}
+input[type='button'],input[type='submit'],button{cursor:pointer;border:0 none;}
+input[type='radio'],input[type='checkbox']{margin:1px 2px 0 0;vertical-align:top;*width:13px;*height:13px;*vertical-align:2px;}
+button::-moz-focus-inner{margin:-1px;padding:0;}
+*{margin:0;padding:0;}
+body{min-width:940px;max-width:1040px;padding:20px;text-align:left;background:#fff;color:#4d4d4d;font:12px/1.3 tahoma,'돋움',dotum,Gulim, sans-serif;*font:12px/1.3 '돋움',dotum,Gulim, sans-serif;}
+/* 2012-04-19 반품교환안내 현대백화점 유의사항 */
+.notice_outprd {margin:0px 0px;}
+.notice_outprd .notice_hd h3 {background:url('/img/common/icon/bul_08.gif') no-repeat 0 0;padding:1px 0 0 12px;font-weight:bold;color:#101010;}
+.notice_outprd .notice_hd .subtxt {margin:10px;}
+.notice_outprd .notice_hd h4 {background:url('/img/common/icon/bul_arrow_org.gif') no-repeat 0 4px;padding-left:8px;font-weight:normal;color:#ff7800;margin-top:15px;}
+.notice_outprd .notice_hd p {color:#101010;margin:5px 10px;line-height:1.4em}
+.notice_outprd .notice_hd .noti_gbox {border:4px solid #efefef;padding:16px 16px 13px 16px;color:#101010;margin-top:5px}
+.notice_outprd .notice_hd em {color:#ff7800;font-weight:bold;text-decoration:underline;font-style:normal;}
+.notice_outprd .notice_hd .dettxt {margin-left:10px;}
+.notice_outprd .notice_hd .dettxt li {background: url('/img/common/icon/dul_dot3.gif') no-repeat 0px 5px;font-size:11px;line-height:1.4em;padding-left:6px;color:#5c5c5c;}
+.notice_outprd .notice_hd .txt_hdm {background-color:#f1f1f1;color:#63a900;padding:2px;font-size:11px;}

@@ -1,0 +1,4 @@
+/test.do=com.itwill.controller.EmoTestController
+/memtest.do=com.itwill.controller.memTestController
+/emolisttest.do=com.itwill.controller.EmoListTestController
+/emoinserttest.do=com.itwill.controller.EmoInsertController

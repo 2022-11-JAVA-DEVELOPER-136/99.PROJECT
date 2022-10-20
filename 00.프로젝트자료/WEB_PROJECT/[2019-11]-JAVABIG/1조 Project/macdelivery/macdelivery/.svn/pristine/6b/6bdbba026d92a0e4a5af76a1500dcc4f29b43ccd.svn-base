@@ -1,0 +1,38 @@
+package com.itwill.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.product.model.Product;
+import com.itwill.product.model.ProductService;
+import com.itwill.summer.Controller;
+
+public class ProductListController implements Controller {
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardpath = "";
+		String product_UpnoStr = request.getParameter("p_up_no");
+		if (product_UpnoStr == null || product_UpnoStr.equals("")) {
+			forwardpath = "redirect:/McDelivery_product_list.do";
+		} else {
+			try {
+				ProductService productService = new ProductService();
+				Product product = productService.findOne(Integer.parseInt(product_UpnoStr));
+				if (product == null) {
+					forwardpath = "redirect:/McDelivery_product_list.do";
+				} else {
+					request.setAttribute("product", product);
+					forwardpath = "forward:/McDelivery_product_list.jsp";
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return forwardpath;
+
+	}
+
+
+
+}

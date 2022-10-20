@@ -1,0 +1,68 @@
+package itwill.shop.cart;
+
+import java.util.ArrayList;
+import exception.CartNotFoundException;
+
+public class CartService {
+
+	private CartDAO cartDAO;
+	private static CartService _instance;
+	
+	private CartService() throws Exception{
+		cartDAO=new CartDAO();
+		System.out.println("JumunService()생성자:"+this);
+	}
+	
+	// 객체를 만들려면 생성자가 아닌 getInstance() 정적 메소드를 사용해야 한다. 
+	public static CartService getInstance() throws Exception {
+		if (CartService._instance == null) {
+			CartService._instance = new CartService();
+		}
+		return CartService._instance;
+	}
+	
+	
+	/*
+	 * 카트생성 
+	 */
+	public int create(Cart cart) throws Exception {
+		return cartDAO.create(cart);
+	}
+	
+	
+	/*
+	 * 카트수정
+	 */
+	public int update(Cart cart) throws Exception {
+		return cartDAO.update(cart);
+	}
+	
+	
+	/*
+	 * 카트삭제
+	 */
+	public int remove(int c_item_no) throws Exception {
+		return cartDAO.remove(c_item_no);
+	}
+	
+	
+	/*
+	 * 카트1개보기
+	 */
+	public Cart findJumun(int c_item_no) throws Exception, CartNotFoundException {
+		Cart cart = cartDAO.findCart(c_item_no);
+		if (cart == null) {
+			throw new CartNotFoundException(c_item_no+" 는 존재하지 않는 카트번호입니다.");
+		}
+		return cart;
+	}
+	
+	
+	/*
+	 * 카트리스트
+	 */
+	public ArrayList<Cart> findCartList() throws Exception {
+		return cartDAO.findCartList();
+	}
+		
+}

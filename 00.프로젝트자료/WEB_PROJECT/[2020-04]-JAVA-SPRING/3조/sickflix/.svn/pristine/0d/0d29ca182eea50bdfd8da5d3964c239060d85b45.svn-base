@@ -1,0 +1,15 @@
+package com.itwill.shop.product;
+
+public class ProductSQL {
+	
+	public static final String INSERT_PRODUCT =
+			"insert into product VALUES (?, ?, ?, ?, ?, ?, ?)";
+	
+	public static final String SELECT_ALLPRODUCT_WITHGENRE =
+			"select p.*, g.* from product p inner join genre g on p.g_no = g.g_no";
+	public static final String SELECT_ONEPRODUCT_WITHGENRE =
+			"select p.*, g.* from product p left outer join genre g on p.g_no = g.g_no"
+			+ "where g.g_no = ?";
+	
+	
+}

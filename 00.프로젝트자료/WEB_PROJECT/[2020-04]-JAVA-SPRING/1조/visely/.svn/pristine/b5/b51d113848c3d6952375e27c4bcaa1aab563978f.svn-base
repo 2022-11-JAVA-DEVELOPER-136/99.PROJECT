@@ -1,0 +1,46 @@
+package com.itwill.service;
+
+import com.itwill.dao.OrderDetailDaoImpl;
+import com.itwill.dto.OrderDetailDTO;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import com.itwill.dao.OrderDetailDao;
+
+
+public class OrderDetailService {
+	private static OrderDetailService _getInstance =null;
+	private OrderDetailDao orderDetail =null;
+	private OrderDetailService() {
+		 orderDetail = new OrderDetailDaoImpl(); 
+	}
+	public static OrderDetailService getInstance(){
+		if(_getInstance==null) {
+			_getInstance = new OrderDetailService();
+		}
+		
+		return _getInstance;
+	}
+	
+	public int insertOrderDetailService(OrderDetailDTO ordDetail) {
+		return orderDetail.insertOrderDetail(ordDetail);
+	}
+	public int updateOrderDetailService(OrderDetailDTO ordDetail) {
+		return orderDetail.updateOrderDetail(ordDetail);
+	}
+	public int deleteOrderDetailService(int odNo) {
+		return orderDetail.deleteOrderDetail(odNo);
+	}
+	public OrderDetailDTO findOrderDetailService(int odNo) {
+		return orderDetail.findOrderDetail(odNo);
+	}
+	public ArrayList<OrderDetailDTO> findOrderDetailAllService() {
+		return orderDetail.findOrderDetailAll();
+	}
+	public ArrayList<Map> findOrderResult(int oNo) {
+		return orderDetail.selectionJoin(oNo);
+	}
+	
+	
+}

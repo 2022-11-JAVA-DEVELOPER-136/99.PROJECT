@@ -1,0 +1,65 @@
+
+<%@page import="com.itwill.member.MemberService"%>
+<%@page import="com.itwill.member.Member"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("emoListTest.jsp");
+		return;
+	}	
+
+	//request.setCharacterEncoding("UTF-8");
+	String m_id=request.getParameter("m_id");	
+	String m_pass=request.getParameter("m_pass");	
+	String m_niname=request.getParameter("m_niname");	
+	String m_phone=request.getParameter("m_phone");	
+	Member newMember=null;
+	try{
+		MemberService memberService=new MemberService();
+		newMember=new Member(m_id,m_pass,m_niname,m_phone);
+		memberService.create(newMember);
+		response.sendRedirect("memberWriteFormTest.jsp");
+	}catch(Exception e){
+		//e.printStackTrace();
+		/*********   case2********************
+		response.sendRedirect("user_write_form.jsp?msg="+
+		       URLEncoder.encode(e.getMessage(), "UTF-8"));
+		*/
+		/*************** case 1****************
+		out.println("<script>");
+		out.println("alert('"+e.getMessage()+"');");
+		out.println("location.href='user_write_form.jsp?msg="
+					+URLEncoder.encode(e.getMessage(), "UTF-8")+"';");
+		out.println("</script>");
+		*/
+		request.setAttribute("fuser",newMember);
+		request.setAttribute("msg", e.getMessage());
+		RequestDispatcher rd=
+				request.getRequestDispatcher("memberWriteFormTest.jsp");
+		rd.forward(request, response);
+		
+	}catch(Exception e){
+		e.printStackTrace();
+		RequestDispatcher rd=
+				request.getRequestDispatcher("emoListTest.jsp");
+		rd.forward(request, response);
+	}
+%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

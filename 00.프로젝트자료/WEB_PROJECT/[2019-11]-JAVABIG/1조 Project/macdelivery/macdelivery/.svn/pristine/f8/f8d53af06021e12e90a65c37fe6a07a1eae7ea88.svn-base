@@ -1,0 +1,36 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.cart.controller.CartService"%>
+<%@page import="com.itwill.cart.model.CartDao"%>
+<%@page import="com.itwill.cart.model.Cart"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%!
+int m_no = 1000;
+%>
+
+<%
+Cart cart = new Cart();
+CartDao cartDao = new CartDao();
+CartService cartService = new CartService();
+
+%>    
+    
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>재연 테스트중</h1>
+
+<%//cartService.insert(m_no, 1027, 2); %>
+<%//cartService.update(m_no, 3002, 4); %>
+<%ArrayList<HashMap> list = cartService.selectAll(m_no); %>
+<%cartService.delete(101); %>
+<h2><%=list %></h2>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0173)http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getProductNoticeInfo&selMnbdNo=56395252&mdispCtgrNo=1002932&ntceClfCd=01&dispCtgrCd=v2W004001&prdNo=2573591007 -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	
+
+	<title>상품공지</title>
+	<link rel="stylesheet" href="./default(1).css" type="text/css">
+	<link rel="stylesheet" href="./prdc_detail.css" type="text/css">
+
+	<script type="text/javascript" src="./jquery-1.5.min.js(1).다운로드"></script>
+	<script type="text/javascript">
+	var resizeThread;
+	var i=0;
+
+	
+	var ids = ["#detailIfrm", "prdBbsIfrm"];
+
+	function parentFrmResize(){
+		if(!parent) return;
+		if(!parent.document.getElementById(ids[1])) return;
+		if(!document.body) return;
+		try{
+			parent.document.getElementById(ids[1]).height = document.documentElement.scrollHeight;
+		}catch(e){}
+	}
+	resizeThread = setInterval("parentFrmResize()", 100);	//0.1초마다 실행ffff
+
+	function handleError() {
+		return true;
+	}
+	
+	window.onload = function(){
+		$(ids[0], parent.document).css("display", "block");
+		if (parent.document.getElementById(ids[1]) == null)
+			return;
+
+		if(!resizeThread && resizeThread != null) clearInterval(resizeThread);
+	}
+	
+	window.onerror = handleError;
+	</script>
+</head>
+<body><div class="ifrm_prdc_detail" style="text-align:center;"><div style="text-align: center;">
+<img src="./top.jpg">
+</div></div>
+
+</body></html>

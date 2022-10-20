@@ -1,0 +1,26 @@
+package com.itwill.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.cart.model.CartService;
+import com.itwill.summer.Controller;
+
+public class CartDeleteActionController implements Controller{
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		int p_no = Integer.getInteger(request.getParameter("p_no"));
+		String forwardPath="forward:cart.jsp";
+		try {
+			CartService cartService = new CartService();
+			cartService.delete(p_no);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:cart.jsp";
+		}
+		
+		return forwardPath;
+	}
+
+}

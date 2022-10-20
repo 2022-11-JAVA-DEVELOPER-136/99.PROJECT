@@ -1,0 +1,7 @@
+package com.itwill.jumun_detail.model;
+
+public class JumunDetailSQL {
+	public final static String selectAll = "select * from jumun_detail where j_no=?";
+	public final static String insertJumunDetail = "insert into jumun_detail values (?,?,?)";
+	public final static String deleteJumunDetail = "delete from jumun_detail where j_no=?";
+}

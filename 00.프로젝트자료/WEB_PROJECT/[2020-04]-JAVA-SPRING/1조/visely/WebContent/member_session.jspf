@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	// 뭔지 모름
+	Object syncObj = (Object)session.getAttribute("syncObj");
+	
+	if(syncObj == null){
+		syncObj = new Object();
+		session.setAttribute("syncObj", syncObj);
+	}
+	
+	// 비 로그인 시 로그인 화면으로 이동하게 하는 세션
+	String cEmail = (String) session.getAttribute("loginId");
+	
+	if(cEmail == null){
+		response.sendRedirect("member_login_form.jsp");
+		return;
+	}
+%>

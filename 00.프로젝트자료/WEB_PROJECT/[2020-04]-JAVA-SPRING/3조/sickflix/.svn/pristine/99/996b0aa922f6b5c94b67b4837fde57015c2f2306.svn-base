@@ -1,0 +1,68 @@
+package com.itwill.jumun;
+
+import java.util.ArrayList;
+import exception.JumunNotFoundException;
+
+public class JumunService {
+
+	private JumunDAO jumunDAO;
+	private static JumunService _instance;
+	
+	public JumunService() throws Exception{
+		jumunDAO=new JumunDAO();
+		System.out.println("JumunService()생성자:"+this);
+	}
+	
+	// 객체를 만들려면 생성자가 아닌 getInstance() 정적 메소드를 사용해야 한다. 
+	public static JumunService getInstance() throws Exception {
+		if (JumunService._instance == null) {
+			JumunService._instance = new JumunService();
+		}
+		return JumunService._instance;
+	}
+	
+	
+	/*
+	 * 주문생성 
+	 */
+	public int create(Jumun jumun) throws Exception {
+		return jumunDAO.create(jumun);
+	}
+	
+	
+	/*
+	 * 주문수정
+	 */
+	public int update(Jumun jumun) throws Exception {
+		return jumunDAO.update(jumun);
+	}
+	
+	
+	/*
+	 * 주문삭제
+	 */
+	public int remove(int j_no) throws Exception {
+		return jumunDAO.remove(j_no);
+	}
+	
+	
+	/*
+	 * 주문1개보기
+	 */
+	public Jumun findJumun(int j_no) throws Exception, JumunNotFoundException {
+		Jumun jumun = jumunDAO.findJumun(j_no);
+		if (jumun == null) {
+			throw new JumunNotFoundException(j_no+" 는 존재하지 않는 주문번호입니다.");
+		}
+		return jumun;
+	}
+	
+	
+	/*
+	 * 주문리스트
+	 */
+	public ArrayList<Jumun> findJumunList() throws Exception {
+		return jumunDAO.findJumunList();
+	}
+		
+}

@@ -1,0 +1,27 @@
+package com.itwill.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.cart.model.CartService;
+import com.itwill.summer.Controller;
+
+public class CartCountUpdateController implements Controller {
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="forward:cart.jsp";
+		int m_no = Integer.getInteger(request.getParameter("m_no"));
+		int p_no = Integer.getInteger(request.getParameter("p_no"));
+		int c_quantity = Integer.getInteger(request.getParameter("c_quantity"));
+		try {
+			CartService cartService = new CartService();
+			cartService.update(m_no, p_no, c_quantity);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return forwardPath;
+	}
+
+}

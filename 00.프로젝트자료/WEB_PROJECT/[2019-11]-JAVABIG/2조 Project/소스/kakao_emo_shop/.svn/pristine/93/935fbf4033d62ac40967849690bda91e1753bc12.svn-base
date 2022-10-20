@@ -1,0 +1,56 @@
+package com.itwill.jumun;
+
+public class jumunDetail {
+	private int jd_no;
+	private int j_no;
+	private int jd_emoname;
+	private int jd_emoprice;
+	
+	public jumunDetail() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public jumunDetail(int jd_no, int j_no, int jd_emoname, int jd_emoprice) {
+		super();
+		this.jd_no = jd_no;
+		this.j_no = j_no;
+		this.jd_emoname = jd_emoname;
+		this.jd_emoprice = jd_emoprice;
+	}
+	
+	public jumunDetail(int jd_emoname, int jd_emoprice) {
+		super();
+		this.jd_emoname = jd_emoname;
+		this.jd_emoprice = jd_emoprice;
+	}
+
+	public int getJ_no() {
+		return j_no;
+	}
+
+	public void setJ_no(int j_no) {
+		this.j_no = j_no;
+	}
+
+	public int getJd_emoname() {
+		return jd_emoname;
+	}
+
+	public void setJd_emoname(int jd_emoname) {
+		this.jd_emoname = jd_emoname;
+	}
+
+	public int getJd_emoprice() {
+		return jd_emoprice;
+	}
+
+	public void setJd_emoprice(int jd_emoprice) {
+		this.jd_emoprice = jd_emoprice;
+	}
+
+	@Override
+	public String toString() {
+		return "jumunDetail [j_no=" + j_no + ", jd_emoname=" + jd_emoname + ", jd_emoprice=" + jd_emoprice + "]";
+	}
+	
+}

@@ -1,0 +1,208 @@
+package com.itwill.jumun.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import com.itwill.jumun_detail.model.JumunDetail;
+import com.itwill.jumun_detail.model.JumunDetailSQL;
+
+public class JumunDao {
+	private DataSource ds;
+
+	public JumunDao() throws Exception {
+		InitialContext ic = new InitialContext();
+		ds = (DataSource) ic.lookup("java:/comp/env/jdbc/OracleDB");
+	}
+	/*
+	 * READ ALL
+	 */
+	public ArrayList<Jumun> selectAll() throws Exception {
+		ArrayList<Jumun> jumunList = new ArrayList<Jumun>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(JumunSQL.JUMUN_SELECT_ALL);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				jumunList.add(new Jumun(rs.getInt("j_no"), rs.getInt("m_no"), rs.getInt("s_no"), rs.getString("j_date"),
+						rs.getInt("j_price"), rs.getString("j_address"), rs.getString("j_demand")));
+			}
+		
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		}
+		return jumunList;
+	}
+
+	/*
+	 * CREATE
+	 */
+	public boolean insertJumun(Jumun jumun) throws Exception {
+	      boolean isSuccess = false;
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      try {
+	         conn = ds.getConnection();
+	         pstmt = conn.prepareStatement(JumunSQL.JUMUN_INSERT);
+	         pstmt.setInt(1, jumun.getM_no());
+	         pstmt.setInt(2, jumun.getS_no());
+	         pstmt.setInt(3, jumun.getJ_price());
+	         pstmt.setString(4, jumun.getJ_address());
+	         pstmt.setString(5, jumun.getJ_demand());
+	         int insertRowCount = pstmt.executeUpdate();
+	         //to_number(concat(replace(to_char(sysdate,'MM/DD'),'/',''),to_char(lpad(seq_jumun_no.nextval,4,0))))
+	         //to_number(concat(replace(to_char(sysdate,'MM/DD'),'/',''),to_char(lpad(seq_jumun_no.currval,4,0))))
+	         System.out.println(insertRowCount);
+	         if (insertRowCount == 1) {
+	            isSuccess = true;
+	         }
+	         
+	         
+	         
+	      } catch (Exception e) {
+	         isSuccess = false;
+	      } finally {
+	         if (conn != null)
+	            conn.close();
+	      }
+
+	      return isSuccess;
+	   }
+	public boolean insertJumunDetail(int m_no) throws Exception {
+		boolean isSuccess = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(JumunDetailSQL.insertJumunDetail);
+			for (int i = 0; i < jumunDetail.size(); i++) {
+				
+				pstmt.setInt(1, jumunDetail.get(i).getP_no());
+				//pstmt.setInt(2, jumunDetail.get(i).getJ_no());
+				pstmt.setInt(2, jumunDetail.get(i).getJd_quantity());
+				int count =  pstmt.executeUpdate();
+				rowCount = rowCount + count;
+			} 
+			if (rowCount == jumunDetail.size()) {
+				isSuccess = true;
+			}
+		} catch (Exception e) {
+			isSuccess = false;
+		} finally {
+			if (conn != null)
+				conn.close();
+
+		}
+		return isSuccess;
+	}
+	/*public boolean insertJumun(Jumun jumun) throws Exception {
+		boolean isSuccess = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(JumunSQL.JUMUN_INSERT);
+			pstmt.setInt(1, jumun.getM_no());
+			pstmt.setInt(2, jumun.getS_no());
+			pstmt.setInt(3, jumun.getJ_price());
+			pstmt.setString(4, jumun.getJ_address());
+			pstmt.setString(5, jumun.getJ_demand());
+			int insertRowCount = pstmt.executeUpdate();
+			if (insertRowCount == 1) {
+				isSuccess = true;
+			}
+		} catch (Exception e) {
+			isSuccess = false;
+		} finally {
+			if (conn != null)
+				conn.close();
+		}
+
+		return isSuccess;
+	}
+	*/
+	/*
+	 * READ ONE
+	 */
+	public Jumun selectByNo(int j_no) throws Exception {
+		Jumun jumun = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(JumunSQL.JUMUN_SELECT_BY_NO);
+			pstmt.setInt(1, j_no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				jumun = new Jumun(rs.getInt("j_no"), rs.getInt("m_no"), rs.getInt("s_no"), rs.getString("j_date"),
+						rs.getInt("j_price"), rs.getString("j_address"), rs.getString("j_demand"));
+			}
+		} finally {
+			if (conn != null)
+				conn.close();
+		}
+		return jumun;
+	}
+
+	/*
+	 * DELETE
+	 */
+	public boolean deleteJumun(int j_no) throws Exception {
+		boolean deleteOK = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(JumunSQL.JUMUN_DELETE);
+			pstmt.setInt(1, j_no);
+			pstmt.executeUpdate();
+			deleteOK = true;
+		} catch (Exception e) {
+			deleteOK = false;
+			e.printStackTrace();
+		} finally {
+			if (conn != null)
+				conn.close();
+		}
+		return deleteOK;
+	}
+	
+	/*
+	 * READ ALL BY M_NO
+	 */
+	public ArrayList<Jumun> selectAllByMemberNo(int m_no) throws Exception {
+		ArrayList<Jumun> jumunList = new ArrayList<Jumun>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(JumunSQL.JUMUN_SELECT_BY_M_NO);
+			pstmt.setInt(1, m_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				jumunList.add(new Jumun(rs.getInt("j_no"), rs.getInt("m_no"), rs.getInt("s_no"), rs.getString("j_date"),
+						rs.getInt("j_price"), rs.getString("j_address"), rs.getString("j_demand")));
+			}
+		} finally {
+			if (conn != null)
+				conn.close();
+		}
+		return jumunList;
+	}
+}

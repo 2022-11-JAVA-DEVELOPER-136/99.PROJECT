@@ -1,0 +1,23 @@
+#McDelivery Controller Mapping Properties
+/McDelivery_main.do=com.itwill.controller.MainController
+/McDelivery_login_form.do=com.itwill.controller.LoginFormController
+/McDelivery_login_action.do=com.itwill.controller.LoginActionController
+/McDelivery_register_form.do=com.itwill.controller.RegisterFormController
+/McDelivery_register_action.do=com.itwill.controller.RegisterActionController
+/McDelivery_register_idCheck.do=com.itwill.controller.RegisterIdCheckController
+/McDelivery_mypage_addresslist_form.do=com.itwill.controller.MyPageAddressListFormController
+/McDelivery_mypage_addresslist_action.do=com.itwill.controller.MyPageAddressListActionController
+/McDelivery_mypage_myinfo_form.do=com.itwill.controller.MyPageMyInfoFormController
+/McDelivery_mypage_myinfo_action.do=com.itwill.controller.MyPageMyInfoActionController
+/McDelivery_mypage_myinfo_delete_action.do=com.itwill.controller.MyPageMyInfoDeleteActionController
+/McDelivery_mypage_jumunhistory.do=com.itwill.controller.MyPageJumunHistoryController
+/McDelivery_product_list.do=com.itwill.controller.ProductListController
+/McDelivery_product_detail_action.do=com.itwill.controller.ProductDetailActionController
+/McDelivery_cart_up_action.do=com.itwill.controller.CartCountUpController
+/McDelivery_cart_down_action.do=com.itwill.controller.CartCountDownController
+/McDelivery_cart_delete_action.do=com.itwill.controller.CartDeleteActionController
+/McDelivery_cart_form.do=com.itwill.controller.CartFormController
+/McDelivery_cart_action.do=com.itwill.controller.CartActionController
+/McDelivery_cart_add_action.do=com.itwill.controller.CartAddActionController
+/McDelivery_cart_action.do=com.itwill.controller.CartActionController
+/McDelivery_jumun_detail_action.do=com.itwill.controller.JumunDetailActionController

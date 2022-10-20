@@ -1,0 +1,58 @@
+select * from cart;
+select * from jumun;
+select * from jumun_detail;
+select * from md_emolist;
+select * from member;
+select * from p_emo;
+select * from p_emostyle;
+
+select md.m_no ¿Ãπ¯≥¿Ã∞°¡¯¿Ã∏∆ºƒ‹ ,p.p_name from md_emolist md
+join p_emo p on p.p_no = md.p_no where md.m_no= 2 ;
+
+select x.* from (select rownum r, md.m_no Ïù¥Î≤àÎÜàÏù¥Í∞ÄÏßÑÏù¥Î™®Ìã∞ÏΩò ,p.p_name from md_emolist md
+join p_emo p on p.p_no = md.p_no where md.m_no= 2) x where r=5;
+
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (1, 1 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (2, 2 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (3, 3 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (4, 4 , 2);
+INSERT INTO md_emolist (M_OWNEMO, P_NO, M_NO) VALUES (5, 5 , 2);
+commit;
+
+--√— ¡÷πÆ∞«ºˆ
+select p.p_name||'ø‹ '||(select count(m_no)-1 from cart where m_no =3)||'∞«'  
+from cart c join p_emo p on p.p_no = c.p_no 
+where m_no = 3 and rownum =1;
+
+
+--√—±∏∏≈æ◊
+select sum(p.p_price) √—±∏∏≈æ◊ from cart c join p_emo p on c.p_no = p.p_no where m_no=3;
+
+INSERT INTO jumun VALUES (7, sysdate, 
+(select p.p_name||'ø‹ '||(select count(m_no)-1 from cart where m_no =3)||'∞«'  
+from cart c join p_emo p on p.p_no = c.p_no where m_no = 3 and rownum =1), 
+(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=3),1);
+
+INSERT INTO jumun VALUES (?, sysdate, 
+(select p.p_name||'ø‹ '||(select count(m_no)-1 from cart where m_no =?)||'∞«'  
+from cart c join p_emo p on p.p_no = c.p_no where m_no = ? and rownum =1), 
+(select sum(p.p_price) from cart c join p_emo p on c.p_no = p.p_no where m_no=?),?);
+
+select c.m_no ÏÇºÎ≤àÎÜàÏù¥Í∞ÄÏßÑÏù¥Î™®Ìã∞ÏΩò ,p.p_name,p.p_price from cart c
+join p_emo p on p.p_no = c.p_no where c.m_no= 3;
+
+select p.p_name,p.p_price from cart c
+join p_emo p on p.p_no = c.p_no where c.m_no= 3;
+
+select p.p_name from cart c
+join p_emo p on p.p_no = c.p_no where c.m_no= 3;
+
+select p.p_price from cart c
+join p_emo p on p.p_no = c.p_no where c.m_no= 3;
+
+select j_no from jumun where m_no=?  order by desc;
+
+INSERT INTO jumun_detail VALUES (JUMUN_DETAIL_JD_NO_SEQ.nextval,1, (select p.p_name from cart c
+join p_emo p on p.p_no = c.p_no where c.m_no= 3 and rownum=1),
+(select p.p_price from cart c
+join p_emo p on p.p_no = c.p_no where c.m_no= 3 and rownum=1));

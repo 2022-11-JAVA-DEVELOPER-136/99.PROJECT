@@ -1,0 +1,23 @@
+<%@page import="com.itwill.service.BoardService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="member_session.jspf" %>
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")) {
+		response.sendRedirect("qna_board_list.jsp");
+		return;
+	}
+
+	request.setCharacterEncoding("UTF-8");
+	String boardNo = request.getParameter("boardno");
+	
+	try{
+		BoardService boardService = BoardService.getInstance();
+		int deleteCount = boardService.delete(Integer.parseInt(boardNo));
+		response.sendRedirect("qna_board_list.jsp");
+
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+	
+%>

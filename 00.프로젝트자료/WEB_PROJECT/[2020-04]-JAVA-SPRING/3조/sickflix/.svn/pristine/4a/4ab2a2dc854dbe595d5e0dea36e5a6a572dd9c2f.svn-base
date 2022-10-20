@@ -1,0 +1,99 @@
+<%@page import="com.itwill.shop.product.ProductService"%>
+<%@page import="com.itwill.jumun_detail.JumunDetailService"%>
+<%@page import="com.itwill.jumun.JumunService"%>
+<%@page import="jdk.internal.org.objectweb.asm.tree.IntInsnNode"%>
+<%@page import="com.itwill.jumun.Jumun"%>
+<%@page import="com.itwill.shop.product.Product"%>
+<%@page import="com.itwill.jumun_detail.JumunDetail"%>
+<%@page import="com.itwill.shop.product.ProductDao"%>
+<%@page import="com.itwill.jumun_detail.JumunDetailDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+ 
+    <%
+   // String sj_no =request.getParameter("j_no");
+    JumunService jumunService = JumunService.getInstance();
+    Jumun			  jumun = jumunService.findJumun(Integer.parseInt(request.getParameter("j_no")));
+    
+    JumunDetailService jumunDetailService =JumunDetailService.getInstance();
+    JumunDetail			  jumunDetail = jumunDetailService.findJumunDetail(Integer.parseInt(request.getParameter("jd_no")));
+    
+    ProductService productService = ProductService.getInstance();
+    		  Product	 product  = productService.findProduct(Integer.parseInt(request.getParameter("p_no")));
+    
+   
+    %>
+    
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>주문 상세</title>
+<link rel="stylesheet" type="text/css" href="../css/board.css">
+<script src="../js/script.js"></script>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<h2> ** 주문 상세 보기 **</h2>
+<%@ include file ="cart_view.jsp" %>
+<form action="orderproc_admin.jsp" name="detailFrm" method="get">
+<table style="width:90%" border="1">
+	<tr>
+		<td>고객 ID :<%=jumun.getM_id()%></td>
+		<td>주문번호 :<%=jumun.getJ_no()%></td>
+		<td>상품번호 :<%=product.getP_no() %></td>
+		<td>상 품 명 :<%=product.getP_title() %></td>
+	</tr>
+	<tr>
+		<td>상품 가격 :<%=product.getP_price() %></td>
+		<td>주 문 일 :<%=jumun.getJ_date() %></td>
+	</tr>
+	<tr>
+		<td colspan="4">총 결재 금액 :
+		<%-- <%=Integer.parseInt(jumun.getJ_price()) %> --%>
+	</td>
+	</tr>	
+	<tr>
+	 	<td colspan="4" style="text-align:center;">
+	 		주문상태 :
+	 		<select name="state">
+	 			<option value="1"> 접수</option>
+	 			<option value="2"> 입금확인</option>
+<!-- 	 			<option value="3"> 배송준비</option>
+	 			<option value="4"> 배송중</option> -->
+	 			<option value="5"> 처리완료</option>	 			
+	 		</select>
+	 		<script type="text/javascript">
+	 		
+	 		</script>
+	 		<br>
+	 	</td>
+	</tr>
+	<tr>
+	 	<td colspan="4" style="text-align:center;">
+	 <!-- 	<input style="background:gold;" type="button" value="수 정" onclick="orderUpdate(this.form)">
+	 	/ -->
+	 	<input style="background:gold;" type="button" value="삭 제" onclick="cart_delete_action">
+	
+	<input type="hidden" name="no" value="<%=jumun.getJ_no()%>">
+  	<input type="hidden" name="flag"> 
+	 	</td>
+	 </tr>
+</table>
+</form>
+<%-- <%@ include file ="" %> --%>
+</body>
+</html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

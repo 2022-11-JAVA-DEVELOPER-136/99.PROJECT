@@ -1,0 +1,9 @@
+
+
+
+var gnbSeasonMenuBnr ={"count":0,"items":[]}
+
+var R_BANNER_LIST =[{"imgUrl":"https://i.011st.com/browsing/banner/2020/01/31/27337/2020013116353133910_10578597_1.jpg","index":1,"title":"혜택의 재개발","weight":25,"regnCode":"MAINMGN0401","totalCount":4,"target":"","imgLink":"http://www.11st.co.kr/html/nc/event/20200201_redevelop.html"},{"imgUrl":"https://i.011st.com/browsing/banner/2020/01/31/27337/2020013115383121990_10578480_1.jpg","index":2,"title":"AllPRIME","weight":25,"regnCode":"MAINMGN0402","totalCount":4,"target":"","imgLink":"http://www.11st.co.kr/browsing/MallPlanDetail.tmall?method=getMallPlanDetail&planDisplayNumber=2023429"},{"imgUrl":"https://i.011st.com/browsing/banner/2020/01/30/27337/2020013014333047578_10577166_1.jpg","index":3,"title":"VIP쿠폰","weight":25,"regnCode":"MAINMGN0403","totalCount":4,"target":"","imgLink":"http://www.11st.co.kr/browsing/MallPlanDetail.tmall?method=getMallPlanDetail&isPlan=Y&planDisplayNumber=2027278"},{"imgUrl":"https://i.011st.com/browsing/banner/2020/01/31/27337/2020013116363114743_10569718_1.jpg","index":4,"title":"11번가 신한카드","weight":25,"regnCode":"MAINMGN0404","totalCount":4,"target":"","imgLink":"http://www.11st.co.kr/browsing/MallPlanDetail.tmall?method=getMallPlanDetail&isPlan=Y&planDisplayNumber=2014938"}];
+var R_BANNER_SIZE =4;
+
+

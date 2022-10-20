@@ -1,0 +1,41 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.itwill.cart.model.CartService;
+import com.itwill.summer.Controller;
+
+public class CartDeleteActionController implements Controller{
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		CartService cartService;
+		HttpSession session = request.getSession();
+		int m_no = (int)session.getAttribute("m_no");
+		String p_no2 = request.getParameter("p_no");
+		int p_no = Integer.parseInt(p_no2);
+		String forwardPath="forward:/WEB-INF/view/cart.jsp";
+		System.out.println("컨트롤러"+p_no);
+		try {
+			cartService = new CartService();
+			cartService.delete(p_no);
+			
+			ArrayList<HashMap> itemList = cartService.selectAll(m_no);
+			request.setAttribute("cartList", itemList);
+			if (session.getAttribute("member") != null) {
+				int m_no5 = (int)session.getAttribute("m_no");
+				System.out.println(m_no5);
+				CartService cs = new CartService();
+				int cartCount = cs.cartCount(m_no5);
+				request.setAttribute("cartCount", cartCount);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/view/cart.jsp";
+		}return forwardPath;
+	}
+}

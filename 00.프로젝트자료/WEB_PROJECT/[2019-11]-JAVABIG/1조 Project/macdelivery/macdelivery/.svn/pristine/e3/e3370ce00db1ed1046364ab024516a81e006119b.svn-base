@@ -1,0 +1,12 @@
+package com.itwill.member.exception;
+
+public class PasswordMismatchException extends Exception {
+	public final String status ="NOT MISMATCH";
+	public PasswordMismatchException() {
+		
+	}
+	public PasswordMismatchException(String msg) {
+		super(msg);
+	}
+	
+}

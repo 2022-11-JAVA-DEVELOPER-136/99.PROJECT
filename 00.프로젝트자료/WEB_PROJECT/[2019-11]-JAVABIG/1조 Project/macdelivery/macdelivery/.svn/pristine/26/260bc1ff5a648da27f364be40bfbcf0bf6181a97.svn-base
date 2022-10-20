@@ -1,0 +1,27 @@
+package com.itwill.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.cart.model.CartService;
+import com.itwill.summer.Controller;
+
+public class CartFormController implements Controller {
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="forward:/WEB-INT/view/cart.jsp";
+		try {
+			CartService cartService = new CartService();
+			int m_no = Integer.getInteger(request.getParameter("m_no"));
+			ArrayList<HashMap> list = cartService.selectAll(m_no);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return forwardPath;
+	}
+
+}

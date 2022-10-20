@@ -1,0 +1,149 @@
+
+/*
+ * groupno : 최상위글과 그글의 답글들을 하나의 구룹으로 묶기위한컬럼
+ * step    : 같은그룹내에서의 순서를 가지고있는 컬럼
+ * depth   : 답글의 깊이를 가지고있는 컬럼
+ */
+
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('gin','gin', '김소진', '010-1234-5678','Gin@naver.com');
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('woo','woo', '김동우', '010-0234-5158','Woo@naver.com' );
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('sick','sick', '김의식', '010-6234-6453','meSick@naver.com' );
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('min','min', '김성민', '010-1794-9338','mini@naver.com' );
+INSERT INTO member (m_id, m_password, m_name, m_phone, m_email) VALUES ('been','been', '임형빈', '010-9244-3926','bin@naver.com' );
+commit;
+
+
+INSERT INTO board(b_no, b_title, m_id, b_content, b_date, groupno ,step, depth) 
+VALUES (board_seq.nextval,
+        '회원가입하고싶어요',
+        'gin',
+        '등업해주세요',
+        sysdate,
+        board_seq.currval,
+        1,
+        0);
+commit;
+
+
+/*
+INSERT INTO Board ( boardno,title,writer,content,groupno,step) 
+VALUES (board_sequence.nextval, ?, ?, ?,board_sequence.currval, 1);
+commit;
+*/
+
+
+INSERT INTO genre(g_no, g_name) values(gno_seq.nextval, '드라마');
+INSERT INTO genre(g_no, g_name) values(gno_seq.nextval, 'SF');
+INSERT INTO genre(g_no, g_name) values(gno_seq.nextval, '스릴러');
+commit;
+
+
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '기생충', 9000,
+                          '전원 백수인 기택(송강호)의 가족과 글로벌 IT기업 CEO인 박사장 가족의 만남.', 'parasite.jpg', '131분',  8.48, 1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '인터스텔라', 7000,
+                          '정부와 경제가 완전히 붕괴된 미래. 불가사의한 틈이 열린 시공간을 탐험해 인류를 구해야 한다.', 
+                          'interstellar.jpg', '169분', 9.09, 2);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '추격자', 6000,
+                          '그날밤 놈을 쫓던 단 한 명의 (추격자). 놈을 잡은 건 경찰도 검찰도 아니었다. 대한민국을 뒤흔든 희대의 살인마', 
+                          'chaser.jpg', '123분', 9.09, 3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '인사이드아웃', 6000, 
+                          '모든 사람의 머릿속에 존재하는 감정 컨트롤 본부. 그곳에서 불철주야 열심히 일하는 기쁨, 슬픔, 버럭, 까칠, 소심 다섯 감정들.', 
+                          'insideout.jpg', '102분', 9.04, 1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '건축학개론', 6000, 
+                          '어쩌면…사랑할 수 있을까? 건축학개론 수업에서 그녀를 처음 만났다.', 'architecture.jpg', '118분', 8.66, 1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '인셉션', 6000, 
+                          '꿈 VS 현실. 시간, 규칙, 타이밍 모든 것이 완벽해야만 하는, 단 한 번도 성공한 적 없는 ‘인셉션’ 작전이 시작된다!', 
+                          'inception.jpg', '147분', 9.64, 2);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '메멘토', 5000, 
+                          '10분 이상 지속되지 않는 기억력! 이것이 그가 가진 전부다. 당신의 영화상식을 무참히 깨부수는 영화!', 
+                          'memento.jpg', '112분', 9.07, 3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '23 아이덴티티', 5000, 
+                          '폭풍우가 몰아치는 어느 밤, 사막에 위치한 외딴 모텔에 모여든 10명의 사람들. 연락이 두절된 호텔에 갇힌 이들은 하나 둘씩 살해당하기 시작한다.', 
+                          '23identity.jpg', '117분', 7.94, 3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '옥자', 7000, 
+                          '각자의 이권을 둘러싸고 옥자를 차지하려는 탐욕스러운 세상에 맞서, 옥자를 구출하려는 미자의 험난한 여정', 
+                          'okja.jpg', '120분', 8.77, 1);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '혹성탈출', 6000, 
+                          '퇴화하는 인간 VS 진화하는 유인원. 종의 운명과 지구의 미래를 결정할 피할 수 없는 전쟁.', 
+                          'planetapes.jpg', '140분', 8.15, 2);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '샤이닝', 5000,
+                          '폭설로 호텔이 고립되자 환상과 현실의 경계에서 점점 미쳐가는 ‘잭’, 그리고 그를 지켜보는 아내 ‘웬디’와 아들 ‘대니’.', 
+                          'shining.jpg', '144분', 8.39, 3);
+INSERT INTO product(p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no) values (pno_seq.nextval, '컨택트', 5000, 
+                          '외계 비행물체가 세계 각지 상공에 등장했다. 15시간 내에 그들이 지구에 온 이유를 밝혀야 한다.', 
+                          'contact.jpg', '116분', 8.45, 2);
+commit;
+
+
+ --1번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'gin', 2);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'gin', 4);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'gin', 7);
+commit;
+
+
+ --2번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'woo', 4);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'woo', 9);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'woo', 10);
+commit;
+
+
+ --3번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'sick', 1);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'sick', 3);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'sick', 6);
+commit;
+
+
+ --4번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'min', 1);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'min', 5);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'min', 8);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'min', 10);
+commit;
+
+
+ --5번유저--카트상품
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'been', 5);
+INSERT INTO cart (c_item_no, m_id, p_no) VALUES (cno_seq.nextval, 'been', 9);
+commit;
+
+
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (jno_seq.nextval, '인턴스텔라 외(2)', sysdate, 18000, 'gin');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (jno_seq.nextval, '인셉션 외(2)', sysdate, 19000, 'woo');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (jno_seq.nextval, '기생충 외(2)', sysdate, 21000, 'sick');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (jno_seq.nextval, '기생충 외(3)', sysdate, 25000, 'min');
+INSERT INTO jumun (j_no, j_desc, j_date, j_price, m_id) VALUES (jno_seq.nextval, '건축학개론 외(1)', sysdate, 13000, 'been');
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 1, 2);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 1, 4); 
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 1, 7); 
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 2, 4);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 2, 9); 
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 2, 10); 
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 3, 1);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 3, 3); 
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 3, 6); 
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 4, 1);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 4, 5);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 4, 8);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 4, 10);
+commit;
+
+
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 5, 5);
+INSERT INTO jumun_detail (jd_no, j_no, p_no) VALUES (jdno_seq.nextval, 5, 9);
+commit;
+

@@ -1,0 +1,27 @@
+package com.itwill.shop.product;
+
+public class ProductSQL {
+	//제품 추가하기
+	public static final String INSERT_PRODUCT =
+			"insert into product VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	//제품 업데이트
+	public static final String UPDATE_PRODUCT =
+			"update product set p_title=?, p_price=?, p_desc=?, p_image=?, p_runtime=?, p_rate=?, g_no=? where p_no=?";
+	//제품 삭제하기
+	public static final String DELETE_PRODUCT =
+			"delete from product where p_no=?";
+	//제품 1개 찾기
+	public static final String FIND_PRODUCT =
+			"select p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no from product where p_no=?";
+	//제품 모든 정보 찾기
+	public static final String FIND_ALL_PRODUCT =
+			"select p_no, p_title, p_price, p_desc, p_image, p_runtime, p_rate, g_no from product";
+	
+	//제품 장르
+	public static final String SELECT_ALLPRODUCT_WITHGENRE =
+			"select p.*, g.* from product p inner join genre g on p.g_no = g.g_no";
+	//제품 정보 한개 찾기
+	public static final String SELECT_ONEPRODUCT_WITHGENRE =
+			"select p.*, g.* from product p inner join genre g on p.g_no = g.g_no"
+					+ "where g.p_no = ?";
+}

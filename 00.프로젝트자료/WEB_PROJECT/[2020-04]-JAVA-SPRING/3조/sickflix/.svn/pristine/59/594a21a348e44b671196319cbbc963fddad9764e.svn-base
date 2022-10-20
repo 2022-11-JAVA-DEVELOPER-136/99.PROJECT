@@ -1,0 +1,150 @@
+package com.itwill.shop.cart;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import com.itwill.shop.cart.test.JavaSeDataSource;
+
+public class CartDao {
+	private DataSource dataSource;
+	
+	public CartDao() throws Exception {
+		InitialContext ic=new InitialContext();
+		this.dataSource = (DataSource)ic.lookup("java:/comp/env/jdbc/OracleDB");
+	}
+	
+	public CartDao(DataSource dataSource) throws Exception {
+		
+		this.dataSource = JavaSeDataSource.getDataSource();
+		
+	}
+	
+	
+	public boolean isProductExist(String m_id, int p_no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean isExist=false;
+		String selectQuery = "select count(*) cnt from cart where m_id=? and p_no=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			pstmt.setString(1,m_id);
+			pstmt.setInt(2,p_no);
+			rs = pstmt.executeQuery();
+			int count=0;
+			if (rs.next()) {
+				count=rs.getInt(1);
+			}
+			if(count==0) {
+				isExist=false;
+			}else {
+				isExist=true;
+			}
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return isExist;
+	}
+	
+	public  int add(Cart cart) throws Exception {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String insertQuery = CartSQL.INSERT_CART;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(insertQuery);
+				pstmt.setInt(1, cart.getC_item_no());
+				pstmt.setString(2, cart.getM_id());
+				pstmt.setInt(3, cart.getP_no());
+				int rows = pstmt.executeUpdate();
+				return rows;
+			} finally {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			}
+	}
+	
+	public  int deleteCartItem(int c_item_no)  throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String removeQuery = CartSQL.DELETE_CART;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(removeQuery);
+			pstmt.setInt(1, c_item_no);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+
+	public  int deleteCart(String m_id)  throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String removeQuery = CartSQL.DELETE_CART_ITEM;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(removeQuery);
+			pstmt.setString(1, m_id);
+			int rows = pstmt.executeUpdate();
+			return rows;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+	}
+	
+	/*
+	 * 특정 멤버가 카트에 넣은 모든 아이템 가져오기
+	 */
+	public ArrayList<Cart> getCartItemList(String m_id) throws Exception{
+		ArrayList<Cart> cartItemList= new ArrayList<Cart>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String selectQuery = CartSQL.FIND_ALL_CART;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(selectQuery);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cartItemList.add(new Cart(
+								rs.getInt("c_item_no"),
+								m_id,
+								rs.getInt("p_no")
+								));
+			}
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return cartItemList;
+		
+	}
+}
