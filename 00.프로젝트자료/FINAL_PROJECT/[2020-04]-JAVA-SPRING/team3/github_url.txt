@@ -1,1 +1,0 @@
-https://github.com/toritori1215/z.template_spring_maven

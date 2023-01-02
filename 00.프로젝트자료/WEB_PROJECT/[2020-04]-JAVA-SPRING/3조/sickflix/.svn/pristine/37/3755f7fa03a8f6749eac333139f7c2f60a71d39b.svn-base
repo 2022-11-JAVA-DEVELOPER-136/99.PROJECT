@@ -1,7 +1,0 @@
-package com.itwill.shop.cart.test;
-
-import java.util.Date;
-
-public class CartDaoTestMain {
-	
-}

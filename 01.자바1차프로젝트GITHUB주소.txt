@@ -1,9 +1,5 @@
 <<team1-프로젝트>>
-https://github.com/2022-05-JAVA-DEVELOPER/java-project-team1-guard-cinema.git
 <<team2-프로젝트>>
-https://github.com/2022-05-JAVA-DEVELOPER/java-project-team2-sbucks.git
 <<team3-프로젝트>>
-https://github.com/2022-05-JAVA-DEVELOPER/java-project-team3-marketcoli.git
 <<team4-프로젝트>>
-https://github.com/2022-05-JAVA-DEVELOPER/java-project-team4-movie.git
 

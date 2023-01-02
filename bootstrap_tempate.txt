@@ -1,3 +1,0 @@
-bootstrap 4.X
-HTML5
-CSS3

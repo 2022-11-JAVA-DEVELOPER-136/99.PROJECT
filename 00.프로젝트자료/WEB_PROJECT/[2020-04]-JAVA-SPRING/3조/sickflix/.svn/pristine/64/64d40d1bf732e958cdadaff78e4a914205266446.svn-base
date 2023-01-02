@@ -1,6 +1,0 @@
-package Genre;
-
-public class GenreService {
-	private GenreDao genreDao;
-	private
-}

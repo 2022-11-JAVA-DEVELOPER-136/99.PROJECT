@@ -1,9 +1,0 @@
-package com.itwill.jumun;
-
-public class JumunService {
-	private JumunDao jumunDao;
-	
-	public JumunService() throws Exception {
-		jumunDao = new JumunDao();
-	}
-}
