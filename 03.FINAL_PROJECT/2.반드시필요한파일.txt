@@ -1,0 +1,11 @@
+반드시 필요한문서
+
+1. ERD file(ameteras)
+
+2. 테이블정의서
+
+3. text SQL file(모든테이블데이타 insert)
+   ex>loopang_create_table_20171214.sql
+      loopang_create_sequence_20171214.sql
+      loopang_insert_20171214.sql
+      

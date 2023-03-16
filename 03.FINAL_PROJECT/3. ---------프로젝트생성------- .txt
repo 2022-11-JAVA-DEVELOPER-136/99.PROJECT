@@ -1,0 +1,42 @@
+0. 개발환경,툴 설정
+     java    version  -->java_home 설정
+     tomcat  version
+     eclipse  version-->설정된 java_home
+    
+    
+
+0.공통클래스파일(설정파일)
+   	ex> 데이타베이스접속:
+            ConnectionPool.java(db.properties)
+	ex> 게시판:
+            CalculatePage.java..
+	    	
+1.이클립스프로젝트이름(프로젝트생성)
+2.패키지이름(패키지생성)
+
+3.클래스이름(생성)
+	<< member패키지 >>
+	com.itwill.shop.member.Member.java
+	com.itwill.shop.member.MemberDao.java
+	com.itwill.shop.member.MemberService.java
+	<< db패키지 >>
+	com.itwill.shop.db.ConnectionPool.java
+	<< 공통패키지 >>
+	com.itwill.util.PageCalculator.java
+4.jsp페이지이름(jsp생성) 
+    	<< member >>
+	member_login.jsp
+    	member_logout.jsp
+    	member_insert.jsp
+    	member_insert_action.jsp
+
+	<< product >>	
+	product_list.jsp
+    	product_detail.jsp
+    	
+	<< order>>	
+	order_list.jsp
+    	order_detail.jsp
+5. svn  import(팀장) 
+   svn  checkout(팀원)
+    
