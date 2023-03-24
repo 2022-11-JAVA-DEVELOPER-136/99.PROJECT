@@ -1,9 +1,8 @@
 <<team1-프로젝트>>
-https://github.com/2022-11-JAVA-DEVELOPER/final-project-team1-www.git
+https://github.com/2022-11-JAVA-DEVELOPER/final-project-team1-xxx.git
 <<team2-프로젝트>>
 https://github.com/2022-11-JAVA-DEVELOPER/final-project-team2-xxx.git
 <<team3-프로젝트>>
-https://github.com/2022-11-JAVA-DEVELOPER/final-project-team3-yyy.git
-<<team4-프로젝트>>
-https://github.com/2022-11-JAVA-DEVELOPER/final-project-team4-zzz.git
+https://github.com/2022-11-JAVA-DEVELOPER/final-project-team3-xxx.git
+
 
